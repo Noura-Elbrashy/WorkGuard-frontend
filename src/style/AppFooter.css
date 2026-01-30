@@ -1,0 +1,161 @@
+
+
+/* ========================================== */
+
+
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  /* ✅ خلفية أكثر وضوحاً */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.18) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  /* ✅ إضافة ظل خفيف للعمق */
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+  font-size: 0.875rem;
+  /* ✅ أبيض مع شفافية خفيفة - الأفضل للقراءة */
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Brand */
+.footer-brand {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-divider {
+  margin: 0 0.5rem;
+  opacity: 0.5;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-tagline {
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* Center */
+.footer-center {
+  opacity: 0.85;
+  font-weight: 600;
+}
+
+/* Right */
+.footer-secure {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  opacity: 0.9;
+  /* ✅ خلفية خفيفة للأيقونة */
+  padding: 0.3rem 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-secure i {
+  color: #10b981;
+  filter: drop-shadow(0 2px 4px rgba(16, 185, 129, 0.3));
+  font-size: 0.9rem;
+}
+
+/* ✅ تأثير Hover احترافي */
+.footer-content:hover .footer-brand {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    /* gap: 0.6rem; */
+    gap: .3rem;
+    text-align: center;
+    padding: 1rem 1.5rem;
+  }
+  
+  /* .footer-divider {
+    display: none;
+  } */
+}
+
+/* ✅ إضافة تأثير للشاشات الكبيرة */
+@media (min-width: 1200px) {
+  .footer-content {
+    padding: 0.85rem 3rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ✅ تأثير Glass Morphism محسّن */
+.app-footer {
+  background: linear-gradient(
+    180deg, 
+    rgba(102, 126, 234, 0.15) 0%, 
+    rgba(118, 75, 162, 0.2) 100%
+  );
+  backdrop-filter: blur(16px) saturate(180%);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 -8px 32px rgba(31, 38, 135, 0.15);
+}
+
+/* ✅ تأثير متحرك خفيف */
+.footer-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: footerShimmer 8s infinite;
+}
+
+@keyframes footerShimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+
+/* '''''' */
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  backdrop-filter: blur(16px) saturate(180%);
+  /* ✅ خلفية متدرجة داكنة */
+  background: linear-gradient(
+    180deg, 
+    rgba(50, 30, 90, 0.7) 0%, 
+    rgba(40, 20, 80, 0.85) 100%
+  );
+  border-top: 2px solid rgba(102, 126, 234, 0.4);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.25);
+}
+
+.footer-content {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.95);
+}

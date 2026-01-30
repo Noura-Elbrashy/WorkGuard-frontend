@@ -58,15 +58,19 @@ function Login() {
       setError(err.response?.data?.message || t('resetFailed'));
     }
   };
+useEffect(() => {
+  document.body.classList.add('login-page');
+  return () => document.body.classList.remove('login-page');
+}, []);
 
   return (
     <div className="login-container bg-gradient-login">
       <div className="glass-card p-4 login-card animate-fade-in">
         <div className="text-center mb-4">
-                    <img src={logo} alt="RAN Clinic Logo" className="rounded-circle shadow-sm mb-3" style={{ width: '4rem', height: '4rem' }} />
+                    <img src={logo} alt="WorkGuard HR" className="  mb-3 logo" style={{ width: '20rem', height: '8rem' }} />
           
           <div className="logo-fallback" style={{ display: 'none' }}>
-            RAN Clinic
+            WorkGuard
           </div>
           <h2 className="card-title">{t('login')}</h2>
         </div>
@@ -144,7 +148,7 @@ function Login() {
               className="btn btn-link forgot-password-link"
               onClick={() => setShowModal(true)}
             >
-              {t('forgotPassword')}
+              {t('forgotPassword.title')}
             </button>
           </div>
         </form>

@@ -1,0 +1,510 @@
+/* /* ===================================
+   ATTENDANCE SYSTEM - COMPACT & MODERN
+   =================================== */
+
+/* === Main Container === */
+.attendance-main-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.attendance-main-container::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  top: -300px;
+  right: -300px;
+  animation: float 20s infinite ease-in-out;
+}
+
+.attendance-main-container::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  bottom: -200px;
+  left: -200px;
+  animation: float 15s infinite ease-in-out reverse;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(30px, -30px) rotate(10deg);
+  }
+}
+
+/* === Card === */
+.attendance-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  max-width: 420px;
+  width: 100%;
+  overflow: hidden;
+  animation: cardEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* === Header === */
+.attendance-card-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 30px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.attendance-card-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 65%);
+  animation: headerRotate 25s linear infinite;
+}
+
+@keyframes headerRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.attendance-logo {
+  width: 400px;
+  height: 70px;
+  /* background: white; */
+  /* border-radius: 16px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); */
+  position: relative;
+  z-index: 2;
+  /* animation: logoPulse 3s ease-in-out infinite; */
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.attendance-logo img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.attendance-card-title {
+  color: rgba(255, 255, 255, 0.687);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* === Body === */
+.attendance-card-body {
+  padding: 24px;
+  background: #ffffff;
+}
+
+/* === Device Badge === */
+.attendance-device-badge {
+  background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  direction: rtl;
+  box-shadow: 0 2px 6px rgba(102, 126, 234, 0.1);
+  animation: badgeSlide 0.5s ease-out 0.2s backwards;
+}
+
+@keyframes badgeSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.attendance-device-icon {
+  font-size: 18px;
+}
+
+.attendance-device-text {
+  font-size: 13px;
+  color: #4c1d95;
+  font-weight: 600;
+}
+
+/* === Form === */
+.attendance-form-group {
+  margin-bottom: 20px;
+  animation: formSlide 0.5s ease-out 0.3s backwards;
+}
+
+@keyframes formSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.attendance-form-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 10px;
+  font-size: 14px;
+  direction: rtl;
+}
+
+.attendance-form-select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.2s;
+  background: #ffffff;
+  direction: rtl;
+  font-weight: 500;
+  color: #374151;
+}
+
+.attendance-form-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.attendance-form-select:disabled {
+  background: #f9fafb;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* === Biometrics Section === */
+.attendance-biometrics {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  direction: rtl;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.1);
+  animation: formSlide 0.5s ease-out 0.4s backwards;
+}
+
+.attendance-biometrics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.attendance-biometrics-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #166534;
+  font-size: 14px;
+}
+
+.attendance-checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #166534;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.attendance-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #22c55e;
+}
+
+.attendance-btn-enable {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.attendance-btn-enable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.attendance-btn-enable:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* === Action Buttons === */
+.attendance-actions {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 20px;
+  animation: formSlide 0.5s ease-out 0.5s backwards;
+}
+
+.attendance-btn {
+  width: 100%;
+  padding: 9px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  direction: rtl;
+}
+
+.attendance-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.attendance-btn:hover::before {
+  left: 100%;
+}
+
+.attendance-btn:hover {
+  transform: translateY(-2px);
+}
+
+.attendance-btn:active {
+  transform: translateY(0);
+}
+
+.attendance-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.attendance-btn-success {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.attendance-btn-success:hover {
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+.attendance-btn-danger {
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.attendance-btn-danger:hover {
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+}
+
+.attendance-btn-icon {
+  font-size: 18px;
+}
+
+.attendance-btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* === Footer === */
+.attendance-card-footer {
+  text-align: center;
+  padding: 0 24px 24px;
+  animation: formSlide 0.5s ease-out 0.6s backwards;
+}
+
+.attendance-footer-text  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 500;
+  direction: rtl;
+}
+
+
+/* === Loading Screen === */
+.attendance-loading-screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.attendance-loading-screen::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  top: -300px;
+  right: -300px;
+  animation: float 20s infinite ease-in-out;
+}
+
+.attendance-loading-screen::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  bottom: -200px;
+  left: -200px;
+  animation: float 15s infinite ease-in-out reverse;
+}
+
+.attendance-loading-content {
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.attendance-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.attendance-loading-text {
+  font-size: 16px;
+  font-weight: 600;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* === Responsive === */
+@media (max-width: 640px) {
+  .attendance-card {
+    max-width: 100%;
+    margin: 10px;
+  }
+
+  .attendance-card-header {
+    padding: 24px 20px;
+  }
+
+  .attendance-card-body {
+    padding: 20px;
+  }
+
+  .attendance-logo {
+    width: 200px;
+    height: auto;
+  }
+
+  .attendance-card-title {
+    font-size: 16px;
+  }
+
+  .attendance-btn {
+    padding: 6px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .attendance-card {
+    margin: 5px;
+  }
+
+  .attendance-card-title {
+    font-size: 13px;
+  }
+}

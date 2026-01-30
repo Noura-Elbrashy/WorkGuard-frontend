@@ -1,0 +1,35 @@
+.attendance-table-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  margin-top: 1.5rem;
+}
+
+.attendance-table-loading,
+.attendance-table-empty {
+  text-align: center;
+  padding: 2rem;
+  color: #777;
+  font-size: 0.95rem;
+}
+
+.table th {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #6c757d;
+  border-bottom-width: 1px;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.badge {
+  font-weight: 500;
+  padding: 0.45em 0.7em;
+}

@@ -1,0 +1,576 @@
+/* ===================================
+   NAVBAR - PROFESSIONAL MODERN DESIGN
+   =================================== */
+
+/* === Main Navbar === */
+.modern-navbar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.189);
+  padding: 0.75rem 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.modern-navbar.scrolled {
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* === Container === */
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* === Logo === */
+.navbar-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-logo {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+}
+
+.navbar-brand-text {
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+/* === Toggler === */
+.modern-navbar-toggler {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.modern-navbar-toggler:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.modern-navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.navbar-toggler-icon-custom {
+  width: 24px;
+  height: 2px;
+  background: white;
+  display: block;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon-custom::before,
+.navbar-toggler-icon-custom::after {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: white;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon-custom::before {
+  top: -8px;
+}
+
+.navbar-toggler-icon-custom::after {
+  bottom: -8px;
+}
+
+/* === Collapse === */
+.navbar-collapse-modern {
+  transition: all 0.3s ease;
+}
+
+/* === Nav Links === */
+.navbar-nav-modern {
+  gap: 4px;
+  align-items: center;
+}
+
+.nav-item-modern {
+  position: relative;
+}
+
+.nav-link-modern {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 16px !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.nav-link-modern:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+.nav-link-modern.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: white !important;
+  font-weight: 600;
+}
+
+.nav-link-modern i {
+  font-size: 14px;
+}
+
+/* === Dropdown Menu === */
+.dropdown-menu-modern {
+  background: white;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+  margin-top: 8px;
+  min-width: 200px;
+}
+
+.dropdown-item-modern {
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #374151;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dropdown-item-modern:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.dropdown-item-modern i {
+  width: 18px;
+  text-align: center;
+}
+
+/* === Language Selector === */
+.language-selector {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.language-selector:focus {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+  outline: none;
+  color: white;
+}
+
+.language-selector option {
+  background: white;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* === Logout Button === */
+.logout-btn {
+  background: rgba(239, 68, 68, 0.9);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 8px 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logout-btn:hover {
+  background: rgba(220, 38, 38, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+.logout-btn i {
+  font-size: 14px;
+}
+
+/* === Right Section === */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* === Error Alert === */
+.navbar-error {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  color: #fecaca;
+  padding: 8px 16px;
+  font-size: 13px;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* === Mobile Styles === */
+@media (max-width: 991px) {
+  .navbar-collapse-modern {
+    background: rgba(255, 255, 255, 0.98);
+    margin-top: 16px;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .navbar-nav-modern {
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+  }
+
+  .nav-link-modern {
+    color: #374151 !important;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .nav-link-modern:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+  }
+
+  .nav-link-modern.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+  }
+
+  .navbar-actions {
+    width: 100%;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    flex-direction: column;
+  }
+
+  .language-selector {
+    width: 100%;
+    background: white;
+    border-color: #e5e7eb;
+    color: #374151;
+  }
+
+  .language-selector:focus {
+    background: white;
+    color: #374151;
+    border-color: #667eea;
+  }
+
+  .logout-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Dropdown in Mobile */
+  .dropdown-menu-modern {
+    position: static !important;
+    transform: none !important;
+    box-shadow: none;
+    background: #f9fafb;
+    margin-top: 4px;
+  }
+
+  .dropdown-item-modern {
+    padding-right: 30px;
+  }
+}
+
+/* === Tablet Styles === */
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-brand-text {
+    display: block;
+  }
+}
+
+/* === Desktop Large === */
+@media (min-width: 1200px) {
+  .navbar-container {
+    padding: 0 40px;
+  }
+
+  .navbar-brand-text {
+    display: block;
+  }
+
+  .nav-link-modern {
+    font-size: 15px;
+    padding: 10px 18px !important;
+  }
+
+  .navbar-logo {
+    height: 50px;
+  }
+}
+
+/* === Smooth Scroll Behavior === */
+html {
+  scroll-padding-top: 80px;
+}
+
+/* === Body Padding for Fixed Navbar === */
+body {
+  padding-top: 70px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 75px;
+  }
+}
+
+/* === Animations === */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-collapse-modern.show {
+  animation: fadeInDown 0.3s ease-out;
+}
+
+/* === Accessibility === */
+.nav-link-modern:focus,
+.logout-btn:focus,
+.language-selector:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+@media (max-width: 991px) {
+  .nav-link-modern:focus {
+    outline-color: #667eea;
+  }
+}
+
+/* === Loading State === */
+.navbar-loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+/* ===============================
+   Language Switcher - Pro Style
+   =============================== */
+
+.lang-switcher-pro {
+  position: relative;
+}
+
+/* Globe button */
+.lang-trigger {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #475569;
+  transition: all 0.2s ease;
+}
+
+.lang-trigger i {
+  font-size: 16px;
+}
+
+.lang-trigger:hover {
+  background: #f8fafc;
+  color: #667eea;
+  border-color: #c7d2fe;
+}
+
+.lang-trigger:active {
+  transform: scale(0.96);
+}
+
+/* Dropdown menu */
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 160px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    0 4px 10px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e5e7eb;
+  padding: 6px;
+  z-index: 10000;
+  animation: dropdownFade 0.15s ease-out;
+}
+
+/* Dropdown animation */
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Menu item */
+.lang-item {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.lang-item:hover {
+  background: #f1f5f9;
+}
+
+.lang-item.active {
+  background: #eef2ff;
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.lang-item i {
+  font-size: 12px;
+  color: #4f46e5;
+}
+
+/* RTL support */
+html[dir="rtl"] .lang-menu {
+  right: auto;
+  left: 0;
+}
+.logout-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 8px 14px;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.6);
+  color: #fee2e2;
+}
+
+.logout-btn i {
+  font-size: 14px;
+}
+
+/* Desktop: icon only */
+@media (min-width: 992px) {
+  .logout-text {
+    display: none;
+  }
+
+  .logout-btn {
+    padding: 8px;
+    width: 40px;
+    justify-content: center;
+  }
+}
+/* ===============================
+   FIX MOBILE NAVBAR ACTIONS
+   =============================== */
+@media (max-width: 991px) {
+
+  /* Language globe button */
+  .lang-trigger {
+    background: #f1f5f9;
+    border: 1px solid #e5e7eb;
+    color: #334155;
+  }
+
+  .lang-trigger:hover {
+    background: #e0e7ff;
+    color: #4f46e5;
+    border-color: #c7d2fe;
+  }
+
+  /* Logout button */
+  .logout-btn {
+    width: 100%;
+    justify-content: center;
+    background: lch(80.1% 4.27 290.57 / 0.58);
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+  }
+
+  .logout-btn:hover {
+    background: #fecaca;
+    color: #991b1b;
+  }
+
+  .logout-btn i {
+    color: #b91c1c;
+  }
+}

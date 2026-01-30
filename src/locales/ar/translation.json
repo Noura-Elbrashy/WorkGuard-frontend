@@ -1,5 +1,961 @@
-{
- "attendance": "نظام الحضور والانصراف",
+{ 
+
+"forgotPassword": {
+    "title": "نسيت كلمة المرور؟",
+    "description": "أدخل عنوان بريدك الإلكتروني وسنرسل لك رابط إعادة تعيين كلمة المرور",
+    "emailLabel": "البريد الإلكتروني",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "emailRequired": "يرجى إدخال عنوان البريد الإلكتروني",
+    "submitButton": "إرسال رابط إعادة التعيين",
+    "sending": "جاري الإرسال...",
+    "successMessage": "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني",
+    "errorMessage": "حدث خطأ أثناء إرسال الطلب",
+    "successTitle": "نجح",
+    "errorTitle": "خطأ",
+    "backToLogin": "العودة إلى تسجيل الدخول"
+  },
+  "activate": {
+    "title": "تفعيل حسابك",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "activateButton": "تفعيل الحساب",
+    "passwordMismatch": "كلمات المرور غير متطابقة",
+    "passwordMinLength": "كلمة المرور يجب أن تكون على الأقل 6 أحرف",
+    "successMessage": "تم تفعيل الحساب بنجاح. جاري التوجه إلى صفحة تسجيل الدخول...",
+    "invalidToken": "رابط التفعيل غير صالح أو منتهي الصلاحية",
+    "loading": "جاري المعالجة...",
+    "backToLogin": "العودة لصفحة الدخول",
+    "tokenExpired": "انتهت صلاحية رابط التفعيل. يرجى التواصل مع الإدارة للحصول على رابط جديد.",
+    "activationFailed": "فشل تفعيل الحساب",
+    "passwordPlaceholder": "أدخل كلمة المرور الجديدة",
+    "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+    "passwordHint": "كلمة المرور يجب أن تكون على الأقل 6 أحرف"
+  }
+,
+  "REMOTE_PERMISSION": {
+    "selectEmployee": "اختيار الموظف",
+  "branch": "الفرع",
+  "allBranches": "كل الفروع",
+  "optionalAllBranches": "اختياري – يتم التطبيق على كل الفروع",
+  "date": "التاريخ",
+  "reasonNotes": "السبب / ملاحظات",
+  "reasonPlaceholder": "ملاحظات أو سبب (اختياري)",
+  "optionalWillAppearInLogs": "اختياري – سيظهر في السجلات والتنبيهات",
+  "processing": "جاري التنفيذ...",
+  "grantPermission": "منح الإذن",
+  "reset": "إعادة تعيين",
+     "CONFIRM_REVOKE": "هل أنت متأكد من إلغاء إذن العمل عن بُعد؟",
+    "REVOKED_SUCCESS": "تم إلغاء إذن العمل عن بُعد بنجاح",
+    "REVOKE_FAILED": "فشل إلغاء إذن العمل عن بُعد",
+    "USER_REQUIRED": "يجب اختيار موظف",
+    "USER_INVALID": "الموظف غير صالح",
+    "USER_NOT_FOUND": "الموظف غير موجود",
+    "DATE_REQUIRED": "يجب اختيار التاريخ",
+    "DATE_INVALID": "التاريخ غير صالح",
+    "DATE_RANGE_REQUIRED": "يجب تحديد تاريخ أو فترة",
+    "DATE_RANGE_INVALID": "تاريخ النهاية لا يمكن أن يسبق البداية",
+    "BRANCH_INVALID": "الفرع غير صالح",
+    "ALREADY_EXISTS": "يوجد إذن عمل عن بُعد مسبق لهذا اليوم",
+    "EXPIRED_CANNOT_REVOKE": "لا يمكن إلغاء إذن منتهي",
+    "SUCCESS_SINGLE": "تم منح إذن العمل عن بُعد بنجاح",
+    "SUCCESS_BULK": "تم منح الأذونات بنجاح"
+  
+  
+ ,
+
+
+  "remotePermissionManagement": "إدارة أذونات العمل عن بُعد",
+  "remotePermissionDescription": "منح الموظفين إذن تسجيل الحضور والانصراف من خارج نطاق الفرع",
+  "importantNote": "ملحوظة مهمة",
+  "remotePermissionNote": "الإذن يسمح للموظف بتسجيل الحضور والانصراف من خارج نطاق الفرع (GPS) لكن يظل مطلوباً التحقق من الجهاز والبصمة (إن كانت مفعلة).",
+  
+  "singlePermission": "إذن فردي",
+  "bulkPermission": "إذن جماعي",
+  "permissionsList": "قائمة الأذونات",
+  
+  "selectEmployee": "اختر الموظف",
+  "searchEmployees": "ابحث عن موظف بالاسم أو البريد الإلكتروني...",
+  "searching": "جاري البحث...",
+  "noResultsFound": "لا توجد نتائج",
+  
+  "branch": "الفرع",
+  "allBranches": "جميع الفروع",
+  "optionalAllBranches": "اختياري - سيطبق على جميع فروع الموظف",
+  "selectBranch": "اختر الفرع",
+  "selectBranchPlaceholder": "-- اختر فرع --",
+  
+  "date": "التاريخ",
+  "fromDate": "من تاريخ",
+  "toDate": "إلى تاريخ",
+  "optionalSingleDay": "اختياري - اترك فارغاً ليوم واحد فقط",
+  
+  "reasonNotes": "السبب / الملاحظات",
+  "reasonPlaceholder": "مثال: عمل من المنزل، سفر عمل، ظروف خاصة...",
+  "bulkReasonPlaceholder": "مثال: عمل عن بُعد لفريق التطوير، ظروف طارئة...",
+  "optionalWillAppearInLogs": "اختياري - سيظهر في السجلات والتقارير",
+  
+  "grantPermission": "منح الإذن",
+  "grantPermissions": "منح الأذونات",
+  "processing": "جاري المعالجة...",
+  "reset": "إعادة تعيين",
+  "loading": "جاري التحميل...",
+  
+  "specificEmployees": "موظفين محددين",
+  "allBranchEmployees": "جميع موظفين فرع",
+  "searchAndAddEmployees": "ابحث وأضف موظفين",
+  "selectedEmployees": "الموظفون المحددون",
+  "clearAll": "مسح الكل",
+  
+  "permissionGrantedSuccess": "تم منح إذن العمل عن بُعد بنجاح",
+  "permissionGrantedFailed": "فشل منح الإذن",
+  "bulkPermissionSuccess": "تم منح {{count}} إذن لـ {{days}} موظف بنجاح",
+  "bulkPermissionFailed": "فشل منح الأذونات الجماعية",
+  
+  "failedToLoadBranches": "فشل تحميل قائمة الفروع",
+  
+  "COMMON": {
+    "CONFIRM": "تأكيد",
+    "CANCEL": "إلغاء",
+    "FETCH_FAILED": "فشل تحميل البيانات",
+    "SUCCESS": "نجح",
+    "ERROR": "خطأ",
+    "WARNING": "تحذير",
+    "OF": "من"
+  },
+  
+  
+    "CONFIRM_REVOKE": "هل أنت متأكد من إلغاء هذا الإذن؟",
+    "REVOKED_SUCCESS": "تم إلغاء الإذن بنجاح",
+    "REVOKE_FAILED": "فشل إلغاء الإذن",
+    "NO_PERMISSIONS": "لا توجد أذونات",
+    "ACTIVE": "نشط",
+    "EXPIRED": "منتهي",
+    "REVOKED": "ملغي",
+    "USER": "الموظف",
+    "EMAIL": "البريد الإلكتروني",
+    "BRANCH": "الفرع",
+    "DATE": "التاريخ",
+    "STATUS": "الحالة",
+    "ACTION": "الإجراء",
+    "REVOKE": "إلغاء",
+    "ALL_BRANCHES": "جميع الفروع",
+    "SEARCH_USER_EMAIL": "بحث (اسم الموظف / البريد)",
+    "SELECT_BRANCH_FIRST": "اختر الفرع أولاً",
+    "SELECT_BRANCH_TO_SEARCH": "اختر فرع لتفعيل البحث",
+    "FROM": "من",
+    "TO": "إلى",
+    "FILTERS": "الفلاتر",
+    "PAGE": "صفحة"
+  } 
+,
+
+  "holidays": {
+    "title": "إدارة الإجازات",
+    "createdAsDraft": "سيتم إنشاء هذه الإجازة كمسودة حتى يتم تفعيلها",
+
+     "from": "من",
+  "to": "الي",
+    "subtitle": "إدارة الإجازات الرسمية على مستوى الشركة والموظفين",
+    "addHoliday": "إضافة إجازة",
+    "editHoliday": "تعديل إجازة",
+    "deleteHoliday": "حذف إجازة",
+    "confirmDelete": "هل أنت متأكد من حذف هذه الإجازة؟",
+    "holidayName": "اسم الإجازة",
+    "holidayDate": "التاريخ",
+    "scope": "النطاق",
+    "selectScope": "اختر النطاق",
+    "global": "عام - كل الشركة",
+    "branch": "فرع محدد",
+    "user": "موظف محدد",
+    "selectBranch": "اختر الفرع",
+    "selectUser": "اختر الموظف",
+    "year": "السنة",
+    "allScopes": "كل النطاقات",
+    "search": "بحث",
+    "noHolidays": "لا توجد إجازات",
+    "loadingHolidays": "جاري تحميل الإجازات...",
+    "created": "تم إنشاء الإجازة بنجاح",
+    "updated": "تم تحديث الإجازة بنجاح",
+    "deleted": "تم حذف الإجازة بنجاح",
+    "createError": "فشل في إنشاء الإجازة",
+    "updateError": "فشل في تحديث الإجازة",
+    "deleteError": "فشل في حذف الإجازة",
+    "nameRequired": "اسم الإجازة مطلوب",
+    "dateRequired": "التاريخ مطلوب",
+    "branchRequired": "الفرع مطلوب للإجازات الخاصة بالفرع",
+    "userRequired": "الموظف مطلوب للإجازات الخاصة بالموظف",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "of": "من",
+    "page": "صفحة"
+  }
+,
+
+ "payroll":{
+  "policy": "السياسة",
+    "policyScope": "النطاق",
+   
+    "policyTimeline": "سياسات الحضور المطبقة",
+  "policyVersion": "إصدار السياسة",
+  "from": "من",
+  "to": "إلى",
+  "lateRate": "خصم التأخير",
+  "earlyRate": "خصم الانصراف المبكر",
+  "transitRate": "خصم التنقل",
+  "multiplePolicies": "أكثر من سياسة",
+  "multiplePoliciesWarning":
+    "تم تطبيق أكثر من سياسة حضور خلال نفس الشهر.",
+ " confirmGenerateMultiplePolicies":
+    "تم تطبيق أكثر من سياسة حضور خلال الشهر. هل تريد الاستمرار؟",
+  "confirmApproveMultiplePolicies":
+    "تم تطبيق أكثر من سياسة حضور خلال الشهر. هل أنت متأكد من الاعتماد؟"
+,
+  "runsTitle": "كشوف المرتبات",
+  "period": "الفترة",
+  "noRuns": "لا توجد كشوف مرتبات",
+
+  "previewTitle": "معاينة المرتب",
+
+
+  "dailyBreakdown": "التفصيل اليومي",
+
+  "generate": "إنشاء المرتب",
+
+  "confirmGenerate": "هل أنت متأكد من إنشاء المرتب لهذه الفترة؟",
+  "confirmGenerateWarning": "⚠️ سيتم حفظ المرتب كمسودة ويمكن مراجعته واعتماده لاحقًا.",
+
+  "previewError": "حدث خطأ أثناء تحميل معاينة المرتب.",
+  "generateError": "حدث خطأ أثناء إنشاء المرتب.",
+
+  "statusWorkingDay": "يوم عمل",
+  "statusAbsent": "غياب",
+  "statusLeavePaid": "إجازة مدفوعة",
+  "statusLeaveUnpaid": "إجازة بدون أجر",
+  "statusHoliday": "إجازة رسمية",
+  "detailsTitle": "تفاصيل المرتب",
+  "statusApproved": "معتمد",
+  "statusDraft": "مسودة",
+
+  "summary": "ملخص المرتب",
+  "baseSalary": "المرتب الأساسي",
+  "dailySalary": "الأجر اليومي",
+  "hourlySalary": "الأجر بالساعة",
+  "netSalary": "صافي المرتب",
+
+  "deductions": "الخصومات",
+  "absence": "غياب",
+  "late": "تأخير",
+  "earlyLeave": "انصراف مبكر",
+  "transit": "تنقل",
+  "totalDeductions": "إجمالي الخصومات",
+
+  "audit": "معلومات المراجعة",
+  "generatedAt": "تاريخ الحساب",
+  "generatedBy": "تم الحساب بواسطة",
+  "approvedAt": "تاريخ الاعتماد",
+
+  "approve": "اعتماد المرتب",
+
+  "confirmApprove": "هل أنت متأكد من اعتماد هذا المرتب؟",
+  "confirmApproveWarning": "⚠️ بعد اعتماد المرتب لن يمكن تعديل الحضور أو إعادة الحساب.",
+
+  "approved": "تم اعتماد المرتب بنجاح.",
+  "approvedSuccess": "تم اعتماد المرتب بنجاح وتم قفل الحساب.",
+
+  "approveError": "حدث خطأ أثناء اعتماد المرتب.",
+  "loadError": "حدث خطأ أثناء تحميل بيانات المرتب.",
+  "alreadyApproved": "تم اعتماد هذا المرتب بالفعل ولا يمكن تعديله."
+
+
+ },
+
+
+  "leaveReset": {
+    "howItWorks": {
+  "title": "كيفية عمل إعادة التعيين السنوية",
+  "point1": "يتم حساب أرصدة الإجازات للسنة المحددة بناءً على سياسات الإجازات الحالية.",
+  "point2": "يتم تطبيق قواعد ترحيل الرصيد تلقائيًا في حدود المسموح به.",
+  "point3": "الرواتب المعتمدة محمية ولن يتم تعديلها."
+}
+,
+"partialSuccess": "تمت إعادة التعيين، لكن {{count}} موظف لم يتم تعديلهم بسبب اعتماد الرواتب."
+,
+    "runTooltip": "سيتم إعادة حساب أرصدة الإجازات لجميع الموظفين النشطين للسنة المحددة. الرواتب المعتمدة لن تتأثر."
+,
+    "title": "إعادة تعيين الإجازات السنوية",
+    "year": "السنة المستهدفة",
+    "annual": "الإجازات السنوية",
+    "sick": "الإجازات المرضية",
+    "preview": "معاينة إعادة التعيين",
+    "previewTitle": "معاينة الإجازات بعد التعيين",
+    "run": "تنفيذ إعادة التعيين السنوية",
+    "success": "تم تنفيذ إعادة تعيين الإجازات السنوية بنجاح",
+    "warning": "تنفيذ إعادة التعيين السنوية سيعيد حساب أرصدة الإجازات بناءً على السياسات الحالية وقواعد الترحيل. هذا الإجراء آمن ولن يؤثر على الرواتب المعتمدة."
+,
+    "noPreview": "لا توجد أرصدة إجازات لهذه السنة بعد. يمكنك تنفيذ إعادة التعيين السنوية لإنشائها.",
+    "employee": "الموظف",
+    "current": "الحالي",
+    "new": "الجديد",
+    "base": "الأساسي",
+    "carried": "المرحّل",
+    "status": "الحالة",
+    "ok": "جاهز",
+    "affectedUsers": "سيتم التأثير على {{count}} موظف"
+  }
+,
+  "leavePolicies": {
+"carryoverLimit": "الحد الأقصى للترحيل"
+,
+    "carryoverHint": "أقصى عدد من أيام الإجازة السنوية غير المستخدمة التي يمكن ترحيلها للسنة التالية.",
+
+"carryover": "الترحيل"
+,
+"carryoverAppliedOnReset": "يتم تطبيق الترحيل فقط عند إعادة ضبط الإجازات السنوية."
+,"noCarryover": "بدون ترحيل"
+,
+
+      "rules": {
+      "title": "قواعد تطبيق سياسة الإجازات",
+      "priority": "يتم تحديد السياسة الفعّالة حسب الأولوية: موظف ← دور ← فرع ← عامة.",
+      "branches":"الموظف الذي يعمل في أكثر من فرع واحد لا يتأثر بأي من سياسات الفروع ولكنه يخضع للسياسة العامة أو سياسة الدور الوظيفي، أو سياسة خاصة به،وفقًا للأولوية.",
+      "noAutoBalance": "السياسة لا تعدّل الأرصدة تلقائيًا.",
+      "futureOnly": "تغيير عدد الأيام يؤثر على السنوات القادمة فقط.",
+      "yearBased": "لكل موظف رصيد منفصل لكل سنة (UserLeaveYear).",
+      "carryover": "ترحيل الرصيد يتم فقط أثناء إعادة الاحتساب السنوي.",
+      "sick": "الإجازات المرضية تُعاد سنويًا بدون ترحيل.",
+      "payrollLock": "لا يمكن تعديل الرصيد إذا كان المرتب معتمد لنفس السنة.",
+      "audit": "أي تعديل يدوي يتم تسجيله في سجل المراجعة (Audit Log)."
+    },
+   "pageTitle": "سياسات الإجازات",
+    "pageSubtitle": "إدارة سياسات واستحقاقات إجازات الموظفين",
+    "title": "سياسات الإجازات",
+    "policies": "السياسات",
+    "new": "سياسة جديدة",
+    "createTitle": "إنشاء سياسة إجازات",
+    "createSubtitle": "تكوين إعدادات سياسة الإجازات",
+    "editTitle": "تعديل سياسة الإجازات",
+    "editSubtitle": "تحديث إعدادات سياسة الإجازات",
+     "totalPolicies": "إجمالي السياسات",
+    "active": "السياسات النشطة",
+    "inactive": "السياسات غير النشطة",
+    "policyScope": "نطاق السياسة",
+       "leaveDays": "أيام الإجازة",
+    "effectivePeriod": "فترة السريان",
+      "confirmDelete": "هل أنت متأكد من حذف سياسة الإجازات هذه؟ لا يمكن التراجع عن هذا الإجراء.",
+
+    "deleteSuccess": "تم حذف سياسة الإجازات بنجاح",
+    "deleteFailed": "فشل حذف سياسة الإجازات",
+    "enabled": "تم تفعيل سياسة الإجازات بنجاح",
+    "disabled": "تم تعطيل سياسة الإجازات بنجاح",
+    "updateStatusFailed": "فشل تحديث حالة السياسة",
+    
+        
+    "notePlaceholder": "أضف أي ملاحظات إضافية...",
+    "loadFailed": "فشل تحميل السياسات",
+    "notFound": "سياسة الإجازات غير موجودة",
+    "scope": "نطاق السياسة",
+    "annualDays": "أيام الإجازة السنوية",
+    "sickDays": "أيام الإجازة المرضية",
+    "unpaidAllowed": "السماح بإجازة غير مدفوعة",
+    "note": "ملاحظات",
+    "scopes": {
+      "global": "عام",
+      "branch": "فرع",
+      "role": "دور وظيفي",
+      "user": "موظف",
+      "createTitle": "إنشاء سياسة إجازات جديدة",
+    "createSubtitle": "تحديد قواعد الإجازات والخصومات وربطها بالنظام"
+    },
+    "validation": {
+      "scopeRequired": "نطاق السياسة مطلوب",
+      "branchRequired": "الفرع مطلوب",
+      "userRequired": "الموظف مطلوب",
+      "roleRequired": "الدور الوظيفي مطلوب",
+      "invalidNumber": "قيمة غير صحيحة"
+    },
+    
+    "target": "الهدف",
+    "branch": "الفرع",
+    "role": "الدور الوظيفي",
+    "user": "الموظف",
+
+  
+    "unpaid": "إجازة بدون أجر",
+
+    "status": "الحالة",
+
+    "effectiveFrom": "سارية من",
+    "effectiveTo": "سارية حتى",
+
+    "searchUser": "ابحث عن موظف بالاسم أو البريد الإلكتروني",
+
+ 
+
+    "notice": {
+      "title": "ملاحظة هامة",
+      "noBalanceImpact": "تعديل هذه السياسة لا يؤثر على أرصدة الإجازات الحالية، ويتم تطبيقه فقط على الحسابات المستقبلية."
+    },
+
+    "created": "تم إنشاء سياسة الإجازات بنجاح",
+    "updated": "تم تعديل سياسة الإجازات بنجاح",
+
+    "noData": "لا توجد سياسات إجازات",
+
+    "errors": {
+      "scopeRequired": "من فضلك اختر نطاق السياسة",
+      "targetRequired": "من فضلك اختر الهدف",
+      "roleRequired": "من فضلك اختر الدور الوظيفي",
+      "effectiveFromRequired": "تاريخ السريان مطلوب",
+      "createFailed": "فشل إنشاء سياسة الإجازات",
+      "updateFailed": "فشل تعديل سياسة الإجازات",
+      "loadFailed": "فشل تحميل سياسة الإجازات"
+    },
+   
+    "subtitle": "إدارة سياسات الإجازات السنوية والمرضية وغير المدفوعة",
+    "newPolicy": "سياسة جديدة",
+    "deleteConfirm": "هل أنت متأكد من حذف هذه السياسة؟"
+  },
+
+
+  
+  "attendancePolicy": {
+    
+    "pageTitle": "سياسات الحضور",
+    "pageSubtitle": "إدارة قواعد الحضور وسياسات الخصم",
+    "create": "سياسة جديدة",
+    "createTitle": "إنشاء سياسة حضور",
+    "createSubtitle": "تكوين قواعد الحضور",
+    "editTitle": "تعديل سياسة الحضور",
+    "editSubtitle": "تحديث إعدادات السياسة",
+    "createFirst": "إنشاء سياسة",
+    "saved": "تم حفظ السياسة بنجاح",
+    "deleted": "تم حذف السياسة بنجاح",
+    "statusChanged": "تم تغيير حالة السياسة بنجاح",
+    "loadError": "فشل تحميل السياسات",
+    
+    "totalPolicies": "إجمالي السياسات",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "global": "عام",
+    
+    "noPolicies": "لا توجد سياسات بعد",
+    "noPoliciesDesc": "قم بإنشاء أول سياسة حضور للبدء",
+    
+    "scope": "النطاق",
+    "policyScope": "نطاق السياسة",
+    "scopeHint": "على من ستطبق هذه السياسة؟",
+    "scope_global": "عام",
+    "scope_branch": "فرع",
+    "scope_role": "دور",
+    "target": "الهدف",
+    "allCompany": "الشركة بالكامل",
+    
+    "role": "الدور الوظيفي",
+    "branch": "الفرع",
+    
+    "gracePeriods": "فترات السماح",
+    "grace": "السماح",
+    "lateGrace": "سماح التأخير",
+    "lateGraceHint": "عدد دقائق التأخير المسموح بدون خصم",
+    "earlyGrace": "سماح الانصراف المبكر",
+    "earlyGraceHint": "عدد دقائق الانصراف المبكر المسموح بدون خصم",
+    
+    "rates": "معدلات الخصم",
+    "deductionRates": "معدلات الخصم",
+    "lateRate": "معدل خصم التأخير",
+    "lateRateHint": "نسبة من أجر الساعة عن كل ساعة تأخير (تُحسب بالدقائق)",
+    "earlyRate": "معدل خصم الانصراف المبكر",
+    "earlyRateHint": "نسبة من أجر الساعة عن كل ساعة انصراف مبكر (تُحسب بالدقائق)",
+    "transitRate": "معدل خصم الانتقال",
+    "transitRateHint": "معدل الخصم عن الوقت المستغرق في الانتقال بين المواقع",
+    
+    "absence": "الغياب",
+    "absencePolicy": "سياسة الغياب",
+    "markDayAbsent": "خصم يوم كامل عند الغياب",
+    "paidAbsence": "الغياب مدفوع",
+    "absencePaid": "غياب مدفوع",
+    "absenceDeduction": "خصم الغياب",
+    "noDeduction": "بدون خصم",
+    "fullDayDeduction": "خصم يوم كامل",
+    "deductionRate": "نسبة الخصم",
+    "deductionHint": "1 = خصم يوم كامل / 0.5 = نصف يوم",
+      "ofDailySalary": "من الراتب اليومي",
+    "effectiveDate": "تاريخ السريان",
+    "effectiveFrom": "ساري من",
+    
+    "status": "الحالة",
+    
+    "confirmEnable": "هل أنت متأكد من تفعيل هذه السياسة؟",
+    "confirmDisable": "هل أنت متأكد من تعطيل هذه السياسة؟",
+    "confirmDelete": "هل أنت متأكد من حذف هذه السياسة؟ لا يمكن التراجع عن هذا الإجراء.",
+    
+    "errors": {
+      "effectiveFrom": "يرجى تحديد تاريخ السريان",
+      "roleRequired": "يرجى اختيار الدور الوظيفي",
+      "branchRequired": "يرجى اختيار الفرع",
+      "negativeNumbers": "القيم لا يمكن أن تكون سالبة",
+      "invalidDayRate": "نسبة اليوم يجب أن تكون بين 0 و 1"
+    },
+    "deductionRates":"معدلات الخصم",
+"global":"عام لكل الشركة", 
+"active":"مفعل",
+"inactive" :"غير مفعل",
+"totalPolicies":"إجمالي السياسات",
+    "gracePeriods" : " فترات السماح",
+      "assignedPolicies": "سياسات الحضور المطبقة على الموظف",
+    "globalPolicy": "سياسة الحضور العامة",
+    "rolePolicy": "سياسة الحضور حسب الدور الوظيفي",
+    "branchPolicies": "سياسات الحضور حسب الفروع",
+    "noAssignedPolicies": "لا توجد سياسات حضور مطبقة على هذا الموظف.",
+
+    "policyDetails": {
+      "graceLate": "سماحية التأخير",
+      "graceEarly": "سماحية الانصراف المبكر",
+      "lateRate": "معدل خصم التأخير",
+      "earlyRate": "معدل خصم الانصراف المبكر",
+      "transitRate": "معدل خصم التنقل بين الفروع",
+      "absence": "سياسة الغياب",
+      "paid": "مدفوع",
+      "unpaid": "غير مدفوع",
+      "noDeduction": "بدون خصم"
+    },
+
+    "notes": {
+      "branchPriority": "الموظف الذي يعمل في أكثر من فرع واحد لا يتأثر بأي من سياسات الفروع ولكنه يخضع للسياسة العامة أو سياسة الدور الوظيفي، أو سياسة خاصة به،وفقًا للأولوية."
+    }
+  ,
+        "noEffectivePolicyToday": "لا توجد سياسة حضور مطبّقة اليوم، وغالبًا السبب عدم وجود تسجيل حضور وانصراف صالحين حتى الآن.",
+    "loadError": "حدث خطأ أثناء تحميل سياسة الحضور"
+,
+         "rulesTitle": "قواعد تطبيق سياسة الحضور",
+     "rulePriority": "الأولوية: عام → فرع → دور وظيفي → موظف",
+      "ruleValidBranch": "سياسة الفرع تُطبق فقط بعد تسجيل حضور وانصراف صالحين وغير مُلغيين",
+    "ruleFirstBranch": "في حالة الحضور بأكثر من فرع، يتم الاحتساب على أول فرع صالح فقط"
+,
+    "ruleMultipleBranches": "في حالة العمل بأكثر من فرع، لكل فرع سياسة مستقلة",
+    "ruleDisplayOnly": "عرض سياسات الفروع لا يؤثر على المرتبات إلا بوجود حضور فعلي",
+    "viewEffectiveToday": "عرض السياسة الفعّالة لليوم",
+    "pageTitle": "سياسات الحضور والانصراف",
+    "scope": "النطاق",
+    "target": "التطبيق على",
+    "grace": "فترة السماح",
+    "rates": "معدلات الخصم",
+    "absence": "سياسة الغياب",
+    "status": "الحالة",
+    "create": "إضافة سياسة",
+    "noPolicies": "لا توجد سياسات مسجلة",
+
+    "scope_global": "عام",
+    "scope_branch": "فرع",
+    "scope_role": "دور وظيفي",
+
+    "allCompany": "كل الشركة",
+
+    "lateGrace": "سماح التأخير",
+    "earlyGrace": "سماح الانصراف",
+
+    "lateRate": "خصم التأخير",
+    "earlyRate": "خصم الانصراف المبكر",
+    "transitRate": "خصم الانتقالات بين الفروع",
+
+    "absencePaid": "غياب مدفوع",
+    "absenceDeduction": "خصم من أجر اليوم",
+    "fullDayDeduction": "خصم يوم كامل",
+    "noDeduction": "بدون خصم",
+
+    "confirmEnable": "تفعيل هذه السياسة؟",
+    "confirmDisable": "إيقاف هذه السياسة؟",
+    "confirmDelete": "حذف هذه السياسة نهائيًا؟"
+  ,
+    "scope": "نطاق السياسة",
+    "role": "الدور الوظيفي",
+    "branch": "الفرع",
+
+    "lateGrace": "سماح التأخير",
+    "earlyGrace": "سماح الانصراف المبكر",
+
+    "lateRate": "خصم التأخير",
+    "earlyRate": "خصم الانصراف المبكر",
+    "transitRate": "خصم الانتقالات بين الفروع",
+
+    "transitRateHint": "نسبة من أجر الساعة عن كل ساعة انتقال (تُحسب بالدقائق)",
+
+    "absence": "سياسة الغياب",
+
+    "effectiveFrom": "تاريخ بدء التطبيق",
+
+    "errors": {
+      "effectiveFrom": "برجاء اختيار تاريخ بدء التطبيق",
+      "roleRequired": "برجاء اختيار الدور الوظيفي",
+      "branchRequired": "برجاء اختيار الفرع",
+      "negativeNumbers": "القيم لا يمكن أن تكون سالبة",
+      "invalidDayRate": "نسبة خصم اليوم يجب أن تكون بين 0 و 1"
+    }
+  },
+   "scope": {
+    "global": "عام - الشركة بالكامل",
+    "branch": "خاص بالفرع",
+    "role": "حسب الدور الوظيفي"
+  },
+  "leavePolicy": {
+   
+     "editTitle": "تعديل سياسة الإجازات",
+    "editSubtitle": "تحديث قواعد الإجازات والخصومات",
+    "notFound": "سياسة الإجازات غير موجودة",
+    "scope": "نطاق السياسة",
+    "annualDays": "أيام الإجازة السنوية",
+    "sickDays": "أيام الإجازة المرضية",
+    "unpaidAllowed": "السماح بإجازة غير مدفوعة",
+    "note": "ملاحظات",
+    "scopes": {
+      "global": "عام",
+      "branch": "فرع",
+      "role": "دور وظيفي",
+      "user": "موظف",
+      "createTitle": "إنشاء سياسة إجازات جديدة",
+    "createSubtitle": "تحديد قواعد الإجازات والخصومات وربطها بالنظام"
+    },
+    "validation": {
+      "scopeRequired": "نطاق السياسة مطلوب",
+      "branchRequired": "الفرع مطلوب",
+      "userRequired": "الموظف مطلوب",
+      "roleRequired": "الدور الوظيفي مطلوب",
+      "invalidNumber": "قيمة غير صحيحة"
+    }
+  },
+  "leave": {
+     "policies": {
+      "manage": "إدارة سياسات الإجازات"
+    },
+     "reason" : "السبب" ,
+    "admin": {
+      "title": "إدارة الإجازات",
+      "subtitle": "مراجعة وإدارة طلبات الإجازات للموظفين"
+    },
+    
+    "balance": {
+      "title": "ملخص رصيد الإجازات – سنة {{year}}",
+      "total": "إجمالي الرصيد",
+      "usedPaid": "المستخدم (مدفوع)",
+      "usedUnpaid": "المستخدم (غير مدفوع)",
+      "used": "المستخدم",
+      "remaining": "المتبقي"
+    },
+    "types": {
+      "annual": "الإجازة السنوية",
+      "sick": "الإجازة المرضية"
+    },
+    "filter": {
+      "status": "الحالة"
+    },
+    "statuses": {
+      "pending": "قيد المراجعة",
+      "approved": "تمت الموافقة",
+      "rejected": "مرفوضة",
+      "cancelled": "ملغية"
+    },
+    "empty": "لا توجد طلبات إجازة"
+  ,
+  "all": "الكل",
+  "loading": "جاري التحميل",
+   
+      "status": {
+      "pending": "قيد الانتظار",
+      "approved": "مقبولة",
+      "rejected": "مرفوضة",
+      "cancelled": "ملغاة",
+      "cancelledBy": "أُلغي بواسطة",
+      "unknown": "غير معروف"
+    },
+    "type": "نوع الإجازة",
+    "from": "من",
+    "to": "إلى",
+    "totalDays": "عدد الأيام",
+    "breakdown": "تفصيل الأيام",
+    "attendance": "الحضور",
+    "holiday": "عطلة",
+    "approve": "موافقة",
+    "reject": "رفض",
+    "cancel": "إلغاء الإجازة",
+    "confirmCancel": "هل أنت متأكد من إلغاء هذه الإجازة؟",
+    "rejectReason": "من فضلك اكتب سبب الرفض",
+    "toastApproved": "تمت الموافقة على الإجازة",
+    "toastRejected": "تم رفض الإجازة",
+    "toastCancelled": "تم إلغاء الإجازة",
+    "toastError": "حدث خطأ ما",
+    "loadError": "فشل تحميل بيانات الإجازة",
+    "types": {
+      "annual": "إجازة سنوية",
+      "sick": "إجازة مرضية",
+      "emergency": "إجازة طارئة",
+      "unpaid": "إجازة بدون أجر"
+    },
+      "submit": {
+    "title": "تقديم طلب إجازة",
+    "subtitle": "يرجى ملء البيانات لتقديم طلب إجازة"
+    ,"action": "ارسال"
+  },
+  "estimatedDays": "عدد الأيام التقريبي",
+  "toastSubmitted": "تم إرسال طلب الإجازة بنجاح",
+  "toastError": "حدث خطأ أثناء إرسال الطلب",
+  "form": {
+    "required": "يرجى ملء جميع الحقول المطلوبة",
+    "invalidDates": "التاريخ غير صحيح"
+  },
+  "submit": {
+    "nav": "طلب إجازة"
+  }
+  }
+  , "yes": "نعم",
+  "no": "لا",
+    "leaveManagement": "إدارة الإجازات"
+,
+
+  "feedback": {
+    "onlyWarnings" : "عرض التحذيرات فقط",
+    "title": "ملاحظات الإدارة",
+    "placeholder": "اكتب ملاحظة عن الموظف...",
+    "add": "إضافة ملاحظة",
+    "update": "حفظ التعديل",
+    "cancel": "إلغاء",
+    "warning": "تحذير",
+    "visible": "تظهر للموظف",
+    "hidden": "مخفية عن الموظف",
+    "empty": "لا توجد ملاحظات حتى الآن",
+    "confirmDelete": "هل أنت متأكد من حذف هذه الملاحظة؟",
+    "toastAdded": "تمت إضافة الملاحظة بنجاح",
+    "toastUpdated": "تم تعديل الملاحظة",
+    "toastDeleted": "تم حذف الملاحظة",
+    "toastError": "حدث خطأ، حاول مرة أخرى"
+  }
+
+
+,
+"devicesAdmin": {
+  "controlTitle": "إدارة الأجهزة",
+  "confirmDelete": "هل أنت متأكد من حذف هذا الجهاز؟",
+  "toastDeleted": "تم حذف الجهاز بنجاح",
+  "toastDeleteError": "فشل حذف الجهاز",
+    "approved": "تمت الموافقة على الجهاز",
+  "approveError": "فشل الموافقة على الجهاز",
+  "enabled": "تم تفعيل الجهاز",
+  "disabled": "تم تعطيل الجهاز",
+  "toggleError": "فشل تحديث حالة الجهاز",
+  "user": "المستخدم",
+  "email": "البريد الإلكتروني",
+  "device": "الجهاز",
+  "status": "الحالة",
+  "registered": "تاريخ التسجيل",
+  "actions": "الإجراءات",
+  "approve": "موافقة",
+  "disable": "تعطيل",
+  "enable": "تفعيل",
+  "delete": "حذف",
+  "unknown": "غير معروف",
+  "noDevices": "لا توجد أجهزة",
+
+  "confirmDelete": "هل أنت متأكد من حذف هذا الجهاز؟",
+  "toastApproved": "تمت الموافقة على الجهاز",
+  "toastApproveError": "فشل الموافقة على الجهاز",
+  "toastEnabled": "تم تفعيل الجهاز",
+  "toastDisabled": "تم تعطيل الجهاز",
+  "toastToggleError": "فشل تحديث حالة الجهاز",
+  "toastDeleted": "تم حذف الجهاز",
+  "toastDeleteError": "فشل حذف الجهاز",
+
+  "status_pending": "قيد الانتظار",
+  "status_approved": "مفعل",
+  "status_disabled": "معطل"
+, "searchPlaceholder": "ابحث بالاسم أو البريد الإلكتروني",
+  "status_all": "الكل"
+}
+,
+"deviceManagement": "إدارة الأجهزة"
+,"emp.attendance" : "حضور الموظفين"
+,
+"employment": {
+
+  "changeStatus": "تغيير حالة التوظيف",
+  "selectStatus": "اختر الحالة الجديدة",
+  "currentStatus": "الحالة الحالية",
+  "history": "تاريخ الموظف",
+  "newStatus": "الحالة الجديدة",
+  "reason": "السبب",
+  "reasonPlaceholder": "اكتب سبب القرار...",
+  "status": {
+    "active": "نشط",
+    "terminated": "تم إنهاء الخدمة",
+    "resigned": "استقال",
+    "suspended": "موقوف مؤقتًا"
+  },
+  "actions": {
+    "deactivate": "إنهاء خدمة الموظف",
+    "rehire": "إعادة تعيين الموظف"
+  }
+  , "statusUpdated": "تم تحديث حالة التوظيف بنجاح",
+  "errorUpdatingStatus": "حدث خطأ أثناء تحديث حالة التوظيف"
+}
+,
+"biometrics": {
+   "title": "أمان البصمة",
+    "requirement": "إلزام البصمة",
+    "description": "يجب على الموظف التحقق من هويته باستخدام بصمة الإصبع أو الوجه عند تسجيل الحضور والانصراف.",
+    "lastVerified": "آخر تحقق بالبصمة",
+    "neverVerified": "لم يتم التحقق من قبل",
+    "toastEnabled": "تم تفعيل شرط البصمة بنجاح",
+    "toastDisabled": "تم إلغاء شرط البصمة"
+}
+,
+  "roles": {
+    "admin": "مدير",
+    "staff": "موظف"
+  }
+,
+"common" : {
+  "notfoundPageH":"الصفحة غير موجودة",
+  "notfoundpageP":"الصفحة التي تبحث عنها غير موجودة.",
+      "FROM": "من",
+    "TO": "إلى",
+    "FILTERS": "الفلاتر",
+    "PAGE": "صفحة",
+    "success": "نجح",
+    "close": "إغلاق",
+  "date": "التاريخ",
+   "name": "الموظف",
+  "year": "السنة",
+  "month": "الشهر",
+  "status": "الحالة",
+  "draft": "مسودة",
+  "approved": "معتمد",
+  "search": "بحث",
+  "view": "عرض",
+   "all": "الكل",
+   "allScopes": "جميع النطاقات",
+    "note": "ملاحظات",
+    "allowed": "مسموح",
+    "notAllowed": "غير مسموح",
+      "back": "رجوع"
+,
+    "prev": "السابق",
+    "next": "التالي",
+    "allStatus": "كل الحالات",
+      "toggleStatus": "تغيير الحالة",
+  "loading": "جاري التحميل...",
+     "loadFailed": "فشل تحميل البيانات",
+    "actionFailed": "فشلت العملية",
+    "deletedSuccessfully": "تم الحذف بنجاح",
+    "updatedSuccessfully": "تم التحديث بنجاح",
+    "cancel": "إلغاء",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "actions": "الإجراءات",
+    "select": "اختر",
+    "minutes": "دقيقة",
+    "dailyWage": "الأجر اليومي",
+  "active": "مفعل",
+  "inactive": "غير مفعل",
+    "page": "الصفحة"
+,  "confirm": "حفظ",
+ "enabled": "مفعل",
+    "disabled": "غير مفعل",
+    "error": "حدث خطأ غير متوقع",
+   "save": "حفظ",
+    "saving": "جاري الحفظ...",
+    "unexpectedError": "حدث خطأ غير متوقع"}
+  ,
+  "accountActive": "الحساب مفعل",
+  "pendingActivation": "في انتظار التفعيل",
+  "startDate": "تاريخ بدء العمل",
+  "workingDays": "أيام العمل",
+  "workingHours": "ساعات العمل",
+  "currency": "جنيه",
+  "view": "عرض",
+  "year": "السنة",
+  "month": "الشهر",
+
+  "january": "يناير",
+  "february": "فبراير",
+  "march": "مارس",
+  "april": "أبريل",
+  "may": "مايو",
+  "june": "يونيو",
+  "july": "يوليو",
+  "august": "أغسطس",
+  "september": "سبتمبر",
+  "october": "أكتوبر",
+  "november": "نوفمبر",
+  "december": "ديسمبر",
+  "deletedUser": "مستخدم محذوف",
+    "loading": "جاري التحميل",
+    "noAttendanceForDay": "لا يوجد سجل حضور لهذا اليوم",
+    "branch": "الفرع",
+    "checkIn": "تسجيل الدخول",
+    "checkOut": "تسجيل الخروج",
+    "late": "التأخير",
+    "earlyLeave": "المغادرة المبكرة",
+    "notes": "الملاحظات",
+    "actions": "الإجراءات",
+    "invalidated": "ملغى",
+    "minutes": "دقيقة",
+    "addNote": "أضف ملاحظة",
+    "invalidateRecord": "إلغاء السجل",
+    "edit": "تعديل",
+    "save": "حفظ",
+    "saving": "جاري الحفظ",
+    "cancel": "إلغاء",
+    "close": "إغلاق",
+    "transitDetails": "تفاصيل التنقل",
+    "transitTime": "وقت التنقل",
+    "deduction": "خصم",
+    "noDeduction": "لا خصم",
+    "noNotes": "لا توجد ملاحظات",
+    "savedSuccessfully": "تم الحفظ بنجاح",
+    "errorSaving": "حدث خطأ أثناء الحفظ",
+    "success": "نجح",
+    "error": "خطأ",
+    "info": "معلومة",
+  "noNotes": "لا توجد ملاحظات",
+  "deduction": "خصم",
+  "noDeduction": "لا خصم",
+  "success": "نجح",
+  "error": "خطأ",
+  "employee": "الموظف",
+  "date": "التاريخ",
+  "day": "اليوم",
+  "branch": "الفرع",
+  "checkIn": "حضور",
+  "checkOut": "انصراف",
+  "status": "الحالة",
+  "details": "التفاصيل",
+  "late": "تأخير",
+  "earlyLeave": "انصراف مبكر",
+  "minutes": "دقيقة",
+  "invalidated": "مبطل",
+  "needsReview": "غير مدفوع / يحتاج مراجعة",
+  "noCheckoutNeedsReview": "لا يوجد انصراف – يحتاج مراجعة",
+  "noPenalties": "بدون خصومات",
+  "transit": "تنقل",
+  "from": "من",
+  "to": "إلى",
+  "deducted": "خصم",
+  "noDeduction": "بدون خصم",
+  "totalTransitDeduction": "إجمالي خصم المواصلات",
+  "deletedUser": "موظف محذوف",
+   "employeeAttendance": "حضور الموظفين",
+  "attendanceSummary": "ملخص الحضور",
+  "viewDetails": "عرض التفاصيل",
+  "Branche Name": "اسم الفرع",
+  
+  "Locate the site in detail on the map. Click on the map to select the location.":"حدد الموقع بالتفصيل على الخريطة. انقر على الخريطة لاختيار الموقع.",
+  "Search" : "بحث",
+  "example60minutes": "مثال 60 دقيقة" ,
+"Enter the allowed travel time between branches.If no value is entered, it will be taken from the employee settings or the system s default value of 60 minutes.":"أدخل وقت التنقل المسموح به بين الفروع. إذا لم يتم إدخال قيمة، فسيتم أخذها من إعدادات الموظف أو القيمة الافتراضية للنظام وهي 60 دقيقة.",
+ 
+  "noCheckoutNeedsReview" : "لا يوجد تسجيل انصراف - سيتم اعتباره غير مدفوع حتى يتم تصحيحه",
+  "needsReview": "غير مدفوع / يحتاج لمراجعة الإدارة",
+ "attendance": "تسجيل الحضور و الانصراف",
 "checkIn": "تسجيل الحضور",
 "checkOut": "تسجيل الانصراف",
 "checkInSuccess": "تم تسجيل الحضور بنجاح",
@@ -89,43 +1045,49 @@
   "loginFailed": "فشل تسجيل الدخول. حاول مرة أخرى.",
     "submit": "إضافة",
     "success": "نجاح",
-    "adminBranches.manageBranches": "إدارة الفروع",
-    "adminBranches.addBranch": "إضافة فرع جديد",
-    "adminBranches.editBranch": "تعديل الفرع",
-    "adminBranches.branchName": "اسم الفرع",
-    "adminBranches.latitude": "خط العرض",
-    "adminBranches.longitude": "خط الطول",
-    "adminBranches.radius": "النطاق (متر)",
-    "adminBranches.allowedIPs": "عناوين IP المسموح بها",
-    "adminBranches.actions": "الإجراءات",
-    "adminBranches.update": "تحديث",
-    "adminBranches.cancel": "إلغاء",
-    "adminBranches.branchLocation": "موقع الفرع",
-    "adminBranches.noLocation": "لا توجد بيانات موقع صالحة لهذا الفرع",
-    "adminBranches.noData": "لا توجد بيانات حضور متاحة",
-    "adminBranches.loading": "جارٍ التحميل...",
-    "adminBranches.error": "حدث خطأ",
-    "adminBranches.success": "نجاح",
-    "adminBranches.branchCreated": "تم إنشاء الفرع بنجاح",
-    "adminBranches.branchUpdated": "تم تحديث الفرع بنجاح",
-    "adminBranches.branchDeleted": "تم حذف الفرع بنجاح",
-    "adminBranches.emergencyActivated": "تم تفعيل وضع الطوارئ",
-    "adminBranches.emergencyDeactivated": "تم تعطيل وضع الطوارئ",
-    "adminBranches.selectLocationOnMap": "اختر الموقع على الخريطة",
-    "adminBranches.none": "لا يوجد",
-    "adminBranches.user": "المستخدم",
-    "adminBranches.checkIn": "تسجيل الدخول",
-    "adminBranches.checkOut": "تسجيل الخروج",
-    "adminBranches.late": "التأخير",
-    "adminBranches.earlyLeave": "المغادرة المبكرة",
-    "adminBranches.minutes": "دقيقة",
-    "adminBranches.unknown": "غير معروف",
-    "adminBranches.emergencyOn": "وضع الطوارئ مفعل",
-    "adminBranches.emergencyOff": "وضع الطوارئ معطل",
-    "adminBranches.attendanceMap": "خريطة الحضور",
-   "adminBranches.delete": "حذف الفرع",
-   "adminBranches.branchList": "قائمة الفروع",
 
+
+    "adminBranches":{
+    "manageBranches": "إدارة الفروع",
+   "addBranch": "إضافة فرع جديد",
+    "editBranch": "تعديل الفرع",
+    "branchName": "اسم الفرع",
+    "latitude": "خط العرض",
+   "longitude": "خط الطول",
+    "radius": "النطاق (متر)",
+    "allowedIPs": "عناوين IP المسموح بها",
+    "actions": "الإجراءات",
+    "update": "تحديث",
+    "cancel": "إلغاء",
+    "branchLocation": "موقع الفرع",
+    "noLocation": "لا توجد بيانات موقع صالحة لهذا الفرع",
+    "noData": "لا توجد بيانات حضور متاحة",
+    "loading": "جارٍ التحميل...",
+    "error": "حدث خطأ",
+    "success": "نجاح",
+    "branchCreated": "تم إنشاء الفرع بنجاح",
+    "branchUpdated": "تم تحديث الفرع بنجاح",
+    "branchDeleted": "تم حذف الفرع بنجاح",
+    "emergencyActivated": "تم تفعيل وضع الطوارئ",
+    "emergencyDeactivated": "تم تعطيل وضع الطوارئ",
+    "selectLocationOnMap": "اختر الموقع على الخريطة",
+    "none": "لا يوجد",
+    "user": "المستخدم",
+    "checkIn": "تسجيل الدخول",
+    "checkOut": "تسجيل الخروج",
+    "late": "التأخير",
+    "earlyLeave": "المغادرة المبكرة",
+    "minutes": "دقيقة",
+    "unknown": "غير معروف",
+    "emergencyOn": "وضع الطوارئ مفعل",
+    "emergencyOff": "وضع الطوارئ معطل",
+    "attendanceMap": "خريطة الحضور",
+   "delete": "حذف الفرع",
+   "branchList": "قائمة الفروع",
+    "transitThresholdMinutes": "وقت التنقل المسموح به من هذا الفرع الي فرع اخر (بالدقائق)",
+    "searchByName": "ابحث باسم الفرع",
+    "records": "حضور حالي"
+    },
 
     
       "deviceId": "معرف الجهاز: {id}",
@@ -192,13 +1154,11 @@
   "status": "الحالة",
   "lateMinutes": "دقائق التأخير",
   "earlyLeaveMinutes": "دقائق المغادرة المبكرة",
-  "feedback": "التعليقات/التحذيرات",
   "addFeedback": "إضافة تعليق",
   "submit": "إرسال",
   "warning": "تحذير",
   "monthlyReport": "تقرير شهري",
   "workingDays": "أيام العمل",
-  "holidays": "الإجازات",
   "absences": "الغيابات",
   "totalLateMinutes": "إجمالي دقائق التأخير",
   "totalEarlyLeaveMinutes": "إجمالي دقائق المغادرة المبكرة",

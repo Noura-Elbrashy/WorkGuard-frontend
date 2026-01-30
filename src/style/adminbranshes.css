@@ -66,6 +66,14 @@
 .btn-delete:hover {
   background: linear-gradient(90deg, #c0392b, #e74c3c);
 }
+.branch-map-row td {
+  background-color: #fafafa;
+  border-top: none;
+}
+
+.mini-map-wrapper {
+  padding: 0.5rem 0.25rem 0.75rem;
+}
 
 @keyframes fadeIn {
   from {

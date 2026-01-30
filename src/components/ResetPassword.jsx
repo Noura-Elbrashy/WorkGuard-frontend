@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { apiPost, apiGet } from '../helpers/api';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import '@fortawesome/fontawesome-free/css/all.min.css';
+import logo from '../assets/logo.png';
+
 import '../style/Login.css';
 
 function ResetPassword() {
@@ -16,6 +18,11 @@ function ResetPassword() {
   const [userInfo, setUserInfo] = useState(null);
   const { token } = useParams();
   const navigate = useNavigate();
+
+useEffect(() => {
+  document.body.classList.add('login-page');
+  return () => document.body.classList.remove('login-page');
+}, []);
 
   // التحقق من صحة الرمز عند تحميل المكون
   useEffect(() => {
@@ -145,14 +152,14 @@ function ResetPassword() {
     <div className="login-container bg-gradient-login">
       <div className="glass-card p-4 login-card animate-fade-in">
         <div className="text-center mb-4">
-          <img
-            src="/assets/logo.png"
-            alt="RAN Clinic"
-            className="login-logo"
-            onError={(e) => (e.target.style.display = 'none')}
-          />
+         <img
+  src={logo}
+  alt="WorkGuard"
+  className="login-logo"
+/>
+
           <div className="logo-fallback" style={{ display: 'none' }}>
-            RAN Clinic
+            WorkGuard
           </div>
           <h2 className="card-title">{t('resetPassword')}</h2>
           {userInfo && (

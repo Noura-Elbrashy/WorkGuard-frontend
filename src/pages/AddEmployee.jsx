@@ -26,7 +26,8 @@ function AddEmployee() {
     calculatedWorkingHours: 8,
     expectedMonthlyWorkingDays: 22
   });
-  
+  const [allowedTransitMinutes, setAllowedTransitMinutes] = useState(0);
+
   const [branches, setBranches] = useState([]);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -171,7 +172,7 @@ function AddEmployee() {
     try {
       const dataToSend = {
         ...formData,
-        workingDaysNames: formData.workingDaysNames.join(','),
+        workingDaysNames: formData.workingDaysNames,
         // إرسال معدلات الخصم كنسب عشرية (0-1)
         absenceDeductionRate: formData.absenceDeductionRate / 100,
         lateDeductionRate: formData.lateDeductionRate / 100,
@@ -180,7 +181,8 @@ function AddEmployee() {
         workEndTime: formatTime(formData.workEndTime),
         // حفظ الساعات المحسوبة
         workingHoursPerDay: formData.calculatedWorkingHours,
-        requiredWorkingDays: formData.expectedMonthlyWorkingDays
+        requiredWorkingDays: formData.expectedMonthlyWorkingDays,
+         allowedTransitMinutes,
       };
       
       const res = await apiPost('/users', dataToSend);
@@ -317,9 +319,22 @@ function AddEmployee() {
           </div>
           {formErrors.workingDaysNames && <div className="text-danger mt-1">{formErrors.workingDaysNames}</div>}
           <small className="text-muted">
-            الأيام المتوقعة شهرياً: {formData.expectedMonthlyWorkingDays} يوم
-          </small>
+  متوسط عدد أيام العمل شهرياً (تقريبي): {formData.expectedMonthlyWorkingDays} يوم
+</small>
+
         </div>
+<div className="col-md-6 mb-3">
+  <label className="form-label">وقت التنقل المسموح بين الفروع (بالدقايق)</label>
+  <input
+    type="number"
+    className="form-control"
+    min="0"
+    value={allowedTransitMinutes}
+    onChange={(e) => setAllowedTransitMinutes(Number(e.target.value))}
+  />
+  <small className="text-muted">
+يستخدم اذا كان الموظف يعمل في اكثر من فرع , وقت التنقل المسموح بين الفروع والذي اذا تخطاه الموظف تخصم الدقائق الزائده عنه من راتبه  </small>
+</div>
 
         {/* أوقات العمل */}
         <div className="row">

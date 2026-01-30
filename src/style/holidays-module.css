@@ -1,0 +1,1604 @@
+/* ===================================
+   🎯 Holidays Module - Scoped Styles
+   Prefix: .holidays-module
+=================================== */
+
+/* Wrapper to scope all styles */
+.holidays-module {
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 2rem;
+}
+
+.holidays-module * {
+  box-sizing: border-box;
+}
+
+/* ===================================
+   📋 Page Header
+=================================== */
+
+.holidays-module .hm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.holidays-module .hm-header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.holidays-module .hm-header-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.holidays-module .hm-header-text h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.25rem 0;
+}
+
+.holidays-module .hm-header-text p {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ===================================
+   🔍 Filters Card
+=================================== */
+
+.holidays-module .hm-filters-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.holidays-module .hm-filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+
+.holidays-module .hm-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.holidays-module .hm-form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.holidays-module .hm-form-select,
+.holidays-module .hm-form-input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: white;
+  color: #1f2937;
+  transition: all 0.2s ease;
+}
+
+.holidays-module .hm-form-select:focus,
+.holidays-module .hm-form-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.holidays-module .hm-form-select.hm-error,
+.holidays-module .hm-form-input.hm-error {
+  border-color: #dc2626;
+}
+
+.holidays-module .hm-error-text {
+  display: block;
+  margin-top: 0.25rem;
+  color: #dc2626;
+  font-size: 0.75rem;
+}
+
+/* ===================================
+   🎴 Holidays Grid
+=================================== */
+
+.holidays-module .hm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.holidays-module .hm-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 1rem;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.holidays-module .hm-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-left-color: #667eea;
+}
+
+.holidays-module .hm-date {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+  min-width: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.holidays-module .hm-day {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.holidays-module .hm-month {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.9;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.holidays-module .hm-year {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  margin-top: 0.125rem;
+}
+
+.holidays-module .hm-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.holidays-module .hm-info h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.holidays-module .hm-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.holidays-module .hm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.holidays-module .hm-badge i {
+  font-size: 0.75rem;
+}
+
+.holidays-module .hm-badge-global {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.holidays-module .hm-badge-branch {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.holidays-module .hm-badge-user {
+  background: #ddd6fe;
+  color: #5b21b6;
+}
+
+.holidays-module .hm-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.holidays-module .hm-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+}
+
+.holidays-module .hm-icon-btn-edit {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.holidays-module .hm-icon-btn-edit:hover {
+  background: #2563eb;
+  color: white;
+}
+
+.holidays-module .hm-icon-btn-delete {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.holidays-module .hm-icon-btn-delete:hover {
+  background: #dc2626;
+  color: white;
+}
+
+/* ===================================
+   📄 Pagination
+=================================== */
+
+.holidays-module .hm-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.holidays-module .hm-pagination-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.holidays-module .hm-pagination-btn:hover:not(:disabled) {
+  background: #f9fafb;
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.holidays-module .hm-pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.holidays-module .hm-pagination-info {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* ===================================
+   📭 Empty State
+=================================== */
+
+.holidays-module .hm-empty {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.holidays-module .hm-empty-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #9ca3af;
+}
+
+.holidays-module .hm-empty h3 {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin: 0;
+  font-weight: 500;
+}
+
+.holidays-module .hm-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f4f6;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: hm-spin 0.8s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes hm-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===================================
+   🎭 Modal
+=================================== */
+
+.holidays-module .hm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+  animation: hm-fadeIn 0.2s ease;
+}
+
+@keyframes hm-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.holidays-module .hm-modal {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: hm-slideUp 0.3s ease;
+}
+
+@keyframes hm-slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.holidays-module .hm-modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.holidays-module .hm-modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.holidays-module .hm-modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.holidays-module .hm-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.holidays-module .hm-modal-body {
+  padding: 1.5rem;
+}
+
+.holidays-module .hm-modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  background: #f9fafb;
+  border-radius: 0 0 12px 12px;
+}
+
+/* ===================================
+   🔘 Buttons
+=================================== */
+
+.holidays-module .hm-btn {
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.holidays-module .hm-btn i {
+  font-size: 0.875rem;
+}
+
+.holidays-module .hm-btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.holidays-module .hm-btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.holidays-module .hm-btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.holidays-module .hm-btn-secondary:hover:not(:disabled) {
+  background: #e5e7eb;
+}
+
+.holidays-module .hm-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===================================
+   🍞 Toast Notifications
+=================================== */
+
+.holidays-module .hm-toast {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  min-width: 300px;
+  padding: 1rem 1.25rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: hm-slideInRight 0.3s ease;
+  z-index: 10000;
+}
+
+@keyframes hm-slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.holidays-module .hm-toast i {
+  font-size: 1.25rem;
+}
+
+.holidays-module .hm-toast-success {
+  border-left: 3px solid #10b981;
+}
+
+.holidays-module .hm-toast-success i {
+  color: #10b981;
+}
+
+.holidays-module .hm-toast-error {
+  border-left: 3px solid #dc2626;
+}
+
+.holidays-module .hm-toast-error i {
+  color: #dc2626;
+}
+
+.holidays-module .hm-toast span {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.holidays-module .hm-toast-close {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: none;
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.holidays-module .hm-toast-close:hover {
+  background: #e5e7eb;
+}
+
+/* ===================================
+   📱 Responsive Design
+=================================== */
+
+@media (max-width: 768px) {
+  .holidays-module {
+    padding: 1rem;
+  }
+
+  .holidays-module .hm-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .holidays-module .hm-header-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+
+  .holidays-module .hm-header-text h1 {
+    font-size: 1.25rem;
+  }
+
+  .holidays-module .hm-filters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .holidays-module .hm-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .holidays-module .hm-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .holidays-module .hm-date {
+    width: 100%;
+  }
+
+  .holidays-module .hm-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .holidays-module .hm-toast {
+    left: 1rem;
+    right: 1rem;
+    min-width: auto;
+  }
+
+  .holidays-module .hm-modal-footer {
+    flex-direction: column-reverse;
+  }
+
+  .holidays-module .hm-modal-footer .hm-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+.hm-date-text {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.hm-days-count {
+  margin-left: 0.5rem;
+  font-weight: 600;
+  color: #374151;
+}
+.hm-days-preview {
+  font-size: 0.8rem;
+  color: #4338ca;
+  font-weight: 600;
+}
+
+
+/* new */
+
+/* ===================================
+   🎯 Holidays Module - Complete Styles
+   Version: 2.0
+   Scoped: .holidays-module
+=================================== */
+
+.holidays-module {
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 2rem;
+}
+
+.holidays-module * {
+  box-sizing: border-box;
+}
+
+/* ===================================
+   📋 Page Header
+=================================== */
+
+.holidays-module .hm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.holidays-module .hm-header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.holidays-module .hm-header-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.holidays-module .hm-header-text h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.25rem 0;
+}
+
+.holidays-module .hm-header-text p {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ===================================
+   🗂️ Tabs Navigation
+=================================== */
+
+.holidays-module .hm-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.holidays-module .hm-tab {
+  flex: 1;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.holidays-module .hm-tab i {
+  font-size: 1rem;
+}
+
+.holidays-module .hm-tab:hover:not(.hm-tab-active) {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.holidays-module .hm-tab-active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* ===================================
+   🔍 Filters Card
+=================================== */
+
+.holidays-module .hm-filters-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.holidays-module .hm-filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+
+.holidays-module .hm-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.holidays-module .hm-form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.holidays-module .hm-form-select,
+.holidays-module .hm-form-input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: white;
+  color: #1f2937;
+  transition: all 0.2s ease;
+}
+
+.holidays-module .hm-form-select:focus,
+.holidays-module .hm-form-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.holidays-module .hm-form-select.hm-error,
+.holidays-module .hm-form-input.hm-error {
+  border-color: #dc2626;
+}
+
+.holidays-module .hm-error-text {
+  display: block;
+  margin-top: 0.25rem;
+  color: #dc2626;
+  font-size: 0.75rem;
+}
+
+/* ===================================
+   🎴 Holidays Grid
+=================================== */
+
+.holidays-module .hm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.holidays-module .hm-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 1rem;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.holidays-module .hm-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-left-color: #667eea;
+}
+
+/* Card Status Colors */
+.holidays-module .hm-card-draft {
+  border-left-color: #f59e0b;
+}
+
+.holidays-module .hm-card-active {
+  border-left-color: #10b981;
+}
+
+.holidays-module .hm-card-cancelled {
+  border-left-color: #ef4444;
+  opacity: 0.7;
+}
+
+.holidays-module .hm-card-archived {
+  border-left-color: #6b7280;
+  opacity: 0.6;
+}
+
+.holidays-module .hm-date {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+  min-width: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.holidays-module .hm-day {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.holidays-module .hm-month {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.9;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.holidays-module .hm-year {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  margin-top: 0.125rem;
+}
+
+.holidays-module .hm-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.holidays-module .hm-info h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.holidays-module .hm-date-text {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.holidays-module .hm-days-count {
+  margin-left: 0.5rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.holidays-module .hm-days-preview {
+  font-size: 0.8rem;
+  color: #4338ca;
+  font-weight: 600;
+}
+
+.holidays-module .hm-cancel-info {
+  font-size: 0.75rem;
+  color: #ef4444;
+  padding: 0.375rem 0.625rem;
+  background: #fef2f2;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+
+.holidays-module .hm-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.holidays-module .hm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.holidays-module .hm-badge i {
+  font-size: 0.75rem;
+}
+
+.holidays-module .hm-badge-global {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.holidays-module .hm-badge-branch {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.holidays-module .hm-badge-user {
+  background: #ddd6fe;
+  color: #5b21b6;
+}
+
+.holidays-module .hm-badge-user small {
+  display: block;
+  font-size: 0.65rem;
+  opacity: 0.8;
+  margin-top: 0.125rem;
+}
+
+/* Status Badges */
+.holidays-module .hm-badge-draft {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.holidays-module .hm-badge-active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.holidays-module .hm-badge-cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.holidays-module .hm-badge-archived {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.holidays-module .hm-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.holidays-module .hm-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+}
+
+.holidays-module .hm-icon-btn-edit {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.holidays-module .hm-icon-btn-edit:hover {
+  background: #2563eb;
+  color: white;
+}
+
+.holidays-module .hm-icon-btn-delete {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.holidays-module .hm-icon-btn-delete:hover {
+  background: #dc2626;
+  color: white;
+}
+
+.holidays-module .hm-icon-btn-activate {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.holidays-module .hm-icon-btn-activate:hover {
+  background: #059669;
+  color: white;
+}
+
+.holidays-module .hm-icon-btn-cancel {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.holidays-module .hm-icon-btn-cancel:hover {
+  background: #d97706;
+  color: white;
+}
+
+/* ===================================
+   📊 Plans Grid & Cards
+=================================== */
+
+.holidays-module .hm-plans-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.holidays-module .hm-plans-filters {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.holidays-module .hm-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.holidays-module .hm-plan-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-top: 4px solid transparent;
+}
+
+.holidays-module .hm-plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.holidays-module .hm-plan-card-draft {
+  border-top-color: #f59e0b;
+}
+
+.holidays-module .hm-plan-card-active {
+  border-top-color: #10b981;
+}
+
+.holidays-module .hm-plan-card-cancelled {
+  border-top-color: #ef4444;
+  opacity: 0.7;
+}
+
+.holidays-module .hm-plan-card-archived {
+  border-top-color: #6b7280;
+  opacity: 0.6;
+}
+
+.holidays-module .hm-plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.holidays-module .hm-plan-title h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 0.5rem 0;
+}
+
+.holidays-module .hm-plan-year {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.holidays-module .hm-plan-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.holidays-module .hm-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.holidays-module .hm-stat i {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.holidays-module .hm-stat div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.holidays-module .hm-stat strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.holidays-module .hm-stat span {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.holidays-module .hm-plan-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.holidays-module .hm-btn-sm {
+  padding: 0.5rem 0.875rem;
+  font-size: 0.8rem;
+}
+
+/* ===================================
+   📄 Pagination
+=================================== */
+
+.holidays-module .hm-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.holidays-module .hm-pagination-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.holidays-module .hm-pagination-btn:hover:not(:disabled) {
+  background: #f9fafb;
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.holidays-module .hm-pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.holidays-module .hm-pagination-info {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* ===================================
+   📭 Empty State
+=================================== */
+
+.holidays-module .hm-empty {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.holidays-module .hm-empty-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #9ca3af;
+}
+
+.holidays-module .hm-empty h3 {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin: 0 0 1rem 0;
+  font-weight: 500;
+}
+
+.holidays-module .hm-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f4f6;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: hm-spin 0.8s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes hm-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===================================
+   🎭 Modal
+=================================== */
+
+.holidays-module .hm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+  animation: hm-fadeIn 0.2s ease;
+}
+
+@keyframes hm-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.holidays-module .hm-modal {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: hm-slideUp 0.3s ease;
+}
+
+@keyframes hm-slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.holidays-module .hm-modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.holidays-module .hm-modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.holidays-module .hm-modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.holidays-module .hm-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.holidays-module .hm-modal-body {
+  padding: 1.5rem;
+}
+
+.holidays-module .hm-modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  background: #f9fafb;
+  border-radius: 0 0 12px 12px;
+}
+
+/* ===================================
+   🔘 Buttons
+=================================== */
+
+.holidays-module .hm-btn {
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.holidays-module .hm-btn i {
+  font-size: 0.875rem;
+}
+
+.holidays-module .hm-btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.holidays-module .hm-btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.holidays-module .hm-btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.holidays-module .hm-btn-secondary:hover:not(:disabled) {
+  background: #e5e7eb;
+}
+
+.holidays-module .hm-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===================================
+   🍞 Toast Notifications
+=================================== */
+
+.holidays-module .hm-toast {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  min-width: 300px;
+  padding: 1rem 1.25rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: hm-slideInRight 0.3s ease;
+  z-index: 10000;
+}
+
+@keyframes hm-slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.holidays-module .hm-toast i {
+  font-size: 1.25rem;
+}
+
+.holidays-module .hm-toast-success {
+  border-left: 3px solid #10b981;
+}
+
+.holidays-module .hm-toast-success i {
+  color: #10b981;
+}
+
+.holidays-module .hm-toast-error {
+  border-left: 3px solid #dc2626;
+}
+
+.holidays-module .hm-toast-error i {
+  color: #dc2626;
+}
+
+.holidays-module .hm-toast span {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.holidays-module .hm-toast-close {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: none;
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.holidays-module .hm-toast-close:hover {
+  background: #e5e7eb;
+}
+
+/* ===================================
+   📱 Responsive Design
+=================================== */
+
+@media (max-width: 768px) {
+  .holidays-module {
+    padding: 1rem;
+  }
+
+  .holidays-module .hm-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .holidays-module .hm-header-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+
+  .holidays-module .hm-header-text h1 {
+    font-size: 1.25rem;
+  }
+
+  .holidays-module .hm-tabs {
+    flex-direction: column;
+  }
+
+  .holidays-module .hm-filters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .holidays-module .hm-grid,
+  .holidays-module .hm-plans-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .holidays-module .hm-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .holidays-module .hm-date {
+    width: 100%;
+  }
+
+  .holidays-module .hm-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .holidays-module .hm-plans-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .holidays-module .hm-plans-filters {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .holidays-module .hm-plan-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .holidays-module .hm-toast {
+    left: 1rem;
+    right: 1rem;
+    min-width: auto;
+  }
+
+  .holidays-module .hm-modal-footer {
+    flex-direction: column-reverse;
+  }
+
+  .holidays-module .hm-modal-footer .hm-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

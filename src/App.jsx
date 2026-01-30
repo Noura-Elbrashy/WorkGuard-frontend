@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Attendance from './pages/Attendance';
 import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
+import AppFooter from './components/AppFooter';
 import UserProfile from './pages/UserProfile';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminBranches from './pages/AdminBranches';
@@ -15,10 +16,34 @@ import ActivateAccount from './components/ActivateAccount';
 import AddEmployee from './pages/AddEmployee';
 import ResetPassword from './components/ResetPassword';
 import ForgotPassword from './components/ForgotPassword';
-import LeaveManagement from './pages/LeaveManagement';
-import LeaveRequestForm from './pages/LeaveRequestForm';
+// import LeaveManagement from './pages/LeaveManagement';
+// import LeaveRequestForm from './pages/LeaveRequestForm';
+import EmployeeAttendancePage from './pages/EmployeeAttendance/EmployeeAttendancePage';
+import AdminDeviceControl from './pages/AdminDeviceControl';
+// Leave Pages
+import LeavesAdminPage from './pages/leave/LeavesAdminPage';
+import MyLeavesPage from './pages/leave/MyLeavesPage';
+import DetailsLeavePage from './pages/leave/DetailsLeavePage';
+import SubmitLeavePage from './pages/leave/SubmitLeavePage';
+import LeavePoliciesPage from "./pages/LeavePoliciesPage";
+import EditLeavePolicyPage from "./components/leave/policy/EditLeavePolicyPage";
+import CreateLeavePolicyPage from "./components/leave/policy/CreateLeavePolicyPage";
+import AttendancePoliciesPage from './pages/AttendancePolicies/AttendancePoliciesPage';
+
+import PayrollPreviewPage from "./pages/payroll/PayrollPreviewPage";
+import PayrollRunDetailsPage from "./pages/payroll/PayrollRunDetailsPage";
+
+import PayrollRunsListPage from "./pages/payroll/PayrollRunsListPage";
+import EmployeeLeaveProfile from "./pages/leave/EmployeeLeaveProfile";
 import './index.css';
+import './style/table-responsive.css';
+
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
+import DashboardPage from './pages/Dashboard/DashboardPage';
+import HolidaysPage from './pages/Holidays/HolidaysPage';
+
+import RemotePermission from "./pages/RemotePermission";
 // ProtectedRoute for admin-only pages
 function ProtectedRoute({ children }) {
   const [isAdmin, setIsAdmin] = useState(null);
@@ -98,12 +123,22 @@ function App() {
       '/', 
       '/not-found', 
       '/forgot-password', 
-      '/reset-password'
+      '/reset-password',
+      
     ];
-    
+    const noFooterRoutes = [
+    '/',
+    '/forgot-password',
+    '/not-found',
+  ];
     const isNoNavbarRoute = noNavbarRoutes.includes(location.pathname) || 
                            location.pathname.startsWith('/activate/') ||
                            location.pathname.startsWith('/reset-password/');
+
+                             const isNoFooterRoute =
+    noFooterRoutes.includes(location.pathname) ||
+    location.pathname.startsWith('/activate/') ||
+    location.pathname.startsWith('/reset-password/');
 
     return (
       <>
@@ -136,7 +171,7 @@ function App() {
             {/* الصفحات المحمية للمستخدمين العاديين */}
             <Route path="/attendance" element={<AuthenticatedRoute><Attendance /></AuthenticatedRoute>} />
             <Route path="/profile/:id" element={<AuthenticatedRoute><UserProfile /></AuthenticatedRoute>} />
-            <Route path="/request-leave" element={<AuthenticatedRoute><LeaveRequestForm /></AuthenticatedRoute>} />          {/* الصفحات المحمية للمديرين فقط */}
+            {/* <Route path="/request-leave" element={<AuthenticatedRoute><LeaveRequestForm /></AuthenticatedRoute>} />          الصفحات المحمية للمديرين فقط */}
             <Route
               path="/adminbranches"
               element={
@@ -148,6 +183,29 @@ function App() {
               }
             />
             <Route
+  path="/employee-attendance"
+  element={<ProtectedRoute>
+  <EmployeeAttendancePage />
+   </ProtectedRoute>}
+/>
+
+<Route
+  path="/admin/devices"
+  element={
+    <ProtectedRoute>
+      <AdminDeviceControl />
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+path="/admin/RemotePermission"
+element={ <ProtectedRoute>
+      <RemotePermission />
+    </ProtectedRoute>}/>
+
+
+            <Route
               path="/admin/dashboard"
               element={
                 <ProtectedRoute>
@@ -157,7 +215,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-              <Route
+              {/* <Route
               path="/leave-management"
               element={
                 <ProtectedRoute>
@@ -166,7 +224,7 @@ function App() {
                   </ErrorBoundary>
                 </ProtectedRoute>
               }
-            />
+            /> */}
             <Route
               path="/add-employee"
               element={
@@ -177,12 +235,91 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            
+        
+      {/* ================= Employee ================= */}
+      <Route path="/leaves" element={<MyLeavesPage />} />
+      <Route path="/leaves/:id" element={<DetailsLeavePage />} />
+<Route
+  path="/admin/employees/:userId/leave-profile"
+  element={
+    <ProtectedRoute>
+      <EmployeeLeaveProfile />
+    </ProtectedRoute>
+  }
+/>
+
+      {/* ================= Admin ================= */}
+      
+<Route
+  path="/admin/dashboardx"
+  element={
+    <ProtectedRoute>
+      <DashboardPage />
+    </ProtectedRoute>
+  }
+/>
+
+{/* Holidays - Admin Only */}
+<Route
+  path="/admin/holidays"
+  element={
+    <ProtectedRoute>
+      <HolidaysPage />
+    </ProtectedRoute>
+  }
+/>
+
+{/* // Leave Management - Admin Only */}
+     <Route
+  path="/admin/leaves"
+  element={
+    <ProtectedRoute>
+      <LeavesAdminPage />
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/admin/leave-policies"
+  element={<LeavePoliciesPage />}
+/>
+
+<Route
+  path="/admin/leave-policies/create"
+  element={<CreateLeavePolicyPage />}
+/>
+
+<Route
+  path="/admin/leave-policies/:id/edit"
+  element={<EditLeavePolicyPage />}
+/>
+<Route path="/admin/attendance-policies">
+  <Route index element={<AttendancePoliciesPage />} />
+</Route>
+<Route
+  path="/employees/:userId/payroll/preview"
+  element={<PayrollPreviewPage />}
+/>
+<Route path="/payroll/:id" element={<PayrollRunDetailsPage />} />
+
+<Route path="/payroll" element={<PayrollRunsListPage />} />
+
+{/* // ================= Submit Leave ================= */}
+<Route
+  path="/request-leave"
+  element={
+    <AuthenticatedRoute>
+      <SubmitLeavePage />
+    </AuthenticatedRoute>
+  }
+/>
+
             {/* صفحات الخطأ */}
             <Route path="/not-found" element={<NotFound />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
+         {!isNoFooterRoute && <AppFooter />}
       </>
     );
   }

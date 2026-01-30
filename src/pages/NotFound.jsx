@@ -1,15 +1,18 @@
+
+import { useTranslation } from 'react-i18next';
 function NotFound() {
-  const lang = document.documentElement.getAttribute('lang') || 'ar';
-  const translations = {
-    en: { notFound: 'Page Not Found', message: 'The page you are looking for does not exist.' },
-    ar: { notFound: 'الصفحة غير موجودة', message: 'الصفحة التي تبحث عنها غير موجودة.' },
-  };
+    const { t } = useTranslation();
+
 
   return (
     <div className="container mt-4 text-center">
-      <h2>{translations[lang].notFound}</h2>
-      <p>{translations[lang].message}</p>
+  
+    <h2>{t("common.notfoundPageH")}</h2>
+          <p>{t("common.notfoundpageP")}</p>
+
     </div>
+
+
   );
 }
 

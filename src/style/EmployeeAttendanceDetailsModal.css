@@ -1,0 +1,637 @@
+/* ============================================
+   Toast Notifications
+   ============================================ */
+.toast-container-custom {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 99999;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.custom-toast {
+  min-width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.toast-success {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+}
+
+.toast-error {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+}
+
+.toast-info {
+  background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+  color: white;
+}
+
+.toast-header-custom {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.toast-body-custom {
+  padding: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.toast-close-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  margin-left: auto;
+}
+
+.toast-close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   Modal Overlay & Container
+   ============================================ */
+.attendance-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.attendance-modal-content {
+  border: none !important;
+  border-radius: 24px !important;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================
+   Modal Header
+   ============================================ */
+.attendance-modal-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  padding: 24px 32px !important;
+  position: relative;
+  overflow: hidden;
+  border: none !important;
+}
+
+.attendance-modal-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.header-icon-wrapper {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 50%;
+  padding: 16px;
+  margin-right: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 1;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-icon {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-title {
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  color: white !important;
+}
+
+.header-subtitle {
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+  color: white !important;
+}
+
+.modal-close-btn {
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease !important;
+  opacity: 1 !important;
+}
+
+.modal-close-btn:hover {
+  opacity: 1 !important;
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* ============================================
+   Modal Body
+   ============================================ */
+.attendance-modal-body {
+  padding: 32px !important;
+  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%) !important;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* ============================================
+   Loading State
+   ============================================ */
+.loading-spinner {
+  width: 4rem !important;
+  height: 4rem !important;
+}
+
+.loading-text {
+  font-size: 1.25rem;
+  color: #6c757d;
+  font-weight: bold;
+}
+
+/* ============================================
+   Empty State
+   ============================================ */
+.empty-icon-wrapper {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.empty-icon {
+  font-size: 6rem;
+  color: #6c757d;
+  opacity: 0.25;
+}
+
+.empty-text {
+  font-size: 1.5rem;
+  color: #6c757d;
+  font-weight: bold;
+}
+
+/* ============================================
+   Attendance Table
+   ============================================ */
+.attendance-table-wrapper {
+  border-radius: 16px !important;
+  overflow: hidden;
+}
+
+.attendance-table-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+}
+
+.attendance-table-header th {
+  font-weight: bold !important;
+  border: none !important;
+  color: white !important;
+}
+
+.attendance-row {
+  transition: all 0.2s ease;
+  background-color: white;
+}
+
+.attendance-row:hover {
+  background-color: rgba(102, 126, 234, 0.08) !important;
+  transform: scale(1.002);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.invalidated-row {
+  background-color: rgba(220, 53, 69, 0.1) !important;
+}
+
+.invalidated-row:hover {
+  background-color: rgba(220, 53, 69, 0.15) !important;
+}
+
+/* ============================================
+   Branch Icon
+   ============================================ */
+.branch-icon-wrapper {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Time Badges
+   ============================================ */
+.time-badge {
+  display: inline-flex !important;
+  align-items: center;
+  padding: 8px 16px !important;
+  font-weight: bold !important;
+  transition: all 0.3s ease;
+}
+
+.time-badge:hover {
+  transform: scale(1.05);
+}
+
+.time-badge-in {
+  background-color: rgba(40, 167, 69, 0.85) !important;
+  color: white !important;
+}
+
+.time-badge-out {
+  background-color: rgba(23, 162, 184, 0.85) !important;
+  color: white !important;
+}
+
+/* ============================================
+   Status Badges
+   ============================================ */
+.status-badge {
+  display: inline-flex !important;
+  align-items: center;
+  padding: 8px 16px !important;
+  font-weight: bold !important;
+  transition: all 0.3s ease;
+}
+
+.status-badge:hover {
+  transform: scale(1.05);
+}
+
+.status-badge-warning {
+  background-color: #ffc107 !important;
+  color: #212529 !important;
+}
+
+.status-badge-danger {
+  background-color: #dc3545 !important;
+  color: white !important;
+}
+
+/* ============================================
+   Notes Cell
+   ============================================ */
+.notes-cell {
+  min-width: 200px;
+  max-width: 250px;
+}
+
+.notes-textarea {
+  resize: none;
+  transition: all 0.3s ease;
+}
+
+.notes-textarea:focus {
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.15) !important;
+}
+
+.notes-empty {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.invalidate-label {
+  color: #dc3545;
+  font-size: 0.875rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ============================================
+   DateTime Input
+   ============================================ */
+.datetime-input {
+  max-width: 180px;
+  transition: all 0.3s ease;
+}
+
+.datetime-input:focus {
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.15) !important;
+}
+
+/* ============================================
+   Action Buttons
+   ============================================ */
+.btn-save,
+.btn-cancel,
+.btn-edit,
+.btn-close-modal {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-weight: bold !important;
+}
+
+.btn-save {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.btn-save:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3) !important;
+}
+
+.btn-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-cancel:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.btn-edit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+}
+
+.btn-save:active,
+.btn-cancel:active,
+.btn-edit:active {
+  transform: translateY(0) !important;
+}
+
+/* ============================================
+   Transit Card
+   ============================================ */
+.transit-card {
+  border-radius: 16px !important;
+  transition: all 0.3s ease;
+}
+
+.transit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+.transit-header {
+  background: linear-gradient(135deg, #17a2b8 0%, #138496 100%) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.transit-body {
+  background-color: white;
+}
+
+.transit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(23, 162, 184, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+  transition: all 0.3s ease;
+}
+
+.transit-item:hover {
+  background: linear-gradient(90deg, rgba(23, 162, 184, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  transform: translateX(5px);
+}
+
+.transit-item:last-child {
+  margin-bottom: 0;
+}
+
+.transit-icon-wrapper {
+  background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+  border-radius: 50%;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.transit-route {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.transit-time {
+  color: #6c757d;
+}
+
+.transit-badge {
+  display: inline-flex !important;
+  align-items: center;
+  padding: 8px 20px !important;
+  font-weight: bold !important;
+  transition: all 0.3s ease;
+}
+
+.transit-badge:hover {
+  transform: scale(1.05);
+}
+
+.transit-badge-deduction {
+  background-color: #dc3545 !important;
+  color: white !important;
+}
+
+.transit-badge-no-deduction {
+  background-color: #28a745 !important;
+  color: white !important;
+}
+
+/* ============================================
+   Modal Footer
+   ============================================ */
+.attendance-modal-footer {
+  background: linear-gradient(to top, #f8f9fa 0%, #ffffff 100%) !important;
+  border-top: none !important;
+  padding: 24px !important;
+}
+
+.btn-close-modal {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.btn-close-modal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4) !important;
+}
+
+.btn-close-modal:active {
+  transform: translateY(0) !important;
+}
+
+/* ============================================
+   RTL Support
+   ============================================ */
+[dir="rtl"] .header-icon-wrapper {
+  margin-right: 0;
+  margin-left: 24px;
+}
+
+[dir="rtl"] .branch-icon-wrapper {
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+[dir="rtl"] .transit-icon-wrapper {
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+[dir="rtl"] .toast-container-custom {
+  right: auto;
+  left: 20px;
+}
+
+[dir="rtl"] .transit-item:hover {
+  transform: translateX(-5px);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+  .toast-container-custom {
+    right: 10px;
+    left: 10px;
+    top: 10px;
+  }
+
+  .custom-toast {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .attendance-modal-body {
+    padding: 16px !important;
+  }
+
+  .attendance-modal-header {
+    padding: 16px !important;
+  }
+
+  .header-icon-wrapper {
+    padding: 12px;
+    margin-right: 12px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .header-title {
+    font-size: 1.25rem;
+  }
+
+  .notes-cell {
+    min-width: 150px;
+    max-width: 180px;
+  }
+
+  .transit-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .attendance-table-wrapper {
+    font-size: 0.875rem;
+  }
+
+  .time-badge,
+  .status-badge {
+    padding: 6px 12px !important;
+    font-size: 0.875rem;
+  }
+}
