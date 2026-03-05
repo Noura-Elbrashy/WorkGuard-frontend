@@ -42,8 +42,12 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import DashboardPage from './pages/Dashboard/DashboardPage';
 import HolidaysPage from './pages/Holidays/HolidaysPage';
-
+import DepartmentsPage from './pages/Departments/DepartmentsPage';
 import RemotePermission from "./pages/RemotePermission";
+import EditEmployee from './pages/EditEmployee';
+import EmployeeDirectory from './pages/EmployeeDirectory';
+
+
 // ProtectedRoute for admin-only pages
 function ProtectedRoute({ children }) {
   const [isAdmin, setIsAdmin] = useState(null);
@@ -169,6 +173,19 @@ function App() {
             />
             
             {/* الصفحات المحمية للمستخدمين العاديين */}
+            <Route
+  path="/admin/employees/:id/edit"
+  element={
+    <ProtectedRoute>
+      <EditEmployee />
+    </ProtectedRoute>
+  }
+/>
+<Route path="/admin/employees" element={<ProtectedRoute>
+  <EmployeeDirectory />
+  </ProtectedRoute>} />
+
+
             <Route path="/attendance" element={<AuthenticatedRoute><Attendance /></AuthenticatedRoute>} />
             <Route path="/profile/:id" element={<AuthenticatedRoute><UserProfile /></AuthenticatedRoute>} />
             {/* <Route path="/request-leave" element={<AuthenticatedRoute><LeaveRequestForm /></AuthenticatedRoute>} />          الصفحات المحمية للمديرين فقط */}
@@ -215,6 +232,8 @@ element={ <ProtectedRoute>
                 </ProtectedRoute>
               }
             />
+            <Route path="/admin/departments" element={<ProtectedRoute><DepartmentsPage /></ProtectedRoute>} />
+
               {/* <Route
               path="/leave-management"
               element={

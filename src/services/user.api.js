@@ -20,6 +20,12 @@ export const validateToken = (data) => {
   return apiPost('/users/validate-token', data);
 };
 
+/**
+ * 📧 Resend activation email  
+ */
+export const resendActivation = (userId) =>
+  apiPost('/users/resend-activation', { userId });
+
 /* ======================================================
    User Lookup & Search
 ====================================================== */
@@ -27,12 +33,16 @@ export const validateToken = (data) => {
 /**
  * 🔍 Search users (lightweight for selects)
  */
-export const searchUsers = (query) => {
+// export const searchUsers = (query) => {
+//   return apiGet('/users/lookup', {
+//     params: { q: query }
+//   });
+// };
+export const searchUsers = (query, branch = '') => {
   return apiGet('/users/lookup', {
-    params: { q: query }
+    params: { q: query, ...(branch && { branch }) }
   });
 };
-
 /* ======================================================
    Users Collection
 ====================================================== */
@@ -114,6 +124,26 @@ export const deleteUser = (userId) => {
 export const updateEmploymentStatus = (userId, data) => {
   return apiPut(`/users/${userId}/employment-status`, data);
 };
+/* ======================================================
+   Admin Scope  ← جديد كامل
+====================================================== */
+
+/**
+ * 🔐 Get admin scope info
+ */
+export const getAdminScope = () => apiGet('/admin/scope');
+
+/**
+ * 🌍 Set admin scope to GLOBAL
+ */
+export const setAdminScopeGlobal = (adminId) =>
+  apiPut(`/admin/${adminId}/scope`, { type: 'GLOBAL', branches: [] });
+
+/**
+ * 🏢 Set admin scope to BRANCH
+ */
+export const setAdminScopeBranch = (adminId, branchIds) =>
+  apiPut(`/admin/${adminId}/scope`, { type: 'BRANCH', branches: branchIds });
 
 /* ======================================================
    Biometrics
@@ -125,6 +155,12 @@ export const updateEmploymentStatus = (userId, data) => {
 export const toggleBiometricsRequirement = (userId, data) => {
   return apiPut(`/users/${userId}/biometrics/require`, data);
 };
+/**
+ * 🔄 Reset biometrics 
+ */
+export const resetUserBiometrics = (userId) =>
+  apiPost(`/users/${userId}/biometrics/reset`);
+
 
 /* ======================================================
    Devices

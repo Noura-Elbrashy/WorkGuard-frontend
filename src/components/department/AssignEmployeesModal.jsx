@@ -1,0 +1,483 @@
+// import { useEffect, useState } from 'react';
+// import { assignEmployees, removeEmployee } from '../../services/department.api';
+// import { apiGet } from '../../helpers/api';
+// import Toast from '../ui/Toast';
+
+// const AssignEmployeesModal = ({ dept, onClose, onSuccess }) => {
+//   const [allEmployees, setAllEmployees] = useState([]);
+//   const [assigned, setAssigned] = useState([]);
+//   const [search, setSearch] = useState('');
+//   const [loading, setLoading] = useState(true);
+//   const [saving, setSaving] = useState(false);
+//   const [toast, setToast] = useState({ show: false, type: 'error', message: '' });
+
+//   const showToast = (message, type = 'error') =>
+//     setToast({ show: true, type, message });
+
+//   /* Load all employees + current dept members */
+//   useEffect(() => {
+//     const load = async () => {
+//       try {
+//         setLoading(true);
+//         const [empRes, deptEmpRes] = await Promise.all([
+//           apiGet('/users?limit=200'),
+//           apiGet(`/departments/${dept._id}/employees`).catch(() => ({ data: [] }))
+//         ]);
+
+//         setAllEmployees(empRes.data?.users || empRes.data || []);
+//         const assignedIds = (deptEmpRes.data?.employees || deptEmpRes.data || []).map(u => u._id);
+//         setAssigned(assignedIds);
+//       } catch {
+//         showToast('Failed to load employees');
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+//     load();
+//   }, [dept._id]);
+
+//   const isAssigned = (userId) => assigned.includes(userId);
+
+//   const handleToggle = async (user) => {
+//     setSaving(true);
+//     try {
+//       if (isAssigned(user._id)) {
+//         await removeEmployee(dept._id, user._id);
+//         setAssigned(prev => prev.filter(id => id !== user._id));
+//         showToast(`${user.name} removed`, 'success');
+//       } else {
+//         await assignEmployees(dept._id, [user._id]);
+//         setAssigned(prev => [...prev, user._id]);
+//         showToast(`${user.name} assigned`, 'success');
+//       }
+//     } catch (err) {
+//       showToast(err?.response?.data?.message || 'Action failed');
+//     } finally {
+//       setSaving(false);
+//     }
+//   };
+
+//   const filtered = allEmployees.filter(u =>
+//     !search ||
+//     u.name?.toLowerCase().includes(search.toLowerCase()) ||
+//     u.email?.toLowerCase().includes(search.toLowerCase())
+//   );
+
+//   return (
+//     <>
+//       <div className="modal-backdrop" onClick={onClose} />
+
+//       <div className="policy-modal">
+//         <div className="policy-modal-dialog">
+//           <div className="policy-modal-content">
+
+//             {/* Header */}
+//             <div className="policy-modal-header">
+//               <div className="modal-header-icon">
+//                 <i className="fas fa-user-plus" />
+//               </div>
+//               <div>
+//                 <h4 className="modal-title">Assign Employees</h4>
+//                 <p className="modal-subtitle">
+//                   {dept.name} — {assigned.length} assigned
+//                 </p>
+//               </div>
+//               <button className="modal-close-btn" onClick={onClose}>
+//                 <i className="fas fa-times" />
+//               </button>
+//             </div>
+
+//             {/* Body */}
+//             <div className="policy-modal-body">
+
+//               {/* Search */}
+//               <div className="form-section">
+//                 <div className="input-group mb-3">
+//                   <span className="input-group-text bg-white border-end-0">
+//                     <i className="fas fa-search text-muted" />
+//                   </span>
+//                   <input
+//                     type="text"
+//                     className="form-control border-start-0"
+//                     placeholder="Search employees..."
+//                     value={search}
+//                     onChange={e => setSearch(e.target.value)}
+//                   />
+//                 </div>
+
+//                 {loading ? (
+//                   <div className="text-center py-4">
+//                     <div className="spinner-border spinner-border-sm text-primary" />
+//                     <p className="mt-2 text-muted small">Loading...</p>
+//                   </div>
+//                 ) : filtered.length === 0 ? (
+//                   <div className="text-center py-4 text-muted">
+//                     <i className="fas fa-users fa-2x mb-2 opacity-25" />
+//                     <p className="small">No employees found</p>
+//                   </div>
+//                 ) : (
+//                   <div style={{ maxHeight: 380, overflowY: 'auto' }}>
+//                     {filtered.map(user => {
+//                       const active = isAssigned(user._id);
+//                       return (
+//                         <div
+//                           key={user._id}
+//                           className={`d-flex align-items-center justify-content-between p-2 rounded mb-1 ${active ? 'bg-primary bg-opacity-10' : 'bg-light'}`}
+//                         >
+//                           <div className="d-flex align-items-center gap-2">
+//                             <div
+//                               className={`rounded-circle d-flex align-items-center justify-content-center text-white ${active ? 'bg-primary' : 'bg-secondary'}`}
+//                               style={{ width: 34, height: 34, fontSize: 13, flexShrink: 0 }}
+//                             >
+//                               {user.name?.[0]?.toUpperCase() || '?'}
+//                             </div>
+//                             <div>
+//                               <div className="fw-semibold small">{user.name}</div>
+//                               <div className="text-muted" style={{ fontSize: 11 }}>{user.email}</div>
+//                             </div>
+//                           </div>
+
+//                           <button
+//                             className={`btn btn-sm ${active ? 'btn-outline-danger' : 'btn-outline-primary'}`}
+//                             disabled={saving}
+//                             onClick={() => handleToggle(user)}
+//                           >
+//                             <i className={`fas fa-${active ? 'user-minus' : 'user-plus'}`} />
+//                           </button>
+//                         </div>
+//                       );
+//                     })}
+//                   </div>
+//                 )}
+//               </div>
+
+//             </div>
+
+//             {/* Footer */}
+//             <div className="policy-modal-footer">
+//               <button className="btn-modal btn-cancel" onClick={onClose}>
+//                 <i className="fas fa-times me-2" />
+//                 Close
+//               </button>
+//               <button className="btn-modal btn-save" onClick={onSuccess}>
+//                 <i className="fas fa-check me-2" />
+//                 Done
+//               </button>
+//             </div>
+
+//           </div>
+//         </div>
+//       </div>
+
+//       {toast.show && (
+//         <Toast
+//           show={toast.show}
+//           type={toast.type}
+//           message={toast.message}
+//           onClose={() => setToast(prev => ({ ...prev, show: false }))}
+//         />
+//       )}
+//     </>
+//   );
+// };
+
+// export default AssignEmployeesModal;
+
+import { useEffect, useState } from 'react';
+import { assignEmployees, removeEmployee } from '../../services/department.api';
+import { searchUsers } from '../../services/user.api';
+import { getBranchLookup } from '../../services/branch.api';
+import { apiGet } from '../../helpers/api';
+import Toast from '../ui/Toast';
+
+const AssignEmployeesModal = ({ dept, onClose, onSuccess }) => {
+  const [branches, setBranches] = useState([]);
+  const [selectedBranch, setSelectedBranch] = useState('');
+  const [searchQ, setSearchQ] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [searching, setSearching] = useState(false);
+  const [assignedEmployees, setAssignedEmployees] = useState([]);
+  const [assignedIds, setAssignedIds] = useState(new Set());
+  const [loadingAssigned, setLoadingAssigned] = useState(true);
+  const [showDeptList, setShowDeptList] = useState(false);
+  const [deptPage, setDeptPage] = useState(1);
+  const [deptBranchFilter, setDeptBranchFilter] = useState('');
+  const [saving, setSaving] = useState(null);
+  const [toast, setToast] = useState({ show: false, type: 'error', message: '' });
+
+  const DEPT_PAGE_SIZE = 8;
+  const showToast = (msg, type = 'error') => setToast({ show: true, type, message: msg });
+
+  /* Load branches */
+  useEffect(() => {
+    getBranchLookup()
+      .then(r => setBranches(r.data?.data || r.data || []))
+      .catch(() => {});
+  }, []);
+
+  /* Load dept members */
+  useEffect(() => {
+    const load = async () => {
+      try {
+        setLoadingAssigned(true);
+        const res = await apiGet(`/users?department=${dept._id}&limit=200`);
+        const members = res.data?.users || res.data || [];
+        setAssignedEmployees(members);
+        setAssignedIds(new Set(members.map(u => u._id)));
+      } catch {
+        setAssignedEmployees([]);
+        setAssignedIds(new Set());
+      } finally {
+        setLoadingAssigned(false);
+      }
+    };
+    load();
+  }, [dept._id]);
+
+  /* Search with debounce */
+  useEffect(() => {
+    if (!searchQ.trim() && !selectedBranch) {
+      setSearchResults([]);
+      return;
+    }
+    const timer = setTimeout(async () => {
+      try {
+        setSearching(true);
+        const res = await searchUsers(searchQ, selectedBranch);
+        setSearchResults(res.data?.data || res.data || []);
+      } catch {
+        setSearchResults([]);
+      } finally {
+        setSearching(false);
+      }
+    }, 350);
+    return () => clearTimeout(timer);
+  }, [searchQ, selectedBranch]);
+
+  /* Toggle assign/remove */
+  const handleToggle = async (user) => {
+    setSaving(user._id);
+    try {
+      if (assignedIds.has(user._id)) {
+        await removeEmployee(dept._id, user._id);
+        setAssignedIds(prev => { const s = new Set(prev); s.delete(user._id); return s; });
+        setAssignedEmployees(prev => prev.filter(u => u._id !== user._id));
+        showToast(`${user.name} removed`, 'success');
+      } else {
+        await assignEmployees(dept._id, [user._id]);
+        setAssignedIds(prev => new Set([...prev, user._id]));
+        setAssignedEmployees(prev => [...prev, user]);
+        showToast(`${user.name} assigned`, 'success');
+      }
+    } catch (err) {
+      showToast(err?.response?.data?.message || 'Action failed');
+    } finally {
+      setSaving(null);
+    }
+  };
+
+  /* Dept list pagination + filter */
+  const filteredDeptEmps = assignedEmployees.filter(u =>
+    !deptBranchFilter || u.branches?.some(b => String(b._id || b) === deptBranchFilter)
+  );
+  const deptPages = Math.ceil(filteredDeptEmps.length / DEPT_PAGE_SIZE) || 1;
+  const pagedDeptEmps = filteredDeptEmps.slice(
+    (deptPage - 1) * DEPT_PAGE_SIZE,
+    deptPage * DEPT_PAGE_SIZE
+  );
+
+  const Avatar = ({ name, color = '#0d6efd' }) => (
+    <div className="rounded-circle d-flex align-items-center justify-content-center text-white flex-shrink-0"
+      style={{ width: 34, height: 34, fontSize: 13, background: color }}>
+      {name?.[0]?.toUpperCase() || '?'}
+    </div>
+  );
+
+  return (
+    <>
+      <div className="modal-backdrop" onClick={onClose} />
+      <div className="policy-modal">
+        <div className="policy-modal-dialog" style={{ maxWidth: 620 }}>
+          <div className="policy-modal-content">
+
+            {/* Header */}
+            <div className="policy-modal-header">
+              <div className="modal-header-icon"><i className="fas fa-user-plus" /></div>
+              <div>
+                <h4 className="modal-title">Assign Employees</h4>
+                <p className="modal-subtitle">
+                  <strong>{dept.name}</strong> ·{' '}
+                  <span className="text-primary" style={{ cursor: 'pointer', textDecoration: 'underline dotted' }}
+                    onClick={() => { setShowDeptList(v => !v); setDeptPage(1); }}>
+                    {loadingAssigned ? '...' : assignedIds.size} assigned
+                    <i className={`fas fa-chevron-${showDeptList ? 'up' : 'down'} ms-1`} style={{ fontSize: 10 }} />
+                  </span>
+                </p>
+              </div>
+              <button className="modal-close-btn" onClick={onClose}><i className="fas fa-times" /></button>
+            </div>
+
+            <div className="policy-modal-body">
+
+              {/* ── Current Members (collapsible) ── */}
+              {showDeptList && (
+                <div className="form-section mb-3">
+                  <div className="section-header">
+                    <i className="fas fa-users me-2" />
+                    <span>Current Members ({assignedIds.size})</span>
+                  </div>
+
+                  <select className="form-select form-select-sm mb-2"
+                    value={deptBranchFilter}
+                    onChange={e => { setDeptBranchFilter(e.target.value); setDeptPage(1); }}>
+                    <option value="">All branches</option>
+                    {branches.map(b => <option key={b._id} value={b._id}>{b.name}</option>)}
+                  </select>
+
+                  {loadingAssigned ? (
+                    <div className="text-center py-3"><div className="spinner-border spinner-border-sm text-primary" /></div>
+                  ) : pagedDeptEmps.length === 0 ? (
+                    <p className="text-muted small text-center py-2">No members in this filter</p>
+                  ) : (
+                    <>
+                      {pagedDeptEmps.map(user => (
+                        <div key={user._id} className="d-flex align-items-center justify-content-between p-2 rounded mb-1 bg-primary bg-opacity-10">
+                          <div className="d-flex align-items-center gap-2">
+                            <Avatar name={user.name} color="#0d6efd" />
+                            <div>
+                              <div className="fw-semibold small">{user.name}</div>
+                              <div className="text-muted" style={{ fontSize: 11 }}>{user.email}</div>
+                            </div>
+                          </div>
+                          <button className="btn btn-sm btn-outline-danger"
+                            disabled={saving === user._id} onClick={() => handleToggle(user)}>
+                            {saving === user._id ? <i className="fas fa-spinner fa-spin" /> : <i className="fas fa-user-minus" />}
+                          </button>
+                        </div>
+                      ))}
+
+                      {deptPages > 1 && (
+                        <div className="d-flex justify-content-center align-items-center gap-2 mt-2">
+                          <button className="btn btn-sm btn-outline-secondary"
+                            disabled={deptPage === 1} onClick={() => setDeptPage(p => p - 1)}>
+                            <i className="fas fa-chevron-right" />
+                          </button>
+                          <span className="small text-muted">{deptPage} / {deptPages}</span>
+                          <button className="btn btn-sm btn-outline-secondary"
+                            disabled={deptPage === deptPages} onClick={() => setDeptPage(p => p + 1)}>
+                            <i className="fas fa-chevron-left" />
+                          </button>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              )}
+
+              {/* ── Search & Add ── */}
+              <div className="form-section">
+                <div className="section-header">
+                  <i className="fas fa-search me-2" /><span>Search & Add Employees</span>
+                </div>
+
+                {/* Branch filter */}
+                <div className="mb-2">
+                  <label className="form-label-modern">
+                    <i className="fas fa-building me-1" /> Filter by Branch
+                  </label>
+                  <select className="form-control-modern" value={selectedBranch}
+                    onChange={e => { setSelectedBranch(e.target.value); setSearchQ(''); setSearchResults([]); }}>
+                    <option value="">All branches</option>
+                    {branches.map(b => <option key={b._id} value={b._id}>{b.name}</option>)}
+                  </select>
+                </div>
+
+                {/* Search input */}
+                <div className="input-group mb-1">
+                  <span className="input-group-text bg-white border-end-0">
+                    {searching
+                      ? <i className="fas fa-spinner fa-spin text-primary" />
+                      : <i className="fas fa-search text-muted" />}
+                  </span>
+                  <input type="text" className="form-control border-start-0"
+                    placeholder="Search by name or email..."
+                    value={searchQ} onChange={e => setSearchQ(e.target.value)} />
+                  {searchQ && (
+                    <button className="btn btn-outline-secondary" onClick={() => { setSearchQ(''); setSearchResults([]); }}>
+                      <i className="fas fa-times" />
+                    </button>
+                  )}
+                </div>
+
+                <small className="form-hint d-block mb-3">
+                  <i className="fas fa-info-circle me-1" />
+                  Only active employees shown. Select a branch for better results.
+                </small>
+
+                {/* Results */}
+                {!searchQ && !selectedBranch ? (
+                  <div className="text-center py-3 text-muted">
+                    <i className="fas fa-filter fa-2x mb-2 opacity-25" />
+                    <p className="small mb-0">Select a branch or type a name to search</p>
+                  </div>
+                ) : !searching && searchResults.length === 0 ? (
+                  <div className="text-center py-3 text-muted">
+                    <i className="fas fa-user-slash fa-2x mb-2 opacity-25" />
+                    <p className="small mb-0">No active employees found</p>
+                  </div>
+                ) : (
+                  <div style={{ maxHeight: 300, overflowY: 'auto' }}>
+                    {searchResults.map(user => {
+                      const isAssigned = assignedIds.has(user._id);
+                      return (
+                        <div key={user._id}
+                          className={`d-flex align-items-center justify-content-between p-2 rounded mb-1 ${isAssigned ? 'bg-success bg-opacity-10' : 'bg-light'}`}>
+                          <div className="d-flex align-items-center gap-2">
+                            <Avatar name={user.name} color={isAssigned ? '#198754' : '#6c757d'} />
+                            <div>
+                              <div className="fw-semibold small">
+                                {user.name}
+                                {isAssigned && <span className="badge bg-success ms-1" style={{ fontSize: 9 }}>assigned</span>}
+                              </div>
+                              <div className="text-muted" style={{ fontSize: 11 }}>{user.email}</div>
+                            </div>
+                          </div>
+                          <button
+                            className={`btn btn-sm ${isAssigned ? 'btn-outline-danger' : 'btn-outline-primary'}`}
+                            disabled={saving === user._id} onClick={() => handleToggle(user)}>
+                            {saving === user._id
+                              ? <i className="fas fa-spinner fa-spin" />
+                              : <i className={`fas fa-user-${isAssigned ? 'minus' : 'plus'}`} />}
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+            </div>
+
+            {/* Footer */}
+            <div className="policy-modal-footer">
+              <button className="btn-modal btn-cancel" onClick={onClose}>
+                <i className="fas fa-times me-2" />Close
+              </button>
+              <button className="btn-modal btn-save" onClick={onSuccess}>
+                <i className="fas fa-check me-2" />Done
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {toast.show && (
+        <Toast show={toast.show} type={toast.type} message={toast.message}
+          onClose={() => setToast(prev => ({ ...prev, show: false }))} />
+      )}
+    </>
+  );
+};
+
+export default AssignEmployeesModal;

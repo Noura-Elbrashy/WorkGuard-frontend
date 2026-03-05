@@ -82,6 +82,7 @@
 
 // export default RemotePermissionsList;
 // src/pages/RemotePermissionsList.jsx
+
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 

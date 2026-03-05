@@ -470,6 +470,9 @@
 // };
 
 // export default AttendancePolicyTable;
+
+
+
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -491,6 +494,8 @@ const AttendancePolicyTable = ({
 
 
   const [confirmToast, setConfirmToast] = useState(null);
+  const [resultToast, setResultToast] = useState(null);
+
   const [processingId, setProcessingId] = useState(null);
 const [showHistory, setShowHistory] = useState(null);
 
@@ -505,39 +510,92 @@ const [showHistory, setShowHistory] = useState(null);
      Requests
   ========================= */
   const requestToggle = (policy) => {
-    setConfirmToast({ type: 'toggle', policy });
+    setConfirmToast({  action: 'toggle', policy });
   };
 
   const requestDelete = (policy) => {
-    setConfirmToast({ type: 'delete', policy });
+    setConfirmToast({ action: 'delete', policy });
   };
 
   /* =========================
      Confirm
   ========================= */
+  // const confirmAction = async () => {
+  //   const { type, policy } = confirmToast;
+
+  //   try {
+  //     setProcessingId(policy._id);
+
+  //     if (type === 'toggle') {
+  //       await setAttendancePolicyActive(
+  //         policy._id,
+  //         !policy.active
+  //       );
+  //     }
+
+  //     if (type === 'delete') {
+  //       await deleteAttendancePolicy(policy._id);
+  //     }
+
+  //     await onReload();
+  //   } finally {
+  //     setProcessingId(null);
+  //     setConfirmToast(null);
+  //   }
+  // };
+
   const confirmAction = async () => {
-    const { type, policy } = confirmToast;
+    if (!confirmToast) return;
 
-    try {
-      setProcessingId(policy._id);
+  const { action, policy } = confirmToast;
 
-      if (type === 'toggle') {
-        await setAttendancePolicyActive(
-          policy._id,
-          !policy.active
-        );
-      }
+  try {
+      setConfirmToast(null); 
 
-      if (type === 'delete') {
-        await deleteAttendancePolicy(policy._id);
-      }
+    setProcessingId(policy._id);
 
-      await onReload();
-    } finally {
-      setProcessingId(null);
-      setConfirmToast(null);
+    if (action === 'toggle') {
+      await setAttendancePolicyActive(
+        policy._id,
+        !policy.active
+      );
     }
-  };
+
+    if (action === 'delete') {
+      await deleteAttendancePolicy(policy._id);
+    }
+
+    await onReload();
+setResultToast({
+  type: 'success',
+  message:
+    action === 'delete'
+      ? t('attendancePolicy.deleted')
+      : policy.active
+      ? t('attendancePolicy.disabled')
+      : t('attendancePolicy.enabled')
+});
+
+  } catch (err) {
+
+    setConfirmToast(null);
+
+    setTimeout(() => {
+      setResultToast({
+      // setConfirmToast({
+        type: 'error',
+        message:
+          err?.response?.data?.message ||
+          'Operation failed'
+      });
+    }
+    , 150)
+    ;
+
+  } finally {
+    setProcessingId(null);
+  }
+};
 
   /* =========================
      Loading / Empty
@@ -763,7 +821,7 @@ const [showHistory, setShowHistory] = useState(null);
 
 
       {/* ================= Confirmation Toast ================= */}
-      {confirmToast && (
+      {/* {confirmToast && (
         <Toast
           show
           type="warning"
@@ -771,13 +829,58 @@ const [showHistory, setShowHistory] = useState(null);
             confirmToast.type === 'delete'
               ? t('attendancePolicy.confirmDelete')
               : confirmToast.policy.active
+
               ? t('attendancePolicy.confirmDisable')
               : t('attendancePolicy.confirmEnable')
-          }
-          confirmText={t('common.confirm')}
-          cancelText={t('common.cancel')}
-          onConfirm={confirmAction}
-          onClose={() => setConfirmToast(null)}
+          } */}
+          {/* {confirmToast && (
+  <Toast
+    show
+    type={confirmToast.type === 'error' ? 'error' : 'warning'}
+    message={
+      confirmToast.type === 'error'
+        ? confirmToast.message
+        : confirmToast.type === 'delete'
+        ? t('attendancePolicy.confirmDelete')
+        : confirmToast?.policy?.active
+        ? t('attendancePolicy.confirmDisable')
+        : t('attendancePolicy.confirmEnable')
+    } */}
+{/* {confirmToast && (
+  <Toast
+    show
+    type="warning"
+    message={t('attendancePolicy.confirmDelete')}
+    onConfirm={confirmAction}
+    onClose={() => setConfirmToast(null)}
+  />
+)} */}
+{confirmToast && (
+  <Toast
+    show
+    type="warning"
+    message={
+      confirmToast.action === 'delete'
+        ? t('attendancePolicy.confirmDelete')
+        : confirmToast.policy?.active
+        ? t('attendancePolicy.confirmDisable')
+        : t('attendancePolicy.confirmEnable')
+    }
+    onConfirm={confirmAction}
+    onClose={() => setConfirmToast(null)}
+  />
+)}
+
+{resultToast && (
+  <Toast
+    show
+    type={resultToast.type}
+    message={resultToast.message}
+    onClose={() => setResultToast(null)}
+  
+          // confirmText={t('common.confirm')}
+          // cancelText={t('common.cancel')}
+          // onConfirm={confirmAction}
         />
       )}
 {showHistory && (

@@ -53,6 +53,24 @@ export const deleteAttendancePolicy = async (id) => {
   return data;
 };
 
+
+
+//==============================
+
+//get effective policy for user(winning policy for user)
+
+/**
+ * 🎯 Resolve winning policy for user or form preview
+ */
+export const resolvePolicy = ({ userId, branchId, role }) => {
+  return apiGet('/attendance-policies/resolve', {
+    params: {
+      ...(userId && { userId }),
+      ...(branchId && { branchId }),
+      ...(role && { role })
+    }
+  });
+};
 /**
  * 👤 Get effective attendance policy for user
  * Admin only

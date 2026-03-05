@@ -705,6 +705,8 @@
 // };
 
 // export default EmployeeAttendancePage;
+
+
 import { useEffect, useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { apiGet } from '../../helpers/api';
@@ -806,14 +808,42 @@ const navigate = useNavigate();
   // =========================
   // Open details (RAW attendance)
   // =========================
- 
-  const openDetails = (row) => {
+ const openDetails = async (row) => {
   if (!row?.user?._id || !row?.date) return;
 
   setSelectedDay(row);
-  setDetailsData(row.records || []);
-  setDetailsLoading(false); // لأن الداتا جاهزة من الـ summary
+  setDetailsData(null);
+  setDetailsLoading(true);
+
+  try {
+    const dateStr = new Date(row.date).toISOString().slice(0, 10);
+
+    // ✅ نفس الـ API اللي شغالة في UserProfile
+    const res = await apiGet(
+      `/admin/attendance/day-details?userId=${row.user._id}&date=${dateStr}`
+    );
+
+    setDetailsData(res.data?.records || []);
+    // ✅ حدّثي الـ transits من الـ API
+    setSelectedDay(prev => ({
+      ...prev,
+      transits: res.data?.transits || []
+    }));
+
+  } catch (err) {
+    console.error(err);
+    setDetailsData([]);
+  } finally {
+    setDetailsLoading(false);
+  }
 };
+//   const openDetails = (row) => {
+//   if (!row?.user?._id || !row?.date) return;
+
+//   setSelectedDay(row);
+//   setDetailsData(row.records || []);
+//   setDetailsLoading(false); // لأن الداتا جاهزة من الـ summary
+// };
 
 
   // =========================

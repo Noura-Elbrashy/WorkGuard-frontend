@@ -31,7 +31,7 @@ export const toUTCMidnight = (dateString) => {
   
   // إنشاء Date بـ UTC midnight
   const d = new Date(Date.UTC(year, month - 1, day, 0, 0, 0, 0));
-  
+   console.log('toUTCMidnight result:', d.toISOString());
   return d.toISOString();
 };
 

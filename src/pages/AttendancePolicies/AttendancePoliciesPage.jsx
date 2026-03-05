@@ -289,6 +289,7 @@ const filteredPolicies = (() => {
         {/* Toast */}
         {toast && (
           <Toast
+          show={true}
             type={toast.type}
             message={toast.message}
             onClose={() => setToast(null)}

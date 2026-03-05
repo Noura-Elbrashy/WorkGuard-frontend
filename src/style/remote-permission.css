@@ -1,13 +1,13 @@
 /* Remote Permission Management Styles */
 
-.remote-permission-container {
+/* .remote-permission-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
-  padding: 2rem 0;
-}
+  padding: 1rem 0;
+} */
 
 .permission-card {
-  background: white;
+  background: rgb(255, 255, 255);
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 10px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;

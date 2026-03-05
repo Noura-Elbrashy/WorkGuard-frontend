@@ -82,11 +82,18 @@ useEffect(() => {
   };
 }, [message, type, onConfirm, delay]);
 
-  useEffect(() => {
-    if (show && bsToast.current) {
-      bsToast.current.show();
-    }
-  }, [show]);
+  // useEffect(() => {
+  //   if (show && bsToast.current) {
+  //     bsToast.current.show();
+  //   }
+  // }, [show]);
+useEffect(() => {
+  if (!toastRef.current) return;
+
+  if (show && bsToast.current) {
+    bsToast.current.show();
+  }
+}, [show]);
 
   const bgClass =
     type === 'success'
@@ -96,7 +103,9 @@ useEffect(() => {
       : 'bg-warning';
 const handleClose = () => {
   if (bsToast.current) {
-    bsToast.current.hide();
+    // bsToast.current.hide();
+    bsToast.current?.hide();
+
   }
 };
 
@@ -119,7 +128,9 @@ const handleClose = () => {
   className="btn btn-dark btn-sm"
   onClick={async () => {
     await onConfirm();
-    bsToast.current.hide();
+    // bsToast.current.hide();
+    bsToast.current?.hide();
+
   }}
 >
   {confirmText}

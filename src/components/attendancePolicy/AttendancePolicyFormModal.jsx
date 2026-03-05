@@ -673,7 +673,8 @@ const AttendancePolicyFormModal = ({
 ,
       active: form.active
     };
-
+ console.log('PAYLOAD BEFORE SEND:', JSON.stringify(payload));
+ 
     if (form.scope === 'branch') {
       payload.branch = form.branch;
     }

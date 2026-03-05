@@ -1,5 +1,42 @@
 { 
 
+  "EmployeeDirectory": {
+    "title": "Employee Directory",
+    "subtitle": "View and manage employee profiles",
+    "employee": "employees",
+    "searchByName": "Search by name",
+    "searchPlaceholder": "Type employee name...",
+    "allBranches": "All Branches",
+    "allRoles": "All Roles",
+    "allStatuses": "All Statuses",
+    "perPage": "Per page",
+    "accountStatus": "Account Status",
+    "employmentStatus": "Employment Status",
+    "accountPending": "Not Activated",
+    "accountActivated": "Activated",
+    "statusActive": "Active",
+    "statusResigned": "Resigned",
+    "statusTerminated": "Terminated",
+    "statusSuspended": "Suspended",
+    "roleStaff": "Staff",
+    "roleAdmin": "Admin",
+    "scopeGlobal": "🌍 Super Admin",
+    "scopeBranch": "🏢 Branch Admin",
+    "viewProfile": "View Profile",
+    "edit": "Edit",
+    "resendActivation": "Resend Activation",
+    "delete": "Delete",
+    "confirmDelete": "Confirm Delete",
+    "confirmResend": "Resend Activation Email",
+    "confirmDeleteMsg": "Are you sure you want to delete \"{{name}}\"? This cannot be undone.",
+    "confirmResendMsg": "Resend activation link to \"{{name}}\"?",
+    "deleteSuccess": "Employee deleted successfully",
+    "activationResent": "Activation email sent",
+    "noEmployees": "No employees match the current filters",
+    "showingPage": "Page",
+    "total": "total"
+  }
+,
  "forgotPassword": {
     "title": "Forgot Password?",
     "description": "Enter your email address and we'll send you a password reset link",
@@ -32,6 +69,8 @@
     "passwordHint": "Password must be at least 6 characters"
   }
 ,
+
+
   "REMOTE_PERMISSION": {
     
     "selectEmployee": "Select employee",
@@ -131,7 +170,21 @@
   "bulkPermissionSuccess": "Granted {{count}} permissions to {{days}} employees successfully",
   "bulkPermissionFailed": "Failed to grant bulk permissions",
   
-  "failedToLoadBranches": "Failed to load branches list"
+  "failedToLoadBranches": "Failed to load branches list",
+  "BULK_RESULT": {
+  "TITLE": "نتائج المنح الجماعي",
+  "GRANTED": "تم المنح",
+  "SKIPPED": "موجود مسبقاً",
+  "TOTAL": "الإجمالي",
+  "ALREADY_EXIST": "أذونات موجودة مسبقاً",
+  "GRANTED_DATES": "تواريخ جديدة",
+  "SKIPPED_DATES": "كان لديه إذن",
+  "SKIP_REASON": "تم التخطي لأن إذناً نشطاً موجود بالفعل",
+  "FULLY_GRANTED": "مُنح بالكامل",
+  "PARTIAL": "منح جزئي",
+  "ALL_SKIPPED": "موجود مسبقاً",
+  "FULLY_GRANTED_USERS": "الموظفون الذين تم منحهم بنجاح"
+}
   },
 
 

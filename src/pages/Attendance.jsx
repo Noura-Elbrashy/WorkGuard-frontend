@@ -1330,7 +1330,7 @@ import { useTranslation } from 'react-i18next';
 
 // API Services
 import { checkIn, checkOut } from '../services/attendance.api';
-import { getBranches } from '../services/branch.api';
+import { getMyBranches } from '../services/branch.api';
 
 // Components
 import Toast from '../components/ui/Toast';
@@ -1504,8 +1504,8 @@ function Attendance() {
           setBiometricsEnabled(true);
         }
 
-        const res = await getBranches();
-        setBranches(res.data || []);
+        const res = await getMyBranches();
+        setBranches(res.data.data || []);
       } catch (err) {
         console.error('Initialization error:', err);
         showToast(t('error'), 'error');

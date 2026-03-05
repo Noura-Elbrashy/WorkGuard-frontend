@@ -1,5 +1,5 @@
 {
-  "name": "clinic-attendance",
+  "name": "workguard-client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "description": "Client application for the WorkGuard workforce management platform",
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^4.6.2",
     "@fortawesome/fontawesome-free": "^7.0.0",

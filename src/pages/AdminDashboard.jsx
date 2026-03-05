@@ -2458,7 +2458,7 @@ const groupAttendanceByUserAndDate = (records) => {
         ...editUser,
         workingDaysNames: (editUser.workingDaysNames || []).join(','),
         branches: editUser.branches,
-        allowedTransitMinutes: editUser.allowedTransitMinutes,
+        // allowedTransitMinutes: editUser.allowedTransitMinutes,
 
         absenceDeductionRate: (editUser.absenceDeductionRate || 0) / 100,
         lateDeductionRate: (editUser.lateDeductionRate || 0) / 100,

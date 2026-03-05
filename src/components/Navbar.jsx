@@ -295,7 +295,7 @@ const [showLangMenu, setShowLangMenu] = useState(false);
                 </li>
 
                 {/* Branches */}
-                <li className="nav-item nav-item-modern">
+                {/* <li className="nav-item nav-item-modern">
                   <Link 
                     className={`nav-link nav-link-modern ${isActiveLink('/adminbranches') ? 'active' : ''}`} 
                     to="/adminbranches"
@@ -303,10 +303,10 @@ const [showLangMenu, setShowLangMenu] = useState(false);
                     <i className="fas fa-building"></i>
                     {t("branches")}
                   </Link>
-                </li>
+                </li> */}
 
                 {/* Devices */}
-                <li className="nav-item nav-item-modern">
+                {/* <li className="nav-item nav-item-modern">
                   <Link 
                     className={`nav-link nav-link-modern ${isActiveLink('/admin/devices') ? 'active' : ''}`} 
                     to="/admin/devices"
@@ -314,10 +314,10 @@ const [showLangMenu, setShowLangMenu] = useState(false);
                     <i className="fas fa-mobile-alt"></i>
                     {t("deviceManagement")}
                   </Link>
-                </li>
+                </li> */}
 
                 {/* Leave Management */}
-                <li className="nav-item nav-item-modern">
+                {/* <li className="nav-item nav-item-modern">
                   <Link 
                     className={`nav-link nav-link-modern ${isActiveLink('/admin/leaves') ? 'active' : ''}`} 
                     to="/admin/leaves"
@@ -325,7 +325,7 @@ const [showLangMenu, setShowLangMenu] = useState(false);
                     <i className="fas fa-calendar-check"></i>
                     {t("leaveManagement")}
                   </Link>
-                </li>
+                </li> */}
               </>
             )}
 
@@ -341,7 +341,7 @@ const [showLangMenu, setShowLangMenu] = useState(false);
             </li>
 
             {/* Leaves */}
-            <li className="nav-item nav-item-modern">
+            {/* <li className="nav-item nav-item-modern">
               <Link 
                 className={`nav-link nav-link-modern ${isActiveLink('/leaves') ? 'active' : ''}`} 
                 to="/leaves"
@@ -349,7 +349,7 @@ const [showLangMenu, setShowLangMenu] = useState(false);
                 <i className="fas fa-calendar-plus"></i>
                 {t('leave.Leaves')}
               </Link>
-            </li>
+            </li> */}
           </ul>
 
           {/* Right Section - Language & Logout */}

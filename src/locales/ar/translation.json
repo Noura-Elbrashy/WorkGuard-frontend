@@ -1,5 +1,42 @@
 { 
 
+  "EmployeeDirectory": {
+    "title": "دليل الموظفين",
+    "subtitle": "عرض وإدارة ملفات الموظفين",
+    "employee": "موظف",
+    "searchByName": "بحث بالاسم",
+    "searchPlaceholder": "اكتب اسم الموظف...",
+    "allBranches": "كل الفروع",
+    "allRoles": "كل الأدوار",
+    "allStatuses": "كل الحالات",
+    "perPage": "لكل صفحة",
+    "accountStatus": "حالة الحساب",
+    "employmentStatus": "حالة التوظيف",
+    "accountPending": "لم يُفعَّل",
+    "accountActivated": "مُفعَّل",
+    "statusActive": "نشط",
+    "statusResigned": "استقال",
+    "statusTerminated": "مفصول",
+    "statusSuspended": "موقوف",
+    "roleStaff": "موظف",
+    "roleAdmin": "مسؤول",
+    "scopeGlobal": "🌍 Super Admin",
+    "scopeBranch": "🏢 Branch Admin",
+    "viewProfile": "عرض الملف",
+    "edit": "تعديل",
+    "resendActivation": "إعادة إرسال التفعيل",
+    "delete": "حذف",
+    "confirmDelete": "تأكيد الحذف",
+    "confirmResend": "إعادة إرسال رابط التفعيل",
+    "confirmDeleteMsg": "هل تريد حذف \"{{name}}\"؟ لا يمكن التراجع.",
+    "confirmResendMsg": "إعادة إرسال رابط التفعيل إلى \"{{name}}\"؟",
+    "deleteSuccess": "تم حذف الموظف بنجاح",
+    "activationResent": "تم إرسال رابط التفعيل",
+    "noEmployees": "لا يوجد موظفون مطابقون للفلتر",
+    "showingPage": "الصفحة",
+    "total": "إجمالي"
+  }
+,
 "forgotPassword": {
     "title": "نسيت كلمة المرور؟",
     "description": "أدخل عنوان بريدك الإلكتروني وسنرسل لك رابط إعادة تعيين كلمة المرور",
@@ -145,7 +182,24 @@
     "FROM": "من",
     "TO": "إلى",
     "FILTERS": "الفلاتر",
-    "PAGE": "صفحة"
+    "PAGE": "صفحة",
+    "BULK_RESULT": {
+  "TITLE": "نتائج المنح الجماعي",
+  "GRANTED": "تم المنح",
+  "SKIPPED": "موجود مسبقاً",
+  "TOTAL": "الإجمالي",
+  "ALREADY_EXIST": "أذونات موجودة مسبقاً",
+  "GRANTED_DATES": "تواريخ جديدة",
+  "SKIPPED_DATES": "لديه إذن مسبقاً",
+  "SKIP_REASON": "تم التخطي لأن إذناً نشطاً موجود بالفعل لهذا التاريخ",
+  "FULLY_GRANTED": "مُنح بالكامل",
+  "PARTIAL": "منح جزئي",
+  "ALL_SKIPPED": "موجود مسبقاً",
+  "NO_ACCESS": "لا صلاحية",
+  "FULLY_GRANTED_USERS": "الموظفون الذين تم منحهم بنجاح",
+  "NO_ACCESS_USERS": "موظفون خارج نطاق صلاحياتك",
+  "NO_ACCESS_REASON": "هؤلاء الموظفون لا ينتمون لأي فرع من فروعك"
+}
   } 
 ,
 
