@@ -1111,7 +1111,7 @@ useEffect(() => {
               : <><i className="fas fa-user-plus me-2"/>{t('submit')}</>}
           </button>
           <button type="button" className="btn btn-secondary btn-lg"
-            onClick={() => navigate('/admin/dashboard')}>
+            onClick={() => navigate('/admin/dashboardx')}>
             <i className="fas fa-arrow-left me-2"/>{t('cancel')}
           </button>
         </div>

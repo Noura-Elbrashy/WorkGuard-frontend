@@ -34,7 +34,10 @@
     "activationResent": "تم إرسال رابط التفعيل",
     "noEmployees": "لا يوجد موظفون مطابقون للفلتر",
     "showingPage": "الصفحة",
-    "total": "إجمالي"
+    "total": "إجمالي",
+    "statusFormer": "سابق",
+"allDepartments": "جميع الاقسام",
+"department": "قسم"
   }
 ,
 "forgotPassword": {

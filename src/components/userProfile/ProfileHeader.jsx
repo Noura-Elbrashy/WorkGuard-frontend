@@ -177,12 +177,12 @@ function UserHeader({ user, isAdmin }) {
   // Account Status (Activation)
   // =========================
   const accountStatus = user.isActive ? 'active' : 'pending';
-
+const currentStatus = user?.employmentHistory?.at(-1)?.status;
   // =========================
   // Employment Status (HR)
   // =========================
   const employmentStatus =
-    employmentStatusMap[user.employmentStatus] ||
+    employmentStatusMap[currentStatus] ||
     employmentStatusMap.active;
 
   return (
@@ -263,7 +263,7 @@ function UserHeader({ user, isAdmin }) {
               <i
                 className={`fas ${employmentStatus.icon} me-2`}
               ></i>
-              {t(user.employmentStatus)}
+              {t(currentStatus)}
             </span>
 
             {/* Role */}

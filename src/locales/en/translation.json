@@ -34,7 +34,10 @@
     "activationResent": "Activation email sent",
     "noEmployees": "No employees match the current filters",
     "showingPage": "Page",
-    "total": "total"
+    "total": "total",
+    "statusFormer": "Former",
+"allDepartments": "All Departments",
+"department": "Department"
   }
 ,
  "forgotPassword": {
@@ -343,7 +346,7 @@
     "loadingPlans": "Loading plans...",
     
     "planName": "Plan Name",
-    "planNamePlaceholder": "e.g., 2025 National Holidays",
+    "planNamePlaceholder": "e.g., 2026 National Holidays",
     "holidaysList": "Holidays List",
     "noHolidaysYet": "No holidays added yet",
     "addFirstHoliday": "Add First Holiday",

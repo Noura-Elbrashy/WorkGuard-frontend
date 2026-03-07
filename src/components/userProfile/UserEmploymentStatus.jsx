@@ -12,7 +12,7 @@ const [showModal, setShowModal] = useState(false);
 const [newStatus, setNewStatus] = useState('terminated');
 const [reason, setReason] = useState('');
 
-
+const currentStatus = user?.employmentHistory?.at(-1)?.status;
 
 // API call to update employment status
 const updateStatus = async (status, reason = '') => {
@@ -38,7 +38,7 @@ const updateStatus = async (status, reason = '') => {
   return (
     <div className="card mb-3">
       <div className="card-header fw-semibold">
-       {t(`employment.status.${user.employmentStatus}`)}
+       {t(`employment.status.${currentStatus}`)}
 
       </div>
 
@@ -49,25 +49,25 @@ const updateStatus = async (status, reason = '') => {
     <span className="fw-semibold">  {t('employment.currentStatus')}:</span>
 
     <span className={`badge ${
-      user.employmentStatus === 'active'
+      currentStatus === 'active'
         ? 'bg-success'
-        : user.employmentStatus === 'terminated'
+        : currentStatus === 'terminated'
         ? 'bg-danger'
-        : user.employmentStatus === 'suspended'
+        : currentStatus === 'suspended'
         ? 'bg-warning text-dark'
         : 'bg-secondary'
     }`}>
-    {t(`employment.status.${user.employmentStatus}`)}
+    {t(`employment.status.${currentStatus}`)}
 
     </span>
   </div>
 
-  {user.employmentEndReason && (
+  {/* {user.employmentEndReason && (
     <div className="text-muted small mt-1">
       {t('employment.reason')}: {user.employmentEndReason}
     </div>
     
-  )}
+  )} */}
 
 </div>
 {showModal && (
@@ -185,7 +185,7 @@ const updateStatus = async (status, reason = '') => {
 
 
         {/* Admin Actions */}
-{isAdmin && user.employmentStatus === 'active' && (
+{isAdmin && currentStatus === 'active' && (
   <button
     className="btn btn-outline-danger"
     disabled={loading}
@@ -200,7 +200,7 @@ const updateStatus = async (status, reason = '') => {
   </button>
 )}
 
-{isAdmin && user.employmentStatus !== 'active' && (
+{isAdmin && currentStatus !== 'active' && (
   <button
     className="btn btn-outline-success"
     disabled={loading}

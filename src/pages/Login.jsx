@@ -41,7 +41,8 @@ function Login() {
     try {
       const res = await apiPost('/auth/login', formData);
       localStorage.setItem('token', res.data.token);
-      navigate('/profile/me');
+      // navigate('/profile/me');
+      navigate('/attendance');
     } catch (err) {
       setError(err.response?.data?.message || t('loginFailed'));
     }
