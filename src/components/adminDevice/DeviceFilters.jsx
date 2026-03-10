@@ -38,7 +38,19 @@
 
 // export default Filters;
 
+
+
+
+
+
+
+
+
+
+
+
 //translations
+
 import { useTranslation } from 'react-i18next';
 
 function Filters({ filters, setFilters }) {

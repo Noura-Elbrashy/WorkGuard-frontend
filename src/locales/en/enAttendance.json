@@ -1,0 +1,83 @@
+{
+  "employeeAttendance": "Employee Attendance",
+  "attendanceFilters": "Filters",
+  "attendanceRecords": "Attendance Records",
+
+  "attendancePolicy": {
+    "manage": "Manage Policies"
+  },
+
+  "total": "Total",
+  "all": "All",
+  "allBranches": "All Branches",
+
+  "branch": "Branch",
+  "branches": "Branches",
+  "date": "Date",
+  "from": "From",
+  "to": "To",
+  "employee": "Employee",
+  "dayStatus": "Day Status",
+  "summary": "Summary",
+  "details": "Details",
+  "notes": "Notes",
+  "actions": "Actions",
+
+  "searchByName": "Search by name…",
+  "selectBranch": "Select branch",
+  "selectBranchFirst": "Please select a branch first",
+  "clearFilters": "Clear filters",
+  "invalidatedOnly": "Show invalidated only",
+
+  "previous": "Previous",
+  "next": "Next",
+
+  "firstIn": "First in",
+  "lastOut": "Last out",
+  "late": "Late",
+  "earlyLeave": "Early leave",
+  "earlyArrival": "Early arrival",
+  "lateDeparture": "Late departure",
+  "transitDeduction": "Transit deduction",
+  "transitDetails": "Transit Details",
+  "transitTime": "Gap",
+  "deduction": "Deduction",
+  "noDeduction": "No deduction",
+  "min": "min",
+  "noPenalties": "No penalties",
+
+  "checkIn": "Check-in",
+  "checkOut": "Check-out",
+  "addAttendance": "Add Attendance",
+  "addManualAttendance": "Add Manual Attendance",
+  "addNote": "Add a note…",
+  "invalidateRecord": "Mark as invalid",
+  "invalidated": "Invalidated",
+  "addedByAdmin": "Added by admin",
+
+  "noAttendanceForDay": "No attendance records for this day",
+  "noData": "No data available",
+  "noNotes": "No notes",
+  "deletedUser": "Deleted employee",
+  "loading": "Loading",
+
+  "save": "Save",
+  "saving": "Saving…",
+  "cancel": "Cancel",
+  "edit": "Edit",
+  "close": "Close",
+
+  "savedSuccessfully": "Saved successfully",
+  "attendanceCreatedSuccessfully": "Attendance record created successfully",
+  "errorSaving": "An error occurred while saving. Please try again.",
+  "fetchError": "Failed to load data. Please try again.",
+
+  "WORKING_DAY": "Working Day",
+  "LEAVE_PAID": "Paid Leave",
+  "LEAVE_UNPAID": "Unpaid Leave",
+  "ABSENT_NO_PERMISSION": "Absent",
+  "NON_WORKING_DAY": "Day Off",
+  "HOLIDAY": "Public Holiday",
+  "WEEKLY_OFF": "Day Off",
+  "NO_DATA": "No Data"
+}

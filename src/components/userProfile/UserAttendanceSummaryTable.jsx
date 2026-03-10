@@ -345,14 +345,54 @@
 
 // export default UserAttendanceSummaryTable;
 
-
 import { useTranslation } from 'react-i18next';
 
-function UserAttendanceSummaryTable({
-  days = [],
-  loading = false,
-  onOpenDetails
-}) {
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// UserAttendanceSummaryTable
+// Source: DailyAttendanceSummary (من /admin/user-monthly-report)
+//
+// ✅ FIX 1 — field names صح:
+//   ❌ day.dayType                   → ✅ day.dayStatus
+//   ❌ day.lateMinutes               → ✅ day.totalLateMinutes
+//   ❌ day.earlyLeaveMinutes         → ✅ day.totalEarlyLeaveMinutes
+//   ❌ day.transitDeductionMinutes   → ✅ day.totalTransitDeductionMinutes
+//   ❌ day.adminNote (string)        → ✅ day.adminNotes (array)
+//
+// ✅ FIX 2 — date string للـ openDetails:
+//   ❌ day.date (ISO string قد يكون UTC)
+//   ✅ localDateStr(day.date) → yyyy-mm-dd بـ local time دايماً
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+const localDateStr = (value) => {
+  const d = new Date(value);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+};
+
+// dayStatus → badge color (من DailyAttendanceSummary schema)
+const STATUS_COLOR = {
+  working:         'success',
+  holiday:         'info',
+  leave_paid:      'primary',
+  leave_unpaid:    'warning',
+  absent:          'danger',
+  non_working_day: 'secondary',
+  no_data:         'light'
+};
+
+const STATUS_ICON = {
+  working:         '🟢',
+  holiday:         '🎉',
+  leave_paid:      '🏖️',
+  leave_unpaid:    '⚠️',
+  absent:          '❌',
+  non_working_day: '📅',
+  no_data:         '—'
+};
+
+function UserAttendanceSummaryTable({ days = [], loading = false, onOpenDetails }) {
   const { t } = useTranslation();
 
   if (loading) {
@@ -364,11 +404,7 @@ function UserAttendanceSummaryTable({
   }
 
   if (!Array.isArray(days) || days.length === 0) {
-    return (
-      <div className="text-center py-5 text-muted">
-        {t('noData')}
-      </div>
-    );
+    return <div className="text-center py-5 text-muted">{t('noData')}</div>;
   }
 
   return (
@@ -388,23 +424,28 @@ function UserAttendanceSummaryTable({
           {days.map(day => {
             const dateObj = new Date(day.date);
 
-            const hasPenalty =
-              day.lateMinutes > 0 ||
-              day.earlyLeaveMinutes > 0 ||
-              day.transitDeductionMinutes > 0;
+            // ✅ FIX: dayStatus مش dayType
+            const status = day.dayStatus || 'no_data';
 
-            const hasBonus =
-              day.earlyArrivalMinutes > 0 ||
-              day.lateDepartureMinutes > 0;
+            // ✅ FIX: الأسماء الصح من DailyAttendanceSummary
+            const lateMin       = day.totalLateMinutes             || 0;
+            const earlyMin      = day.totalEarlyLeaveMinutes       || 0;
+            const transitMin    = day.totalTransitDeductionMinutes || 0;
+            const earlyArrival  = day.earlyArrivalMinutes          || 0;
+            const lateDeparture = day.lateDepartureMinutes         || 0;
+
+            const hasPenalty = lateMin > 0 || earlyMin > 0 || transitMin > 0;
+            const hasBonus   = earlyArrival > 0 || lateDeparture > 0;
 
             return (
-              <tr key={day.date}>
+              <tr key={day._id || day.date}>
+
                 {/* Date */}
                 <td>
                   {dateObj.toLocaleDateString()}
                   <br />
                   <small className="text-muted">
-                    {t(day.weekday)}
+                    {dateObj.toLocaleString('en-US', { weekday: 'long' })}
                   </small>
                 </td>
 
@@ -416,10 +457,8 @@ function UserAttendanceSummaryTable({
                         <i className="fas fa-building text-secondary me-2" />
                         <span>{b.name}</span>
                         {b.hasInvalid && (
-                          <i
-                            className="fas fa-exclamation-circle text-danger ms-2"
-                            title="Invalidated attendance"
-                          />
+                          <i className="fas fa-exclamation-circle text-danger ms-2"
+                            title="Invalidated attendance" />
                         )}
                       </div>
                     ))
@@ -428,36 +467,17 @@ function UserAttendanceSummaryTable({
                   )}
                 </td>
 
-                {/* Day Status */}
+                {/* Day Status — ✅ dayStatus */}
                 <td>
-                  <span
-                    className={`badge bg-${
-                      day.dayType === 'working'
-                        ? 'success'
-                        : day.dayType === 'holiday'
-                        ? 'info'
-                        : day.dayType === 'leave_paid'
-                        ? 'primary'
-                        : day.dayType === 'leave_unpaid'
-                        ? 'warning'
-                        : day.dayType === 'partial_leave'
-                        ? 'secondary'
-                        : 'dark'
-                    }`}
-                  >
-                    {day.dayType === 'working' && '🟢'}
-                    {day.dayType === 'holiday' && '🎉'}
-                    {day.dayType === 'leave_paid' && '🏖️'}
-                    {day.dayType === 'leave_unpaid' && '⚠️'}
-                    {day.dayType === 'partial_leave' && '🌓'}
-                    {day.dayType === 'absent' && '❌'}{' '}
-                    {t(day.dayType)}
+                  <span className={`badge bg-${STATUS_COLOR[status] || 'secondary'}`}>
+                    {STATUS_ICON[status] || ''} {t(status)}
                   </span>
 
-                  {day.adminNote && (
+                  {/* ✅ FIX: adminNotes هو array مش string */}
+                  {day.adminNotes?.length > 0 && (
                     <div className="small text-muted mt-1">
                       <i className="fas fa-info-circle me-1" />
-                      {day.adminNote}
+                      {day.adminNotes.join(' · ')}
                     </div>
                   )}
                 </td>
@@ -470,7 +490,6 @@ function UserAttendanceSummaryTable({
                       {new Date(day.firstCheckInTime).toLocaleTimeString()}
                     </div>
                   )}
-
                   {day.lastCheckOutTime && (
                     <div className="small">
                       <strong>{t('lastOut')}:</strong>{' '}
@@ -478,52 +497,54 @@ function UserAttendanceSummaryTable({
                     </div>
                   )}
 
-                  {day.lateMinutes > 0 && (
+                  {/* ✅ FIX: totalLateMinutes */}
+                  {lateMin > 0 && (
                     <div className="small text-warning">
-                      ⏰ {t('late')}: {day.lateMinutes} {t('minutes')}
+                      ⏰ {t('late')}: {lateMin} {t('minutes')}
                     </div>
                   )}
 
-                  {day.earlyLeaveMinutes > 0 && (
+                  {/* ✅ FIX: totalEarlyLeaveMinutes */}
+                  {earlyMin > 0 && (
                     <div className="small text-danger">
-                      🚪 {t('earlyLeave')}: {day.earlyLeaveMinutes} {t('minutes')}
+                      🚪 {t('earlyLeave')}: {earlyMin} {t('minutes')}
                     </div>
                   )}
 
-                  {day.earlyArrivalMinutes > 0 && (
+                  {earlyArrival > 0 && (
                     <div className="small text-success">
-                      ⬅️ {t('earlyArrival')}: {day.earlyArrivalMinutes} {t('minutes')}
+                      ⬅️ {t('earlyArrival')}: {earlyArrival} {t('minutes')}
                     </div>
                   )}
 
-                  {day.lateDepartureMinutes > 0 && (
+                  {lateDeparture > 0 && (
                     <div className="small text-success">
-                      ➡️ {t('lateDeparture')}: {day.lateDepartureMinutes} {t('minutes')}
+                      ➡️ {t('lateDeparture')}: {lateDeparture} {t('minutes')}
                     </div>
                   )}
 
-                  {day.transitDeductionMinutes > 0 && (
+                  {/* ✅ FIX: totalTransitDeductionMinutes */}
+                  {transitMin > 0 && (
                     <div className="small text-danger">
-                      🚕 {t('transitDeduction')}: {day.transitDeductionMinutes} {t('minutes')}
+                      🚕 {t('transitDeduction')}: {transitMin} {t('minutes')}
                     </div>
                   )}
 
                   {!hasPenalty && !hasBonus && (
-                    <span className="small text-muted">
-                      {t('noPenalties')}
-                    </span>
+                    <span className="small text-muted">{t('noPenalties')}</span>
                   )}
                 </td>
 
-                {/* Details */}
+                {/* Details — ✅ FIX: localDateStr بدل day.date مباشرة */}
                 <td className="text-center">
                   <button
                     className="btn btn-sm btn-outline-primary"
-                    onClick={() => onOpenDetails?.({ date: day.date })}
+                    onClick={() => onOpenDetails?.({ date: localDateStr(day.date) })}
                   >
                     <i className="fas fa-eye" />
                   </button>
                 </td>
+
               </tr>
             );
           })}
@@ -534,3 +555,191 @@ function UserAttendanceSummaryTable({
 }
 
 export default UserAttendanceSummaryTable;
+// import { useTranslation } from 'react-i18next';
+
+// function UserAttendanceSummaryTable({
+//   days = [],
+//   loading = false,
+//   onOpenDetails
+// }) {
+//   const { t } = useTranslation();
+
+//   if (loading) {
+//     return (
+//       <div className="text-center py-5">
+//         <div className="spinner-border text-primary" />
+//       </div>
+//     );
+//   }
+
+//   if (!Array.isArray(days) || days.length === 0) {
+//     return (
+//       <div className="text-center py-5 text-muted">
+//         {t('noData')}
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="table-responsive">
+//       <table className="table table-hover align-middle">
+//         <thead className="table-primary">
+//           <tr>
+//             <th>{t('date')}</th>
+//             <th>{t('branches')}</th>
+//             <th>{t('dayStatus')}</th>
+//             <th>{t('summary')}</th>
+//             <th className="text-center">👁️</th>
+//           </tr>
+//         </thead>
+
+//         <tbody>
+//           {days.map(day => {
+//             const dateObj = new Date(day.date);
+
+//             const hasPenalty =
+//               day.lateMinutes > 0 ||
+//               day.earlyLeaveMinutes > 0 ||
+//               day.transitDeductionMinutes > 0;
+
+//             const hasBonus =
+//               day.earlyArrivalMinutes > 0 ||
+//               day.lateDepartureMinutes > 0;
+
+//             return (
+//               <tr key={day.date}>
+//                 {/* Date */}
+//                 <td>
+//                   {dateObj.toLocaleDateString()}
+//                   <br />
+//                   <small className="text-muted">
+//                     {t(day.weekday)}
+//                   </small>
+//                 </td>
+
+//                 {/* Branches */}
+//                 <td>
+//                   {day.branchesVisited?.length ? (
+//                     day.branchesVisited.map(b => (
+//                       <div key={b.branch} className="d-flex align-items-center">
+//                         <i className="fas fa-building text-secondary me-2" />
+//                         <span>{b.name}</span>
+//                         {b.hasInvalid && (
+//                           <i
+//                             className="fas fa-exclamation-circle text-danger ms-2"
+//                             title="Invalidated attendance"
+//                           />
+//                         )}
+//                       </div>
+//                     ))
+//                   ) : (
+//                     <span className="text-muted">—</span>
+//                   )}
+//                 </td>
+
+//                 {/* Day Status */}
+//                 <td>
+//                   <span
+//                     className={`badge bg-${
+//                       day.dayType === 'working'
+//                         ? 'success'
+//                         : day.dayType === 'holiday'
+//                         ? 'info'
+//                         : day.dayType === 'leave_paid'
+//                         ? 'primary'
+//                         : day.dayType === 'leave_unpaid'
+//                         ? 'warning'
+//                         : day.dayType === 'partial_leave'
+//                         ? 'secondary'
+//                         : 'dark'
+//                     }`}
+//                   >
+//                     {day.dayType === 'working' && '🟢'}
+//                     {day.dayType === 'holiday' && '🎉'}
+//                     {day.dayType === 'leave_paid' && '🏖️'}
+//                     {day.dayType === 'leave_unpaid' && '⚠️'}
+//                     {day.dayType === 'partial_leave' && '🌓'}
+//                     {day.dayType === 'absent' && '❌'}{' '}
+//                     {t(day.dayType)}
+//                   </span>
+
+//                   {day.adminNote && (
+//                     <div className="small text-muted mt-1">
+//                       <i className="fas fa-info-circle me-1" />
+//                       {day.adminNote}
+//                     </div>
+//                   )}
+//                 </td>
+
+//                 {/* Summary */}
+//                 <td>
+//                   {day.firstCheckInTime && (
+//                     <div className="small">
+//                       <strong>{t('firstIn')}:</strong>{' '}
+//                       {new Date(day.firstCheckInTime).toLocaleTimeString()}
+//                     </div>
+//                   )}
+
+//                   {day.lastCheckOutTime && (
+//                     <div className="small">
+//                       <strong>{t('lastOut')}:</strong>{' '}
+//                       {new Date(day.lastCheckOutTime).toLocaleTimeString()}
+//                     </div>
+//                   )}
+
+//                   {day.lateMinutes > 0 && (
+//                     <div className="small text-warning">
+//                       ⏰ {t('late')}: {day.lateMinutes} {t('minutes')}
+//                     </div>
+//                   )}
+
+//                   {day.earlyLeaveMinutes > 0 && (
+//                     <div className="small text-danger">
+//                       🚪 {t('earlyLeave')}: {day.earlyLeaveMinutes} {t('minutes')}
+//                     </div>
+//                   )}
+
+//                   {day.earlyArrivalMinutes > 0 && (
+//                     <div className="small text-success">
+//                       ⬅️ {t('earlyArrival')}: {day.earlyArrivalMinutes} {t('minutes')}
+//                     </div>
+//                   )}
+
+//                   {day.lateDepartureMinutes > 0 && (
+//                     <div className="small text-success">
+//                       ➡️ {t('lateDeparture')}: {day.lateDepartureMinutes} {t('minutes')}
+//                     </div>
+//                   )}
+
+//                   {day.transitDeductionMinutes > 0 && (
+//                     <div className="small text-danger">
+//                       🚕 {t('transitDeduction')}: {day.transitDeductionMinutes} {t('minutes')}
+//                     </div>
+//                   )}
+
+//                   {!hasPenalty && !hasBonus && (
+//                     <span className="small text-muted">
+//                       {t('noPenalties')}
+//                     </span>
+//                   )}
+//                 </td>
+
+//                 {/* Details */}
+//                 <td className="text-center">
+//                   <button
+//                     className="btn btn-sm btn-outline-primary"
+//                     onClick={() => onOpenDetails?.({ date: day.date })}
+//                   >
+//                     <i className="fas fa-eye" />
+//                   </button>
+//                 </td>
+//               </tr>
+//             );
+//           })}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// }
+
+// export default UserAttendanceSummaryTable;

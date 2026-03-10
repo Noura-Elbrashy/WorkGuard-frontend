@@ -338,7 +338,7 @@ import UserFeedbackSection from '../components/userProfile/UserFeedbackSection';
 import UserEffectiveAttendancePolicy from '../components/userProfile/UserEffectiveAttendancePolicy';
 import UserLeaveSummary from '../components/userProfile/UserLeaveSummary';
 
-import UserDevices from '../components/userProfile/UserDevices';
+import UserDevices from '../components/adminDevice/UserDevices';
 import '../style/UserProfile.css';
 import EmployeePayrollHistory from '../components/userProfile/EmployeePayrollHistory';
 import UserAssignedAttendancePolicies from '../components/userProfile/UserAssignedAttendancePolicies';

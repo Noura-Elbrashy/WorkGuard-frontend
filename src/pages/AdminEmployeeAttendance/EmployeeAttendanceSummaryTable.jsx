@@ -777,219 +777,668 @@
 
 // export default EmployeeAttendanceSummaryTable;
 
+// src/pages/admin/EmployeeAttendanceSummaryTable.jsx
+// ► عارض فقط — مفيش حسابات أو فلترة أو pagination هنا
+// ► كل البيانات جاية من الباك عبر props
 
-//notbad
+// src/pages/admin/EmployeeAttendanceSummaryTable.jsx
+// ► عارض فقط — مفيش حسابات أو فلترة أو pagination هنا
+// ► كل البيانات جاية من الباك عبر props
 import { useTranslation } from 'react-i18next';
 
+// ── Decision badge ────────────────────────────────────────────────
+const DECISION_ICON = {
+  WORKING_DAY:           'fa-check-circle',
+  LEAVE_PAID:            'fa-umbrella-beach',
+  LEAVE_UNPAID:          'fa-calendar-minus',
+  ABSENT_NO_PERMISSION:  'fa-user-times',
+  NON_WORKING_DAY:       'fa-moon',
+  HOLIDAY:               'fa-star-and-crescent',
+  WEEKLY_OFF:            'fa-moon',
+  NO_DATA:               'fa-question-circle',
+};
+
+// ✅ FIX 2 — نفرق بين HOLIDAY و WEEKLY_OFF جوا NON_WORKING_DAY
+// الباك بيبعت nonWorkingReason: 'HOLIDAY' | 'WEEKLY_OFF' | null
+const getDisplayStatus = (row) => {
+  if (row.decisionType === 'NON_WORKING_DAY') {
+    return row.nonWorkingReason === 'HOLIDAY' ? 'HOLIDAY' : 'WEEKLY_OFF';
+  }
+  return row.decisionType;
+};
+
+const DecisionBadge = ({ row }) => {
+  const { t }      = useTranslation();
+  const status     = getDisplayStatus(row);
+  const icon       = DECISION_ICON[status] || 'fa-circle';
+  // الـ CSS class يبقى NON_WORKING_DAY دايماً للاتنين عشان نفس اللون
+  const badgeClass = row.decisionType === 'NON_WORKING_DAY'
+    ? 'att-badge-NON_WORKING_DAY'
+    : `att-badge-${status || 'NO_DATA'}`;
+  return (
+    <span className={`att-badge ${badgeClass}`}>
+      <i className={`fas ${icon}`} />
+      {t(status || 'NO_DATA')}
+    </span>
+  );
+};
+
+// ── Summary mini-rows ─────────────────────────────────────────────
+const SummaryCell = ({ row, t }) => {
+  const hasPenalty = row.totalLateMinutes > 0
+    || row.totalEarlyLeaveMinutes > 0
+    || row.totalTransitDeductionMinutes > 0;
+
+  return (
+    <>
+      {/* timing */}
+      {row.firstCheckInTime && (
+        <div className="att-sumrow timing">
+          <i className="fas fa-sign-in-alt" />
+          {t('firstIn')}: {new Date(row.firstCheckInTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+        </div>
+      )}
+      {row.lastCheckOutTime && (
+        <div className="att-sumrow timing">
+          <i className="fas fa-sign-out-alt" />
+          {t('lastOut')}: {new Date(row.lastCheckOutTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+        </div>
+      )}
+
+      {/* bonuses */}
+      {row.earlyArrivalMinutes > 0 && (
+        <div className="att-sumrow bonus">
+          <i className="fas fa-star" />
+          {t('earlyArrival')}: {row.earlyArrivalMinutes} {t('min')}
+        </div>
+      )}
+      {row.lateDepartureMinutes > 0 && (
+        <div className="att-sumrow bonus">
+          <i className="fas fa-star-half-alt" />
+          {t('lateDeparture')}: {row.lateDepartureMinutes} {t('min')}
+        </div>
+      )}
+
+      {/* penalties */}
+      {row.totalLateMinutes > 0 && (
+        <div className="att-sumrow penalty">
+          <i className="fas fa-clock" />
+          {t('late')}: {row.totalLateMinutes} {t('min')}
+        </div>
+      )}
+      {row.totalEarlyLeaveMinutes > 0 && (
+        <div className="att-sumrow penalty">
+          <i className="fas fa-sign-out-alt" />
+          {t('earlyLeave')}: {row.totalEarlyLeaveMinutes} {t('min')}
+        </div>
+      )}
+      {row.totalTransitDeductionMinutes > 0 && (
+        <div className="att-sumrow penalty">
+          <i className="fas fa-route" />
+          {t('transitDeduction')}: {row.totalTransitDeductionMinutes} {t('min')}
+        </div>
+      )}
+
+      {/* admin notes */}
+      {row.adminNotes?.length > 0 && (
+        <div className="att-sumrow note">
+          <i className="fas fa-sticky-note" />
+          {row.adminNotes.join(', ')}
+        </div>
+      )}
+
+      {/* no penalty */}
+      {!hasPenalty && !row.firstCheckInTime && (
+        <span className="att-no-penalty">
+          <i className="fas fa-check" /> {t('noPenalties')}
+        </span>
+      )}
+    </>
+  );
+};
+
+// ── Main component ────────────────────────────────────────────────
 const EmployeeAttendanceSummaryTable = ({ rows = [], loading, onOpenDetails }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale       = i18n.language === 'ar' ? 'ar-EG' : 'en-GB';
 
   if (loading) {
     return (
-      <div className="text-center py-5">
-        <div className="spinner-border text-primary" />
+      <div className="att-table-card">
+        <div className="att-loading">
+          <div className="att-spinner" />
+          <div className="att-empty-text">{t('loading')}…</div>
+        </div>
       </div>
     );
   }
 
-  if (!Array.isArray(rows) || rows.length === 0) {
+  if (!rows.length) {
     return (
-      <div className="text-center py-5 text-muted">
-        {t('noData')}
+      <div className="att-table-card">
+        <div className="att-empty">
+          <div className="att-empty-icon"><i className="fas fa-calendar-times" /></div>
+          <div className="att-empty-text">{t('noData')}</div>
+        </div>
       </div>
     );
   }
-
-  const renderDayStatus = (status) => {
-  
-const map = {
-  WORKING_DAY: 'success',
-  LEAVE_PAID: 'primary',
-  LEAVE_UNPAID: 'warning',
-  ABSENT_NO_PERMISSION: 'danger',
-  NON_WORKING_DAY: 'info',
-  NO_DATA: 'secondary'
-};
-
-    return (
-      <span className={`badge bg-${map[status] || 'light'} text-light`}>
-        {t(status)}
-      </span>
-    );
-  };
 
   return (
-    <div className="table-responsive">
-      <table className="table table-hover align-middle">
-        <thead className="table-primary">
-          <tr>
-            <th>{t('employee')}</th>
-            <th>{t('date')}</th>
-            <th>{t('branches')}</th>
-            <th>{t('dayStatus')}</th>
-            <th>{t('summary')}</th>
-            <th className="text-center">{t('details')}</th>
-          </tr>
-        </thead>
+    <div className="att-table-card">
+      <div style={{ overflowX: 'auto' }}>
+        <table className="att-table">
+          <thead>
+            <tr>
+              <th>{t('employee')}</th>
+              <th>{t('date')}</th>
+              <th>{t('branches')}</th>
+              <th>{t('dayStatus')}</th>
+              <th>{t('summary')}</th>
+              <th style={{ textAlign: 'center' }}>{t('details')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(row => {
+              const dateObj = new Date(row.date);
+              return (
+                <tr
+                  key={row._id}
+                  className={row.allInvalid ? 'att-row-invalid' : ''}
+                >
+                  {/* Employee */}
+                  <td>
+                    <div className="att-emp-name">{row.user?.name || t('deletedUser')}</div>
+                    <div className="att-emp-email">{row.user?.email}</div>
+                  </td>
 
-        <tbody>
-          {rows.map(row => {
-            const dateObj = new Date(row.date);
-
-            return (
-              <tr
-                key={row._id}
-                className={row.allInvalid ? 'table-danger' : ''}
-              >
-                {/* Employee */}
-                <td>
-                  <strong>{row.user?.name}</strong>
-                  <br />
-                  <small className="text-muted">
-                    {row.user?.email}
-                  </small>
-                </td>
-
-                {/* Date */}
-                <td>
-                  {dateObj.toLocaleDateString()}
-                  <br />
-                  <small className="text-muted">
-                    {dateObj.toLocaleString('en-US', { weekday: 'long' })}
-                  </small>
-                </td>
-
-                {/* Branches */}
-                <td>
-                  {row.branchesVisited?.length ? (
-                    row.branchesVisited.map(b => (
-                      <div key={b.branch} className="d-flex align-items-center">
-                        <i className="fas fa-building text-secondary me-2" />
-                        <span>{b.name}</span>
-                        {b.invalidated && (
-                          <span
-                            className="ms-2 text-danger"
-                            title="Invalidated attendance"
-                          >
-                            <i className="fas fa-exclamation-circle" />
-                          </span>
-                        )}
-                      </div>
-                    ))
-                  ) : (
-                    <span className="text-muted">
-                      — No attendance —
-                    </span>
-                  )}
-                </td>
-
-                {/* Day Status */}
-                <td>
-                  {renderDayStatus(row.decisionType)
-                  // (row.dayStatus)
-                  
-                  }
-                </td>
-
-                {/* Summary */}
-                <td>
-                  {row.firstCheckInTime && (
-                    <div className="small">
-                      <strong>{t('firstIn')}:</strong>{' '}
-                      {new Date(row.firstCheckInTime).toLocaleTimeString()}
+                  {/* Date */}
+                  <td>
+                    <div className="att-date-main">
+                      {dateObj.toLocaleDateString(locale, { day: '2-digit', month: 'short', year: 'numeric' })}
                     </div>
-                  )}
-
-                  {row.lastCheckOutTime && (
-                    <div className="small">
-                      <strong>{t('lastOut')}:</strong>{' '}
-                      {new Date(row.lastCheckOutTime).toLocaleTimeString()}
+                    <div className="att-date-day">
+                      {dateObj.toLocaleDateString(locale, { weekday: 'long' })}
                     </div>
-                  )}
+                  </td>
 
-                  {row.totalLateMinutes > 0 && (
-                    <div className="small text-warning">
-                      <i className="fas fa-clock me-1" />
-                      {t('late')}: {row.totalLateMinutes} {t('minutes')}
-                    </div>
-                  )}
-
-                  {row.earlyArrivalMinutes > 0 && (
-                    <div className="small text-success">
-                      <i className="fas fa-arrow-circle-left me-1" />
-                      {t('earlyArrival')}: {row.earlyArrivalMinutes} {t('minutes')}
-                    </div>
-                  )}
-
-                  {row.lateDepartureMinutes > 0 && (
-                    <div className="small text-success">
-                      <i className="fas fa-arrow-circle-right me-1" />
-                      {t('lateDeparture')}: {row.lateDepartureMinutes} {t('minutes')}
-                    </div>
-                  )}
-{row.totalEarlyLeaveMinutes > 0 && (
-  <div className="small text-danger">
-    {/* <i className="fas fa-door-open me-1" /> */}
-     <i className="fas fa-sign-out-alt me-1" />
-    {t('earlyLeave')}: {row.totalEarlyLeaveMinutes} {t('minutes')}
-  </div>
-)}
-
-                  {row.totalTransitDeductionMinutes > 0 && (
-                    <div className="small text-danger">
-                      <i className="fas fa-route me-1" />
-                      {t('transitDeduction')}:{' '}
-                      {row.totalTransitDeductionMinutes} {t('minutes')}
-                    </div>
-                  )}
-{/* {row.notes && (
-  <div className="small text-muted mt-1">
-    <i className="fas fa-sticky-note me-1" />
-    {row.notes}
-  </div>
-)} */}
-{row.adminNotes?.length > 0 && (
-  <div className="small text-muted mt-1">
-    <i className="fas fa-sticky-note me-1" />
-    {row.adminNotes.join(', ')}
-  </div>
-)}
-
-                  {!row.totalLateMinutes &&
-                   !row.totalEarlyLeaveMinutes &&
-                    !row.earlyArrivalMinutes &&
-                    !row.lateDepartureMinutes &&
-                    !row.totalTransitDeductionMinutes && (
-                      <span className="small text-muted">
-                        {t('noPenalties')}
-                      </span>
+                  {/* Branches visited */}
+                  <td>
+                    {row.branchesVisited?.length ? (
+                      row.branchesVisited.map((b, idx) => (
+                        <div key={idx} className="att-branch-item">
+                          <i className="fas fa-building" />
+                          <span>{b.name || b.branch}</span>
+                          {b.invalidated && (
+                            <i
+                              className="fas fa-exclamation-circle"
+                              style={{ color: 'var(--att-danger)', fontSize: '.7rem' }}
+                              title={t('invalidated')}
+                            />
+                          )}
+                        </div>
+                      ))
+                    ) : (
+                      <span style={{ color: 'var(--att-muted)', fontSize: '.78rem' }}>—</span>
                     )}
-                </td>
+                  </td>
 
-                {/* Details */}
-                <td className="text-center">
-                  <button
-                    className="btn btn-sm btn-outline-primary"
-                    // onClick={() => onOpenDetails(row)}
-                    onClick={() => {
-  if (!row.user?._id || !row.date) return;
-  onOpenDetails(row);
-}}
+                  {/* Decision type */}
+                  <td><DecisionBadge row={row} /></td>
 
-                  >
-                    <i className="fas fa-eye" />
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                  {/* Summary */}
+                  <td><SummaryCell row={row} t={t} /></td>
+
+                  {/* Details button */}
+                  <td style={{ textAlign: 'center' }}>
+                    <button
+                      className="att-btn-details"
+                      onClick={() => {
+                        if (!row.user?._id || !row.date) return;
+                        onOpenDetails(row);
+                      }}
+                    >
+                      <i className="fas fa-eye" />
+                      {t('details')}
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
 
 export default EmployeeAttendanceSummaryTable;
+
+// import { useTranslation } from 'react-i18next';
+
+// // ── Decision badge ────────────────────────────────────────────────
+// const DECISION_ICON = {
+//   WORKING_DAY:           'fa-check-circle',
+//   LEAVE_PAID:            'fa-umbrella-beach',
+//   LEAVE_UNPAID:          'fa-calendar-minus',
+//   ABSENT_NO_PERMISSION:  'fa-user-times',
+//   NON_WORKING_DAY:       'fa-moon',
+//   NO_DATA:               'fa-question-circle',
+// };
+
+// const DecisionBadge = ({ status }) => {
+//   const { t } = useTranslation();
+//   const icon  = DECISION_ICON[status] || 'fa-circle';
+//   return (
+//     <span className={`att-badge att-badge-${status || 'NO_DATA'}`}>
+//       <i className={`fas ${icon}`} />
+//       {t(status || 'NO_DATA')}
+//     </span>
+//   );
+// };
+
+// // ── Summary mini-rows ─────────────────────────────────────────────
+// const SummaryCell = ({ row, t }) => {
+//   const hasPenalty = row.totalLateMinutes > 0
+//     || row.totalEarlyLeaveMinutes > 0
+//     || row.totalTransitDeductionMinutes > 0;
+
+//   return (
+//     <>
+//       {/* timing */}
+//       {row.firstCheckInTime && (
+//         <div className="att-sumrow timing">
+//           <i className="fas fa-sign-in-alt" />
+//           {t('firstIn')}: {new Date(row.firstCheckInTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+//         </div>
+//       )}
+//       {row.lastCheckOutTime && (
+//         <div className="att-sumrow timing">
+//           <i className="fas fa-sign-out-alt" />
+//           {t('lastOut')}: {new Date(row.lastCheckOutTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+//         </div>
+//       )}
+
+//       {/* bonuses */}
+//       {row.earlyArrivalMinutes > 0 && (
+//         <div className="att-sumrow bonus">
+//           <i className="fas fa-star" />
+//           {t('earlyArrival')}: {row.earlyArrivalMinutes} {t('min')}
+//         </div>
+//       )}
+//       {row.lateDepartureMinutes > 0 && (
+//         <div className="att-sumrow bonus">
+//           <i className="fas fa-star-half-alt" />
+//           {t('lateDeparture')}: {row.lateDepartureMinutes} {t('min')}
+//         </div>
+//       )}
+
+//       {/* penalties */}
+//       {row.totalLateMinutes > 0 && (
+//         <div className="att-sumrow penalty">
+//           <i className="fas fa-clock" />
+//           {t('late')}: {row.totalLateMinutes} {t('min')}
+//         </div>
+//       )}
+//       {row.totalEarlyLeaveMinutes > 0 && (
+//         <div className="att-sumrow penalty">
+//           <i className="fas fa-sign-out-alt" />
+//           {t('earlyLeave')}: {row.totalEarlyLeaveMinutes} {t('min')}
+//         </div>
+//       )}
+//       {row.totalTransitDeductionMinutes > 0 && (
+//         <div className="att-sumrow penalty">
+//           <i className="fas fa-route" />
+//           {t('transitDeduction')}: {row.totalTransitDeductionMinutes} {t('min')}
+//         </div>
+//       )}
+
+//       {/* admin notes */}
+//       {row.adminNotes?.length > 0 && (
+//         <div className="att-sumrow note">
+//           <i className="fas fa-sticky-note" />
+//           {row.adminNotes.join(', ')}
+//         </div>
+//       )}
+
+//       {/* no penalty */}
+//       {!hasPenalty && !row.firstCheckInTime && (
+//         <span className="att-no-penalty">
+//           <i className="fas fa-check" /> {t('noPenalties')}
+//         </span>
+//       )}
+//     </>
+//   );
+// };
+
+// // ── Main component ────────────────────────────────────────────────
+// const EmployeeAttendanceSummaryTable = ({ rows = [], loading, onOpenDetails }) => {
+//   const { t, i18n } = useTranslation();
+//   const locale       = i18n.language === 'ar' ? 'ar-EG' : 'en-GB';
+
+//   if (loading) {
+//     return (
+//       <div className="att-table-card">
+//         <div className="att-loading">
+//           <div className="att-spinner" />
+//           <div className="att-empty-text">{t('loading')}…</div>
+//         </div>
+//       </div>
+//     );
+//   }
+
+//   if (!rows.length) {
+//     return (
+//       <div className="att-table-card">
+//         <div className="att-empty">
+//           <div className="att-empty-icon"><i className="fas fa-calendar-times" /></div>
+//           <div className="att-empty-text">{t('noData')}</div>
+//         </div>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="att-table-card">
+//       <div style={{ overflowX: 'auto' }}>
+//         <table className="att-table">
+//           <thead>
+//             <tr>
+//               <th>{t('employee')}</th>
+//               <th>{t('date')}</th>
+//               <th>{t('branches')}</th>
+//               <th>{t('dayStatus')}</th>
+//               <th>{t('summary')}</th>
+//               <th style={{ textAlign: 'center' }}>{t('details')}</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {rows.map(row => {
+//               const dateObj = new Date(row.date);
+//               return (
+//                 <tr
+//                   key={row._id}
+//                   className={row.allInvalid ? 'att-row-invalid' : ''}
+//                 >
+//                   {/* Employee */}
+//                   <td>
+//                     <div className="att-emp-name">{row.user?.name || t('deletedUser')}</div>
+//                     <div className="att-emp-email">{row.user?.email}</div>
+//                   </td>
+
+//                   {/* Date */}
+//                   <td>
+//                     <div className="att-date-main">
+//                       {dateObj.toLocaleDateString(locale, { day: '2-digit', month: 'short', year: 'numeric' })}
+//                     </div>
+//                     <div className="att-date-day">
+//                       {dateObj.toLocaleDateString(locale, { weekday: 'long' })}
+//                     </div>
+//                   </td>
+
+//                   {/* Branches visited */}
+//                   <td>
+//                     {row.branchesVisited?.length ? (
+//                       row.branchesVisited.map((b, idx) => (
+//                         <div key={idx} className="att-branch-item">
+//                           <i className="fas fa-building" />
+//                           <span>{b.name || b.branch}</span>
+//                           {b.invalidated && (
+//                             <i
+//                               className="fas fa-exclamation-circle"
+//                               style={{ color: 'var(--att-danger)', fontSize: '.7rem' }}
+//                               title={t('invalidated')}
+//                             />
+//                           )}
+//                         </div>
+//                       ))
+//                     ) : (
+//                       <span style={{ color: 'var(--att-muted)', fontSize: '.78rem' }}>—</span>
+//                     )}
+//                   </td>
+
+//                   {/* Decision type */}
+//                   <td><DecisionBadge status={row.decisionType} /></td>
+
+//                   {/* Summary */}
+//                   <td><SummaryCell row={row} t={t} /></td>
+
+//                   {/* Details button */}
+//                   <td style={{ textAlign: 'center' }}>
+//                     <button
+//                       className="att-btn-details"
+//                       onClick={() => {
+//                         if (!row.user?._id || !row.date) return;
+//                         onOpenDetails(row);
+//                       }}
+//                     >
+//                       <i className="fas fa-eye" />
+//                       {t('details')}
+//                     </button>
+//                   </td>
+//                 </tr>
+//               );
+//             })}
+//           </tbody>
+//         </table>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default EmployeeAttendanceSummaryTable;
+// //notbad1
+// import { useTranslation } from 'react-i18next';
+
+// const EmployeeAttendanceSummaryTable = ({ rows = [], loading, onOpenDetails }) => {
+//   const { t } = useTranslation();
+
+//   if (loading) {
+//     return (
+//       <div className="text-center py-5">
+//         <div className="spinner-border text-primary" />
+//       </div>
+//     );
+//   }
+
+//   if (!Array.isArray(rows) || rows.length === 0) {
+//     return (
+//       <div className="text-center py-5 text-muted">
+//         {t('noData')}
+//       </div>
+//     );
+//   }
+
+//   const renderDayStatus = (status) => {
+  
+// const map = {
+//   WORKING_DAY: 'success',
+//   LEAVE_PAID: 'primary',
+//   LEAVE_UNPAID: 'warning',
+//   ABSENT_NO_PERMISSION: 'danger',
+//   NON_WORKING_DAY: 'info',
+//   NO_DATA: 'secondary'
+// };
+
+//     return (
+//       <span className={`badge bg-${map[status] || 'light'} text-light`}>
+//         {t(status)}
+//       </span>
+//     );
+//   };
+
+//   return (
+//     <div className="table-responsive">
+//       <table className="table table-hover align-middle">
+//         <thead className="table-primary">
+//           <tr>
+//             <th>{t('employee')}</th>
+//             <th>{t('date')}</th>
+//             <th>{t('branches')}</th>
+//             <th>{t('dayStatus')}</th>
+//             <th>{t('summary')}</th>
+//             <th className="text-center">{t('details')}</th>
+//           </tr>
+//         </thead>
+
+//         <tbody>
+//           {rows.map(row => {
+//             const dateObj = new Date(row.date);
+
+//             return (
+//               <tr
+//                 key={row._id}
+//                 className={row.allInvalid ? 'table-danger' : ''}
+//               >
+//                 {/* Employee */}
+//                 <td>
+//                   <strong>{row.user?.name}</strong>
+//                   <br />
+//                   <small className="text-muted">
+//                     {row.user?.email}
+//                   </small>
+//                 </td>
+
+//                 {/* Date */}
+//                 <td>
+//                   {dateObj.toLocaleDateString()}
+//                   <br />
+//                   <small className="text-muted">
+//                     {dateObj.toLocaleString('en-US', { weekday: 'long' })}
+//                   </small>
+//                 </td>
+
+//                 {/* Branches */}
+//                 <td>
+//                   {row.branchesVisited?.length ? (
+//                     row.branchesVisited.map(b => (
+//                       <div key={b.branch} className="d-flex align-items-center">
+//                         <i className="fas fa-building text-secondary me-2" />
+//                         <span>{b.name}</span>
+//                         {b.invalidated && (
+//                           <span
+//                             className="ms-2 text-danger"
+//                             title="Invalidated attendance"
+//                           >
+//                             <i className="fas fa-exclamation-circle" />
+//                           </span>
+//                         )}
+//                       </div>
+//                     ))
+//                   ) : (
+//                     <span className="text-muted">
+//                       — No attendance —
+//                     </span>
+//                   )}
+//                 </td>
+
+//                 {/* Day Status */}
+//                 <td>
+//                   {renderDayStatus(row.decisionType)
+//                   // (row.dayStatus)
+                  
+//                   }
+//                 </td>
+
+//                 {/* Summary */}
+//                 <td>
+//                   {row.firstCheckInTime && (
+//                     <div className="small">
+//                       <strong>{t('firstIn')}:</strong>{' '}
+//                       {new Date(row.firstCheckInTime).toLocaleTimeString()}
+//                     </div>
+//                   )}
+
+//                   {row.lastCheckOutTime && (
+//                     <div className="small">
+//                       <strong>{t('lastOut')}:</strong>{' '}
+//                       {new Date(row.lastCheckOutTime).toLocaleTimeString()}
+//                     </div>
+//                   )}
+
+//                   {row.totalLateMinutes > 0 && (
+//                     <div className="small text-warning">
+//                       <i className="fas fa-clock me-1" />
+//                       {t('late')}: {row.totalLateMinutes} {t('minutes')}
+//                     </div>
+//                   )}
+
+//                   {row.earlyArrivalMinutes > 0 && (
+//                     <div className="small text-success">
+//                       <i className="fas fa-arrow-circle-left me-1" />
+//                       {t('earlyArrival')}: {row.earlyArrivalMinutes} {t('minutes')}
+//                     </div>
+//                   )}
+
+//                   {row.lateDepartureMinutes > 0 && (
+//                     <div className="small text-success">
+//                       <i className="fas fa-arrow-circle-right me-1" />
+//                       {t('lateDeparture')}: {row.lateDepartureMinutes} {t('minutes')}
+//                     </div>
+//                   )}
+// {row.totalEarlyLeaveMinutes > 0 && (
+//   <div className="small text-danger">
+//     {/* <i className="fas fa-door-open me-1" /> */}
+//      <i className="fas fa-sign-out-alt me-1" />
+//     {t('earlyLeave')}: {row.totalEarlyLeaveMinutes} {t('minutes')}
+//   </div>
+// )}
+
+//                   {row.totalTransitDeductionMinutes > 0 && (
+//                     <div className="small text-danger">
+//                       <i className="fas fa-route me-1" />
+//                       {t('transitDeduction')}:{' '}
+//                       {row.totalTransitDeductionMinutes} {t('minutes')}
+//                     </div>
+//                   )}
+// {/* {row.notes && (
+//   <div className="small text-muted mt-1">
+//     <i className="fas fa-sticky-note me-1" />
+//     {row.notes}
+//   </div>
+// )} */}
+// {row.adminNotes?.length > 0 && (
+//   <div className="small text-muted mt-1">
+//     <i className="fas fa-sticky-note me-1" />
+//     {row.adminNotes.join(', ')}
+//   </div>
+// )}
+
+//                   {!row.totalLateMinutes &&
+//                    !row.totalEarlyLeaveMinutes &&
+//                     !row.earlyArrivalMinutes &&
+//                     !row.lateDepartureMinutes &&
+//                     !row.totalTransitDeductionMinutes && (
+//                       <span className="small text-muted">
+//                         {t('noPenalties')}
+//                       </span>
+//                     )}
+//                 </td>
+
+//                 {/* Details */}
+//                 <td className="text-center">
+//                   <button
+//                     className="btn btn-sm btn-outline-primary"
+//                     // onClick={() => onOpenDetails(row)}
+//                     onClick={() => {
+//   if (!row.user?._id || !row.date) return;
+//   onOpenDetails(row);
+// }}
+
+//                   >
+//                     <i className="fas fa-eye" />
+//                   </button>
+//                 </td>
+//               </tr>
+//             );
+//           })}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// };
+
+// export default EmployeeAttendanceSummaryTable;
 
 //2
 // import { useTranslation } from 'react-i18next';

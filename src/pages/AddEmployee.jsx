@@ -997,11 +997,11 @@ useEffect(() => {
               <small className="text-muted">الدقائق الزائدة تُخصم من الراتب</small>
             </div>
 
-            <div className="form-check mt-2">
+            {/* <div className="form-check mt-2">
               <input type="checkbox" className="form-check-input" id="remote"
                 checked={form.allowRemoteAbsence} onChange={e => set('allowRemoteAbsence', e.target.checked)} />
               <label className="form-check-label" htmlFor="remote">{t('allowRemoteAbsence')}</label>
-            </div>
+            </div> */}
           </div>
         </div>
 

@@ -1,0 +1,94 @@
+{
+    "bonusPolicy": {
+  "pageTitle": "Bonus Policies",
+  "pageSubtitle": "Manage attendance bonuses and fixed monthly bonuses",
+
+  "create": "New Policy",
+  "edit": "Edit Policy",
+  "delete": "Deactivate",
+  "activate": "Activate",
+  "hardDelete": "Permanently Delete",
+  "save": "Save",
+  "cancel": "Cancel",
+
+  "saved": "Policy saved successfully",
+  "deleted": "Policy deactivated successfully",
+  "activated": "Policy activated successfully",
+  "hardDeleted": "Policy permanently deleted",
+  "loadError": "Failed to load policies",
+  "saveError": "Failed to save policy",
+  "deleteError": "Failed to delete policy",
+  "activateError": "Failed to activate policy",
+
+  "confirmDelete": "Are you sure you want to deactivate this policy?",
+  "confirmHardDelete": "⚠️ This will permanently delete the policy. This action cannot be undone.",
+
+  "totalPolicies": "Total Policies",
+  "activePolicies": "Active",
+  "inactivePolicies": "Inactive",
+  "globalPolicies": "Global",
+
+  "fields": {
+    "name": "Policy Name",
+    "scope": "Scope",
+    "scopeId": "Scope Target",
+    "version": "Version"
+  },
+
+  "scopes": {
+    "global": "Global",
+    "branch": "Branch",
+    "department": "Department",
+    "role": "Role",
+    "user": "User"
+  },
+
+  "rules": {
+    "title": "Bonus Rules",
+
+    "attendanceBonus": {
+      "label": "Attendance Bonus",
+      "desc": "Reward employees who meet attendance conditions",
+      "maxAbsences": "Max Absences (days)",
+      "maxLateDays": "Max Late Days",
+      "maxLateMinutesTotal": "Max Late Minutes (total/month)",
+      "maxUnpaidDays": "Max Unpaid Leave Days",
+      "rewardType": "Reward Type",
+      "rewardValue": "Amount / Percentage",
+      "rewardTypes": {
+        "fixed": "Fixed Amount",
+        "percentage": "% of Base Salary"
+      }
+    },
+
+    "fixedBonus": {
+      "label": "Fixed Monthly Bonus",
+      "desc": "A fixed amount added to salary every month",
+      "amount": "Amount",
+      "condition": "Condition",
+      "conditions": {
+        "always": "Always",
+        "active_only": "Only if no unpaid leave"
+      }
+    }
+  },
+
+  "table": {
+    "name": "Name",
+    "scope": "Scope",
+    "attendanceBonus": "Attendance Bonus",
+    "fixedBonus": "Fixed Bonus",
+    "status": "Status",
+    "version": "Ver.",
+    "actions": "Actions"
+  },
+
+  "notes": {
+    "title": "How Bonuses Work",
+    "priority": "Priority Order",
+    "priorityDesc": "User → Role → Department → Branch → Global",
+    "attendance": "Attendance Bonus: employee must meet all conditions (absences, late days, late minutes, unpaid days)",
+    "fixed": "Fixed Bonus: paid every month, optionally only if no unpaid leave",
+    "exceptional": "Exceptional Bonus: added manually by admin per employee per day (stored in OvertimeEntry)"
+  }
+}}

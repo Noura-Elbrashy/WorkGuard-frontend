@@ -655,113 +655,267 @@
 // };
 
 // export default EmployeeAttendanceFilters;
+
+
+
+// src/pages/admin/EmployeeAttendanceFilters.jsx
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { apiGet } from '../../helpers/api';
 
-const EmployeeAttendanceFilters = ({
-  branches = [],
-  filters,
-  onChange,
-  total = 0
-}) => {
+// Decision types — values must match backend DailyAttendanceSummary.decisionType enum
+const DECISION_TYPES = [
+  'WORKING_DAY',
+  'ABSENT_NO_PERMISSION',
+  'LEAVE_PAID',
+  'LEAVE_UNPAID',
+  'NON_WORKING_DAY',
+  'NO_DATA',
+];
+
+const EmployeeAttendanceFilters = ({ filters, onChange }) => {
   const { t } = useTranslation();
+  const [branches, setBranches] = useState([]);
 
-  const update = (key, value) => {
-    onChange({
-      ...filters,
-      [key]: value
-    });
+  // ── branches from backend (not passed from parent) ───────────
+  useEffect(() => {
+    apiGet('/branches')
+      .then(res => setBranches(res.data || []))
+      .catch(() => {});
+  }, []);
+
+  const update = (key, value) => onChange({ ...filters, [key]: value });
+
+  // when user picks single date → send as both from & to
+  const handleDate = (val) => {
+    onChange({ ...filters, from: val, to: val });
   };
 
   return (
-    <div className="card shadow-sm mb-4">
-      <div className="card-body">
-        <h5 className="mb-3">
-          <i className="fas fa-filter me-2" />
-          {t('attendanceFilters')}
-        </h5>
+    <div className="att-filters-card">
+      <div className="att-filters-title">
+        <i className="fas fa-filter" />
+        {t('attendanceFilters')}
+      </div>
 
-        <div className="row g-3">
-          {/* Branch */}
-          <div className="col-md-3">
-            <label className="form-label">{t('branch')}</label>
-            <select
-              className="form-select"
-              value={filters.branchId || ''}
-              onChange={(e) => update('branchId', e.target.value)}
-            >
-              <option value="">{t('allBranches')}</option>
-              {branches.map(b => (
-                <option key={b._id} value={b._id}>
-                  {b.name}
-                </option>
-              ))}
-            </select>
-          </div>
+      <div className="att-filters-grid">
 
-          {/* Date */}
-          <div className="col-md-3">
-            <label className="form-label">{t('date')}</label>
-            <input
-              type="date"
-              className="form-control"
-              value={filters.date || ''}
-              onChange={(e) => update('date', e.target.value)}
-            />
-          </div>
-
-          {/* Name */}
-          <div className="col-md-3">
-            <label className="form-label">{t('employee')}</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder={t('searchByName')}
-              value={filters.name || ''}
-              onChange={(e) => update('name', e.target.value)}
-            />
-          </div>
-
-          {/* Day Status */}
-          <div className="col-md-3">
-            <label className="form-label">{t('dayStatus')}</label>
-            <select
-              className="form-select"
-              value={filters.status || ''}
-              onChange={(e) => update('status', e.target.value)}
-            >
-              <option value="">{t('all')}</option>
-              <option value="working">{t('working')}</option>
-              <option value="holiday">{t('holiday')}</option>
-              <option value="leave_paid">{t('leave_paid')}</option>
-              <option value="leave_unpaid">{t('leave_unpaid')}</option>
-              <option value="partial_leave">{t('partial_leave')}</option>
-              <option value="absent">{t('absent')}</option>
-            </select>
-          </div>
+        {/* Branch */}
+        <div className="att-filter-group">
+          <label>{t('branch')}</label>
+          <select
+            className="form-select"
+            value={filters.branchId}
+            onChange={e => update('branchId', e.target.value)}
+          >
+            <option value="">{t('allBranches')}</option>
+            {branches.map(b => (
+              <option key={b._id} value={b._id}>{b.name}</option>
+            ))}
+          </select>
         </div>
 
-        {/* Flags */}
-        <div className="form-check mt-3">
+        {/* Date (single day → from+to) */}
+        <div className="att-filter-group">
+          <label>{t('date')}</label>
           <input
-            className="form-check-input"
-            type="checkbox"
-            id="invalidatedOnly"
-            checked={filters.invalidated === 'true'}
-            onChange={(e) =>
-              update('invalidated', e.target.checked ? 'true' : '')
-            }
+            type="date"
+            className="form-control"
+            value={filters.from || ''}
+            onChange={e => handleDate(e.target.value)}
           />
-          <label className="form-check-label" htmlFor="invalidatedOnly">
-            {t('invalidatedOnly')}
-          </label>
         </div>
 
-        <small className="text-muted d-block mt-2">
-          {t('total')}: {total}
-        </small>
+        {/* Date From */}
+        <div className="att-filter-group">
+          <label>{t('from')}</label>
+          <input
+            type="date"
+            className="form-control"
+            value={filters.from || ''}
+            max={filters.to || undefined}
+            onChange={e => update('from', e.target.value)}
+          />
+        </div>
+
+        {/* Date To */}
+        <div className="att-filter-group">
+          <label>{t('to')}</label>
+          <input
+            type="date"
+            className="form-control"
+            value={filters.to || ''}
+            min={filters.from || undefined}
+            onChange={e => update('to', e.target.value)}
+          />
+        </div>
+
+        {/* Employee name */}
+        <div className="att-filter-group">
+          <label>{t('employee')}</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder={t('searchByName')}
+            value={filters.name}
+            onChange={e => update('name', e.target.value)}
+          />
+        </div>
+
+        {/* Decision type (from backend enum) */}
+        <div className="att-filter-group">
+          <label>{t('dayStatus')}</label>
+          <select
+            className="form-select"
+            value={filters.decisionType}
+            onChange={e => update('decisionType', e.target.value)}
+          >
+            <option value="">{t('all')}</option>
+            {DECISION_TYPES.map(dt => (
+              <option key={dt} value={dt}>{t(dt)}</option>
+            ))}
+          </select>
+        </div>
+
+      </div>
+
+      {/* Footer row */}
+      <div className="att-filter-footer">
+        <label className="att-filter-check">
+          <input
+            type="checkbox"
+            checked={filters.invalidated === 'true'}
+            onChange={e => update('invalidated', e.target.checked ? 'true' : '')}
+          />
+          <label>{t('invalidatedOnly')}</label>
+        </label>
+
+        {/* Clear all */}
+        {Object.values(filters).some(Boolean) && (
+          <button
+            className="att-btn att-btn-ghost att-btn-sm"
+            onClick={() => onChange({
+              branchId: '', from: '', to: '', name: '', decisionType: '', invalidated: '',
+            })}
+          >
+            <i className="fas fa-times" />
+            {t('clearFilters')}
+          </button>
+        )}
       </div>
     </div>
   );
 };
 
 export default EmployeeAttendanceFilters;
+
+// import { useTranslation } from 'react-i18next';
+
+// const EmployeeAttendanceFilters = ({
+//   branches = [],
+//   filters,
+//   onChange,
+//   total = 0
+// }) => {
+//   const { t } = useTranslation();
+
+//   const update = (key, value) => {
+//     onChange({
+//       ...filters,
+//       [key]: value
+//     });
+//   };
+
+//   return (
+//     <div className="card shadow-sm mb-4">
+//       <div className="card-body">
+//         <h5 className="mb-3">
+//           <i className="fas fa-filter me-2" />
+//           {t('attendanceFilters')}
+//         </h5>
+
+//         <div className="row g-3">
+//           {/* Branch */}
+//           <div className="col-md-3">
+//             <label className="form-label">{t('branch')}</label>
+//             <select
+//               className="form-select"
+//               value={filters.branchId || ''}
+//               onChange={(e) => update('branchId', e.target.value)}
+//             >
+//               <option value="">{t('allBranches')}</option>
+//               {branches.map(b => (
+//                 <option key={b._id} value={b._id}>
+//                   {b.name}
+//                 </option>
+//               ))}
+//             </select>
+//           </div>
+
+//           {/* Date */}
+//           <div className="col-md-3">
+//             <label className="form-label">{t('date')}</label>
+//             <input
+//               type="date"
+//               className="form-control"
+//               value={filters.date || ''}
+//               onChange={(e) => update('date', e.target.value)}
+//             />
+//           </div>
+
+//           {/* Name */}
+//           <div className="col-md-3">
+//             <label className="form-label">{t('employee')}</label>
+//             <input
+//               type="text"
+//               className="form-control"
+//               placeholder={t('searchByName')}
+//               value={filters.name || ''}
+//               onChange={(e) => update('name', e.target.value)}
+//             />
+//           </div>
+
+//           {/* Day Status */}
+//           <div className="col-md-3">
+//             <label className="form-label">{t('dayStatus')}</label>
+//             <select
+//               className="form-select"
+//               value={filters.status || ''}
+//               onChange={(e) => update('status', e.target.value)}
+//             >
+//               <option value="">{t('all')}</option>
+//               <option value="working">{t('working')}</option>
+//               <option value="holiday">{t('holiday')}</option>
+//               <option value="leave_paid">{t('leave_paid')}</option>
+//               <option value="leave_unpaid">{t('leave_unpaid')}</option>
+//               <option value="partial_leave">{t('partial_leave')}</option>
+//               <option value="absent">{t('absent')}</option>
+//             </select>
+//           </div>
+//         </div>
+
+//         {/* Flags */}
+//         <div className="form-check mt-3">
+//           <input
+//             className="form-check-input"
+//             type="checkbox"
+//             id="invalidatedOnly"
+//             checked={filters.invalidated === 'true'}
+//             onChange={(e) =>
+//               update('invalidated', e.target.checked ? 'true' : '')
+//             }
+//           />
+//           <label className="form-check-label" htmlFor="invalidatedOnly">
+//             {t('invalidatedOnly')}
+//           </label>
+//         </div>
+
+//         <small className="text-muted d-block mt-2">
+//           {t('total')}: {total}
+//         </small>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default EmployeeAttendanceFilters;

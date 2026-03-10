@@ -33,7 +33,7 @@ const CurrentAttendanceModal = ({ show, branch, onClose }) => {
         {/* Header */}
         <div className="attendance-modal-header">
           <h5>
-            Current Attendance – {branch?.name}
+            Employees Currently Checked In – {branch?.name}
           </h5>
           <button className="close-btn" onClick={onClose}>×</button>
         </div>
@@ -50,7 +50,7 @@ const CurrentAttendanceModal = ({ show, branch, onClose }) => {
               <thead>
                 <tr>
                   <th>User</th>
-                  <th>Job Title</th>
+                  <th>Departments</th>
                   <th>Check-in Time</th>
                 </tr>
               </thead>
@@ -58,7 +58,27 @@ const CurrentAttendanceModal = ({ show, branch, onClose }) => {
                 {records.map((r) => (
                   <tr key={r._id}>
                     <td>{r.user?.name}</td>
-                    <td>{r.user?.jobTitle || '-'}</td>
+                    {/* <td>{r.user?.jobTitle || '-'}</td> */}
+<td>
+  {r.user?.departments?.length
+    ? r.user.departments.map(d => d.name).join(', ')
+    : '—'}
+</td>
+
+
+                    {/* <td>
+
+                     
+  <div className="d-flex flex-wrap gap-1">
+    {user.departments?.length
+      ? user.departments.map(d => (
+          <span key={d._id || d} className="branch-badge">
+            {d.name || d}
+          </span>
+        ))
+      : <span className="text-muted">—</span>}
+  </div>
+</td> */}
                     <td>
                       {new Date(r.checkInTime).toLocaleTimeString()}
                     </td>

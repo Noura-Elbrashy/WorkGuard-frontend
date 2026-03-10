@@ -1,0 +1,92 @@
+{
+    "overtimeEntry":{
+  "pageTitle": "Overtime & Exceptional Entries",
+  "pageSubtitle": "View, approve and manage all overtime records and exceptional bonuses",
+
+  "addExceptional": "Add Exceptional Bonus",
+  "approve": "Approve",
+  "reject": "Reject",
+  "delete": "Delete",
+  "cancel": "Cancel",
+  "save": "Save",
+  "confirm": "Confirm",
+
+  "approved": "Entry approved successfully",
+  "rejected": "Entry rejected successfully",
+  "deleted": "Entry deleted successfully",
+  "added": "Exceptional bonus added successfully",
+
+  "approveError": "Failed to approve entry",
+  "rejectError": "Failed to reject entry",
+  "deleteError": "Failed to delete entry",
+  "addError": "Failed to add exceptional bonus",
+  "loadError": "Failed to load entries",
+
+  "confirmApprove": "Approve this overtime entry?",
+  "confirmReject": "Reject this entry? Please provide a reason.",
+  "confirmDelete": "Delete this entry permanently?",
+
+  "rejectReason": "Rejection Reason",
+  "rejectReasonPlaceholder": "Why is this entry being rejected?",
+
+  "totalEntries": "Total",
+  "pendingEntries": "Pending",
+  "approvedEntries": "Approved",
+  "rejectedEntries": "Rejected",
+
+  "types": {
+    "BEFORE_SHIFT":      "Before Shift",
+    "AFTER_SHIFT_DAY":   "After Shift (Day)",
+    "AFTER_SHIFT_NIGHT": "After Shift (Night)",
+    "WEEKLY_OFF":        "Weekly Off",
+    "HOLIDAY":           "Holiday",
+    "EXCEPTIONAL":       "Exceptional Bonus"
+  },
+
+  "sources": {
+    "auto":   "Auto",
+    "manual": "Manual"
+  },
+
+  "statuses": {
+    "pending":  "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected"
+  },
+
+  "table": {
+    "employee":   "Employee",
+    "date":       "Date",
+    "type":       "Type",
+    "source":     "Source",
+    "minutes":    "Minutes",
+    "multiplier": "Rate",
+    "amount":     "Amount",
+    "status":     "Status",
+    "notes":      "Notes",
+    "actions":    "Actions"
+  },
+
+  "filters": {
+    "title":      "Filters",
+    "employee":   "Employee",
+    "type":       "Type",
+    "status":     "Status",
+    "source":     "Source",
+    "dateFrom":   "From",
+    "dateTo":     "To",
+    "allTypes":   "All Types",
+    "allStatuses":"All Statuses",
+    "allSources": "All Sources",
+    "reset":      "Reset"
+  },
+
+  "exceptional": {
+    "title":       "Add Exceptional Bonus",
+    "employee":    "Employee",
+    "date":        "Date",
+    "amount":      "Amount",
+    "notes":       "Reason / Notes",
+    "notesPlaceholder": "Describe the reason for this exceptional bonus"
+  }
+}}

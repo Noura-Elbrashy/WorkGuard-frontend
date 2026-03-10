@@ -1,22 +1,72 @@
+// import i18n from "i18next";
+// import { initReactI18next } from "react-i18next";
+// import ar from "./locales/ar/translation.json";
+// import en from "./locales/en/translation.json";
+
+// i18n
+//   .use(initReactI18next)
+//   .init({
+//     resources: {
+//       ar: { translation: ar },
+//       en: { translation: en }
+//     },
+//     lng: "en",
+//     fallbackLng: "en",
+//     interpolation: { escapeValue: false }
+//   });
+//   //اتجاه النص
+// // i18n.on('languageChanged', (lng) => {
+// //   document.documentElement.setAttribute('dir', lng === 'ar' ? 'rtl' : 'ltr');
+// //   document.documentElement.setAttribute('lang', lng);
+// // });
+// export default i18n;
+
+
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+
 import ar from "./locales/ar/translation.json";
-import en from "./locales/en/ranslation.json";
+import en from "./locales/en/translation.json";
+
+import arOvertimePolicy from "./locales/ar/overtimePolicy.json";
+import enOvertimePolicy from "./locales/en/overtimePolicy.json";
+import arBonusPolicy from "./locales/ar/bonusPolicy.json";
+import enBonusPolicy from "./locales/en/bonusPolicy.json";
+import arovertimeEntry from "./locales/ar/overtimeEntry.json";
+import enovertimeEntry from "./locales/en/overtimeEntry.json";
+import enAttendance from './locales/en/enAttendance.json';
+import arAttendance from './locales/ar/arAttendance.json';
+
 
 i18n
   .use(initReactI18next)
   .init({
     resources: {
-      ar: { translation: ar },
-      en: { translation: en }
+      ar: {
+        translation: ar,
+        overtimePolicy: arOvertimePolicy,
+        bonusPolicy: arBonusPolicy,
+        overtimeEntry: arovertimeEntry,
+        attendance: arAttendance
+      },
+      en: {
+        translation: en,
+        overtimePolicy: enOvertimePolicy,
+        bonusPolicy: enBonusPolicy,
+        overtimeEntry: enovertimeEntry,
+        attendance: enAttendance
+      }
     },
+
     lng: "en",
     fallbackLng: "en",
-    interpolation: { escapeValue: false }
+
+    ns: ["translation", "overtimePolicy", "bonusPolicy"],   // مهم
+    defaultNS: "translation",
+
+    interpolation: {
+      escapeValue: false
+    }
   });
-  //اتجاه النص
-// i18n.on('languageChanged', (lng) => {
-//   document.documentElement.setAttribute('dir', lng === 'ar' ? 'rtl' : 'ltr');
-//   document.documentElement.setAttribute('lang', lng);
-// });
+
 export default i18n;

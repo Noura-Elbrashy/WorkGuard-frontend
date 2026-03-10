@@ -470,8 +470,10 @@ const BranchTable = ({ branches, attendanceData, onEdit, onDelete, onToggleEmerg
 
 >
   {attendance.length > 0
-    ? `${attendance.length} Records`
-    : 'No data'}
+    ? `${attendance.length} 
+    
+    Employees in Branch Now`
+    : 'No employees currently in branch'}
 </span>
 
 

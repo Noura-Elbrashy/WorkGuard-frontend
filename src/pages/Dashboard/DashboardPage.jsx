@@ -316,6 +316,37 @@ const DashboardPage = () => {
       color: '#10b981',
       path: '/payroll'
     },
+    
+    {
+       id: 'overtime',
+      title: 'Overtime Policies',
+      titleAr: 'سياسات الإضافي',
+      description: 'Manage and configure overtime policies',
+      descriptionAr: 'إدارة وتكوين سياسات العمل الإضافي',
+      icon: 'fa-clock',
+      color: '#8b5cf6',
+      path: '/admin/overtime-policies'
+    },
+    {
+      id: 'bonus',
+      title: 'Bonus Policies',
+      titleAr: 'سياسات المكافآت',
+      description: 'Manage and configure bonus policies',
+      descriptionAr: 'إدارة وتكوين سياسات المكافآت',
+      icon: 'fa-gift',
+      color: '#ec4899',
+      path: '/admin/bonus-policies'
+    },
+    {
+      id: 'overtimeentries',
+      title: 'Overtime Entries',
+      titleAr: 'سجلات العمل الإضافي',
+      description: 'Manage and review overtime entries',
+      descriptionAr: 'إدارة ومراجعة سجلات العمل الإضافي',
+      icon: 'fa-clock',
+      color: '#f59e0b',
+      path: '/admin/overtime-entries'
+    },
     {
       id: 'holidays',
       title: 'Holidays & Events Management',
@@ -375,7 +406,9 @@ const DashboardPage = () => {
       description: 'Manage leave requests and policies',
       descriptionAr: 'إدارة طلبات الإجازات والسياسات',
       icon: 'fa-umbrella-beach',
-      color: '#ec4899',
+      // color: '#ec4899',
+            color: '#f2f20d',
+
       path: '/admin/leaves'
     },
     {

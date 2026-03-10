@@ -273,7 +273,7 @@ const [showLangMenu, setShowLangMenu] = useState(false);
                 </li>
 
                 {/* Dashboard */}
-                <li className="nav-item nav-item-modern">
+                {/* <li className="nav-item nav-item-modern">
                   <Link 
                     className={`nav-link nav-link-modern ${isActiveLink('/admin/dashboard') ? 'active' : ''}`} 
                     to="/admin/dashboard"
@@ -281,7 +281,7 @@ const [showLangMenu, setShowLangMenu] = useState(false);
                     <i className="fas fa-tachometer-alt"></i>
                     {t("adminDashboard")}
                   </Link>
-                </li>
+                </li> */}
 
                 {/* Employee Attendance */}
                 <li className="nav-item nav-item-modern">
@@ -341,7 +341,7 @@ const [showLangMenu, setShowLangMenu] = useState(false);
             </li>
 
             {/* Leaves */}
-            <li className="nav-item nav-item-modern">
+            {/* <li className="nav-item nav-item-modern">
               <Link 
                 className={`nav-link nav-link-modern ${isActiveLink('/leaves') ? 'active' : ''}`} 
                 to="/leaves"
@@ -349,7 +349,7 @@ const [showLangMenu, setShowLangMenu] = useState(false);
                 <i className="fas fa-calendar-plus"></i>
                 {t('leave.Leaves')}
               </Link>
-            </li>
+            </li> */}
           </ul>
 
           {/* Right Section - Language & Logout */}

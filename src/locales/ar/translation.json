@@ -671,6 +671,8 @@
       "branch": "فرع",
       "role": "دور وظيفي",
       "user": "موظف",
+          "department": "قسم",
+
       "createTitle": "إنشاء سياسة إجازات جديدة",
     "createSubtitle": "تحديد قواعد الإجازات والخصومات وربطها بالنظام"
     },
@@ -871,6 +873,41 @@
   }
 ,
 "common" : {
+  "conditions":"الشروط",
+  "currency":"مبلغ ثابت",
+  "searchEmployee": "ابحث عن موظف بالاسم أو البريد الإلكتروني",
+"typeToSearch": "اكتب للبحث",
+"noResults": "لا توجد نتائج",
+"allBranches": "جميع الفروع",
+  "roles":{
+"staff":"موظف",
+"admin":"ادمن"
+  },
+   "scopes": {
+      "global": "عام",
+      "branch": "فرع",
+      "role": "دور وظيفي",
+      "user": "موظف",
+          "department": "قسم"
+    },
+     "global": "عام لكل الشركة",
+  "scope": "النطاق",
+  "department": "القسم",
+  "branch": "الفرع",
+  "role": "الدور الوظيفي",
+  "user": "المستخدم",
+  "filterByBranch": "تصفية حسب الفرع",
+  "globalScopeInfo": "تطبق هذه السياسة على جميع الموظفين في الشركة.",
+  "optional": "اختياري",
+  "selectBranch": "اختر الفرع",
+  "globalScopeInfo": "تطبق هذه السياسة على جميع الموظفين في الشركة.",
+  "optional": "اختياري",
+    "selectRole": "اختر الدور",
+  "selectUser": "اختر الموظف",
+  "selectDepartment": "اختر القسم",
+  "invalidTime": "الوقت غير صحيح",
+  "required": "هذا الحقل مطلوب",
+  "noData": "لا توجد بيانات",
   "notfoundPageH":"الصفحة غير موجودة",
   "notfoundpageP":"الصفحة التي تبحث عنها غير موجودة.",
       "FROM": "من",

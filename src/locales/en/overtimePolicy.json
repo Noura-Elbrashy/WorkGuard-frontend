@@ -1,0 +1,93 @@
+{"overtimePolicy":{
+  "pageTitle": "Overtime Policies",
+  "pageSubtitle": "Manage overtime rules and rates for all scopes",
+
+  "create": "New Policy",
+  "edit": "Edit Policy",
+  "delete": "Deactivate",
+  "activate": "Activate",
+  "hardDelete": "Permanently Delete",
+  "save": "Save",
+  "cancel": "Cancel",
+
+  "saved": "Policy saved successfully",
+  "deleted": "Policy deactivated successfully",
+  "activated": "Policy activated successfully",
+  "hardDeleted": "Policy permanently deleted",
+  "loadError": "Failed to load policies",
+  "saveError": "Failed to save policy",
+  "deleteError": "Failed to delete policy",
+  "activateError": "Failed to activate policy",
+
+  "confirmDelete": "Are you sure you want to deactivate this policy?",
+  "confirmActivate": "Are you sure you want to activate this policy?",
+  "confirmHardDelete": "⚠️ This will permanently delete the policy. This action cannot be undone.",
+
+  "totalPolicies": "Total Policies",
+  "activePolicies": "Active",
+  "inactivePolicies": "Inactive",
+  "globalPolicies": "Global",
+
+  "fields": {
+    "name": "Policy Name",
+    "scope": "Scope",
+    "scopeId": "Scope Target",
+    "isActive": "Active",
+    "version": "Version",
+    "nightShiftStart": "Night Shift Start",
+    "nightShiftEnd": "Night Shift End",
+    "monthlyCap": "Monthly Cap (hours)",
+    "monthlyCapEnabled": "Enable Monthly Cap"
+  },
+
+  "scopes": {
+    "global": "Global",
+    "branch": "Branch",
+    "department": "Department",
+    "role": "Role",
+    "user": "User"
+  },
+
+  "rules": {
+    "title": "OT Rules",
+    "beforeShift": "Before Shift (Early Arrival)",
+    "afterShiftDay": "After Shift – Day",
+    "afterShiftNight": "After Shift – Night",
+    "weeklyOff": "Weekly Day Off",
+    "holiday": "Holiday",
+    "enabled": "Enable",
+    "minMinutes": "Min Minutes",
+    "maxMinutes": "Max Minutes (cap)",
+    "maxHours": "Max Hours (cap)",
+    "rateType": "Rate Type",
+    "multiplier": "Multiplier (x)",
+    "fixedRatePerHour": "Fixed Rate / Hour",
+    "rateTypes": {
+      "multiplier": "Multiplier",
+      "fixed": "Fixed Rate"
+    }
+  },
+
+  "table": {
+    "name": "Name",
+    "scope": "Scope",
+    "target": "Target",
+    "nightShift": "Night Shift",
+    "monthlyCap": "Cap",
+    "status": "Status",
+    "version": "Ver.",
+    "actions": "Actions"
+  },
+
+  "notes": {
+    "title": "How Overtime Works",
+    "priority": "Priority Order",
+    "priorityDesc": "User → Role → Department → Branch → Global",
+    "beforeShift": "Before Shift OT is calculated from earlyArrivalMinutes",
+    "afterShiftDay": "After Shift Day OT applies when checkout is before nightShift.startTime",
+    "afterShiftNight": "After Shift Night OT applies when checkout falls within the night window",
+    "weeklyOff": "Weekend OT is for employees who attend on their weekly day off",
+    "holiday": "Holiday OT is for employees who attend on official holidays",
+    "cap": "Monthly cap limits total approved OT hours per month"
+  }
+}}

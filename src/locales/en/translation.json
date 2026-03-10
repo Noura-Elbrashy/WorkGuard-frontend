@@ -1032,7 +1032,32 @@
 }
 ,
 "common" : {
-
+  "global": "Global",
+  "conditions":"Conditions",
+  "currency":"currency",
+  "searchEmployee": "Search Employee",
+"typeToSearch": "Type to search by name or email",
+"noResults": "No results found",
+"allBranches": "All Branches",
+  "roles":{
+"staff":"staff",
+"admin":"admin"
+  },
+  "scope": "Scope",
+  "department": "Department",
+  "branch": "Branch",
+  "role": "Role",
+  "user": "User",
+  "filterByBranch": "Filter by Branch",
+  "globalScopeInfo": "This is a global scope",
+  "optional": "Optional",
+  "selectBranch": "Select Branch",
+  "selectRole": "Select Role",
+  "selectUser": "Select User",
+  "selectDepartment": "Select Department",
+  "invalidTime": "Invalid time",
+  "required": "This field is required",
+"noData": "No data available",
    "notfoundPageH":"Page not found",
   "notfoundpageP":"The page you are looking for does not exist.",
 

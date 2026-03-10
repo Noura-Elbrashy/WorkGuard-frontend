@@ -1,0 +1,66 @@
+/* ==============================================
+   📄 OvertimeEntriesPage.css
+============================================== */
+
+.overtime-entries-page {
+  padding: 1.5rem;
+}
+
+/* ── Stat Cards ── */
+.overtime-entries-page .stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 1.5px solid #e9ecef;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.overtime-entries-page .stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.overtime-entries-page .stat-card-active { border-width: 2px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
+
+.overtime-entries-page .stat-card-primary  { border-color: #0d6efd33; }
+.overtime-entries-page .stat-card-warning  { border-color: #ffc10733; }
+.overtime-entries-page .stat-card-success  { border-color: #19875433; }
+.overtime-entries-page .stat-card-danger   { border-color: #dc354533; }
+
+.overtime-entries-page .stat-card-primary.stat-card-active  { border-color: #0d6efd; background: #f0f5ff; }
+.overtime-entries-page .stat-card-warning.stat-card-active  { border-color: #ffc107; background: #fffdf0; }
+.overtime-entries-page .stat-card-success.stat-card-active  { border-color: #198754; background: #f0fff7; }
+.overtime-entries-page .stat-card-danger.stat-card-active   { border-color: #dc3545; background: #fff5f5; }
+
+.overtime-entries-page .stat-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+
+.overtime-entries-page .stat-card-primary .stat-icon { background: #e8f0fe; color: #0d6efd; }
+.overtime-entries-page .stat-card-warning .stat-icon { background: #fff8e1; color: #f59e0b; }
+.overtime-entries-page .stat-card-success .stat-icon { background: #e6f4ea; color: #198754; }
+.overtime-entries-page .stat-card-danger  .stat-icon { background: #fce8e8; color: #dc3545; }
+
+.overtime-entries-page .stat-value { font-size: 1.5rem; font-weight: 700; line-height: 1.2; }
+.overtime-entries-page .stat-label { font-size: 0.78rem; color: #6c757d; }
+
+/* ── Page Header ── */
+.overtime-entries-page .page-title   { font-size: 1.4rem; font-weight: 700; color: #1a1a2e; }
+.overtime-entries-page .page-subtitle { font-size: 0.875rem; color: #6c757d; }
+.overtime-entries-page .btn-create   { padding: 0.5rem 1.25rem; border-radius: 8px; font-weight: 500; }
+
+/* ── Responsive ── */
+@media (max-width: 576px) {
+  .overtime-entries-page { padding: 1rem; }
+  .overtime-entries-page .stat-value { font-size: 1.25rem; }
+  .overtime-entries-page .page-title { font-size: 1.15rem; }
+}

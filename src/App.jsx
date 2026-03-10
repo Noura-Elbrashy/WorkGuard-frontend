@@ -18,7 +18,7 @@ import ResetPassword from './components/ResetPassword';
 import ForgotPassword from './components/ForgotPassword';
 // import LeaveManagement from './pages/LeaveManagement';
 // import LeaveRequestForm from './pages/LeaveRequestForm';
-import EmployeeAttendancePage from './pages/EmployeeAttendance/EmployeeAttendancePage';
+import EmployeeAttendancePage from './pages/AdminEmployeeAttendance/EmployeeAttendancePage';
 import AdminDeviceControl from './pages/AdminDeviceControl';
 // Leave Pages
 import LeavesAdminPage from './pages/leave/LeavesAdminPage';
@@ -46,7 +46,9 @@ import DepartmentsPage from './pages/Departments/DepartmentsPage';
 import RemotePermission from "./pages/RemotePermission";
 import EditEmployee from './pages/EditEmployee';
 import EmployeeDirectory from './pages/EmployeeDirectory';
-
+import OvertimePoliciesPage from "./pages/Overtimepoliciespage";
+import BonusPoliciesPage from "./pages/BonusPoliciesPage";
+import OvertimeEntriesPage from "./pages/OvertimeEntriesPage";
 
 // ProtectedRoute for admin-only pages
 function ProtectedRoute({ children }) {
@@ -274,6 +276,28 @@ element={ <ProtectedRoute>
   element={
     <ProtectedRoute>
       <DashboardPage />
+    </ProtectedRoute>
+  }
+/>
+<Route
+path="/admin/overtime-policies"
+element={ <ProtectedRoute>
+      <OvertimePoliciesPage />
+    </ProtectedRoute>}/>
+
+    <Route
+  path="/admin/bonus-policies"
+  element={
+    <ProtectedRoute>
+      <BonusPoliciesPage />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/admin/overtime-entries"
+  element={
+    <ProtectedRoute>
+      <OvertimeEntriesPage />
     </ProtectedRoute>
   }
 />

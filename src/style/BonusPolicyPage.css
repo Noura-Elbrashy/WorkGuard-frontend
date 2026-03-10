@@ -1,0 +1,109 @@
+/* ==============================================
+   📄 BonusPolicyPage.css
+   (نفس نمط OvertimePolicyPage مع لون أخضر)
+============================================== */
+
+.bonus-policies-page {
+  padding: 1.5rem;
+}
+
+/* ── Stat Cards (نفس الـ OvertimePolicyPage) ── */
+.bonus-policies-page .stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 1.5px solid #e9ecef;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.bonus-policies-page .stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.bonus-policies-page .stat-card-active {
+  border-width: 2px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+.bonus-policies-page .stat-card-primary  { border-color: #0d6efd33; }
+.bonus-policies-page .stat-card-success  { border-color: #19875433; }
+.bonus-policies-page .stat-card-warning  { border-color: #ffc10733; }
+.bonus-policies-page .stat-card-info     { border-color: #0dcaf033; }
+
+.bonus-policies-page .stat-card-primary.stat-card-active  { border-color: #0d6efd; background: #f0f5ff; }
+.bonus-policies-page .stat-card-success.stat-card-active  { border-color: #198754; background: #f0fff7; }
+.bonus-policies-page .stat-card-warning.stat-card-active  { border-color: #ffc107; background: #fffdf0; }
+.bonus-policies-page .stat-card-info.stat-card-active     { border-color: #0dcaf0; background: #f0fdff; }
+
+.bonus-policies-page .stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.bonus-policies-page .stat-card-primary .stat-icon { background: #e8f0fe; color: #0d6efd; }
+.bonus-policies-page .stat-card-success .stat-icon { background: #e6f4ea; color: #198754; }
+.bonus-policies-page .stat-card-warning .stat-icon { background: #fff8e1; color: #f59e0b; }
+.bonus-policies-page .stat-card-info    .stat-icon { background: #e0f7fa; color: #0dcaf0; }
+
+.bonus-policies-page .stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.bonus-policies-page .stat-label {
+  font-size: 0.78rem;
+  color: #6c757d;
+}
+
+/* ── Page Header ── */
+.bonus-policies-page .page-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.bonus-policies-page .page-subtitle {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.bonus-policies-page .btn-create {
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* ── Bonus Rule Card (inside form modal) ── */
+.bonus-rule-card {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  transition: background 0.2s;
+}
+
+.bonus-rule-card:has(.form-check-input:checked) {
+  background: #fff;
+  border-color: #19875440;
+}
+
+/* ── Responsive ── */
+@media (max-width: 576px) {
+  .bonus-policies-page { padding: 1rem; }
+  .bonus-policies-page .stat-value { font-size: 1.25rem; }
+  .bonus-policies-page .page-title { font-size: 1.15rem; }
+}

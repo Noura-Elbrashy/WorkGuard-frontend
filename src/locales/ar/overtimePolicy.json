@@ -1,0 +1,96 @@
+{
+    "overtimePolicy":{
+  
+  "pageTitle": "سياسات الأوفر تايم",
+  "pageSubtitle": "إدارة قواعد ومعدلات الأوفر تايم لجميع النطاقات",
+
+  "create": "سياسة جديدة",
+  "edit": "تعديل السياسة",
+  "delete": "تعطيل",
+  "activate": "تفعيل",
+  "hardDelete": "حذف نهائي",
+  "save": "حفظ",
+  "cancel": "إلغاء",
+
+  "saved": "تم حفظ السياسة بنجاح",
+  "deleted": "تم تعطيل السياسة بنجاح",
+  "activated": "تم تفعيل السياسة بنجاح",
+  "hardDeleted": "تم حذف السياسة نهائياً",
+  "loadError": "فشل تحميل السياسات",
+  "saveError": "فشل حفظ السياسة",
+  "deleteError": "فشل حذف السياسة",
+  "activateError": "فشل تفعيل السياسة",
+
+  "confirmDelete": "هل أنت متأكد من تعطيل هذه السياسة؟",
+  "confirmActivate": "هل أنت متأكد من تفعيل هذه السياسة؟",
+  "confirmHardDelete": "⚠️ سيتم حذف السياسة نهائياً ولا يمكن التراجع عن هذا الإجراء.",
+
+  "totalPolicies": "إجمالي السياسات",
+  "activePolicies": "نشطة",
+  "inactivePolicies": "غير نشطة",
+  "globalPolicies": "عامة",
+
+  "fields": {
+    "name": "اسم السياسة",
+    "scope": "النطاق",
+    "scopeId": "الهدف",
+    "isActive": "نشط",
+    "version": "الإصدار",
+    "nightShiftStart": "بداية الشيفت الليلي",
+    "nightShiftEnd": "نهاية الشيفت الليلي",
+    "monthlyCap": "الحد الأقصى الشهري (ساعات)",
+    "monthlyCapEnabled": "تفعيل الحد الأقصى"
+  },
+
+  "scopes": {
+    "global": "عام",
+    "branch": "فرع",
+    "department": "قسم",
+    "role": "وظيفة",
+    "user": "موظف"
+  },
+
+  "rules": {
+    "title": "قواعد الأوفر تايم",
+    "beforeShift": "قبل الشيفت (حضور مبكر)",
+    "afterShiftDay": "بعد الشيفت – نهاري",
+    "afterShiftNight": "بعد الشيفت – ليلي",
+    "weeklyOff": "يوم إجازة أسبوعية",
+    "holiday": "يوم عطلة رسمية",
+    "enabled": "تفعيل",
+    "minMinutes": "الحد الأدنى (دقيقة)",
+    "maxMinutes": "الحد الأقصى (دقيقة)",
+    "maxHours": "الحد الأقصى (ساعة)",
+    "rateType": "نوع المعدل",
+    "multiplier": "المضاعف (×)",
+    "fixedRatePerHour": "سعر ثابت / ساعة",
+    "rateTypes": {
+      "multiplier": "مضاعف",
+      "fixed": "سعر ثابت"
+    }
+  },
+
+  "table": {
+    "name": "الاسم",
+    "scope": "النطاق",
+    "target": "الهدف",
+    "nightShift": "الشيفت الليلي",
+    "monthlyCap": "الحد الأقصى",
+    "status": "الحالة",
+    "version": "الإصدار",
+    "actions": "الإجراءات"
+  },
+
+  "notes": {
+    "title": "كيف يعمل الأوفر تايم",
+    "priority": "ترتيب الأولوية",
+    "priorityDesc": "موظف ← وظيفة ← قسم ← فرع ← عام",
+    "beforeShift": "أوفر تايم قبل الشيفت يُحسب من earlyArrivalMinutes",
+    "afterShiftDay": "أوفر تايم نهاري يُطبق لو الانصراف قبل وقت بداية الليل",
+    "afterShiftNight": "أوفر تايم ليلي يُطبق لو الانصراف يقع في النطاق الليلي",
+    "weeklyOff": "أوفر تايم إجازة أسبوعية للموظف اللي حضر في يوم راحته",
+    "holiday": "أوفر تايم عطلة رسمية للموظف اللي حضر في يوم إجازة رسمية",
+    "cap": "الحد الشهري يقيّد إجمالي ساعات الأوفر تايم المعتمدة في الشهر"
+  }
+
+}}

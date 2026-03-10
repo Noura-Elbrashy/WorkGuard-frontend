@@ -1,0 +1,83 @@
+{
+  "employeeAttendance": "حضور الموظفين",
+  "attendanceFilters": "تصفية النتائج",
+  "attendanceRecords": "سجلات الحضور",
+
+  "attendancePolicy": {
+    "manage": "إدارة سياسات الحضور"
+  },
+
+  "total": "الإجمالي",
+  "all": "الكل",
+  "allBranches": "كل الفروع",
+
+  "branch": "الفرع",
+  "branches": "الفروع",
+  "date": "التاريخ",
+  "from": "من",
+  "to": "إلى",
+  "employee": "الموظف",
+  "dayStatus": "حالة اليوم",
+  "summary": "ملخص",
+  "details": "التفاصيل",
+  "notes": "ملاحظات",
+  "actions": "إجراءات",
+
+  "searchByName": "ابحث بالاسم…",
+  "selectBranch": "اختر الفرع",
+  "selectBranchFirst": "يرجى اختيار الفرع أولاً",
+  "clearFilters": "مسح الفلاتر",
+  "invalidatedOnly": "عرض الملغى فقط",
+
+  "previous": "السابق",
+  "next": "التالي",
+
+  "firstIn": "أول دخول",
+  "lastOut": "آخر خروج",
+  "late": "تأخير",
+  "earlyLeave": "انصراف مبكر",
+  "earlyArrival": "حضور مبكر",
+  "lateDeparture": "انصراف متأخر",
+  "transitDeduction": "خصم انتقال",
+  "transitDetails": "تفاصيل الانتقالات",
+  "transitTime": "فترة الانتقال",
+  "deduction": "خصم",
+  "noDeduction": "لا يوجد خصم",
+  "min": "دقيقة",
+  "noPenalties": "لا توجد خصومات",
+
+  "checkIn": "تسجيل دخول",
+  "checkOut": "تسجيل خروج",
+  "addAttendance": "إضافة حضور",
+  "addManualAttendance": "إضافة حضور يدوي",
+  "addNote": "أضف ملاحظة…",
+  "invalidateRecord": "تحديد كسجل ملغى",
+  "invalidated": "ملغى",
+  "addedByAdmin": "أضافه المسؤول",
+
+  "noAttendanceForDay": "لا توجد سجلات حضور لهذا اليوم",
+  "noData": "لا توجد بيانات",
+  "noNotes": "لا توجد ملاحظات",
+  "deletedUser": "موظف محذوف",
+  "loading": "جاري التحميل",
+
+  "save": "حفظ",
+  "saving": "جاري الحفظ…",
+  "cancel": "إلغاء",
+  "edit": "تعديل",
+  "close": "إغلاق",
+
+  "savedSuccessfully": "تم الحفظ بنجاح",
+  "attendanceCreatedSuccessfully": "تم إضافة سجل الحضور بنجاح",
+  "errorSaving": "حدث خطأ أثناء الحفظ. يرجى المحاولة مرة أخرى.",
+  "fetchError": "فشل تحميل البيانات. يرجى المحاولة مرة أخرى.",
+
+  "WORKING_DAY": "يوم عمل",
+  "LEAVE_PAID": "إجازة مدفوعة",
+  "LEAVE_UNPAID": "إجازة غير مدفوعة",
+  "ABSENT_NO_PERMISSION": "غياب بدون إذن",
+  "NON_WORKING_DAY": "يوم إجازة",
+  "HOLIDAY": "إجازة رسمية",
+  "WEEKLY_OFF": "يوم راحة",
+  "NO_DATA": "لا توجد بيانات"
+}

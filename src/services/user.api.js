@@ -169,45 +169,45 @@ export const resetUserBiometrics = (userId) =>
 /**
  * 📱 Register device
  */
-export const registerDevice = (data) => {
-  return apiPost('/users/register-device', data);
-};
+// export const registerDevice = (data) => {
+//   return apiPost('/users/register-device', data);
+// };
 
-/**
- * 📋 Get pending devices
- */
-export const getPendingDevices = (params = {}) => {
-  const queryParams = new URLSearchParams(params);
-  return apiGet(`/users/pending-devices?${queryParams.toString()}`);
-};
+// /**
+//  * 📋 Get pending devices
+//  */
+// export const getPendingDevices = (params = {}) => {
+//   const queryParams = new URLSearchParams(params);
+//   return apiGet(`/users/pending-devices?${queryParams.toString()}`);
+// };
 
-/**
- * 📱 Get user devices
- */
-export const getUserDevices = (userId) => {
-  return apiGet(`/users/${userId}/devices`);
-};
+// /**
+//  * 📱 Get user devices
+//  */
+// export const getUserDevices = (userId) => {
+//   return apiGet(`/users/${userId}/devices`);
+// };
 
-/**
- * ✅ Approve device
- */
-export const approveUserDevice = (userId, deviceId, data) => {
-  return apiPatch(`/users/${userId}/devices/${deviceId}/approve`, data);
-};
+// /**
+//  * ✅ Approve device
+//  */
+// export const approveUserDevice = (userId, deviceId, data) => {
+//   return apiPatch(`/users/${userId}/devices/${deviceId}/approve`, data);
+// };
 
-/**
- * 🔄 Toggle device status (enable/disable)
- */
-export const toggleDeviceStatus = (userId, deviceId, data) => {
-  return apiPut(`/users/${userId}/devices/${deviceId}`, data);
-};
+// /**
+//  * 🔄 Toggle device status (enable/disable)
+//  */
+// export const toggleDeviceStatus = (userId, deviceId, data) => {
+//   return apiPut(`/users/${userId}/devices/${deviceId}`, data);
+// };
 
-/**
- * ❌ Remove device
- */
-export const removeUserDevice = (userId, deviceId) => {
-  return apiDelete(`/users/${userId}/devices/${deviceId}`);
-};
+// /**
+//  * ❌ Remove device
+//  */
+// export const removeUserDevice = (userId, deviceId) => {
+//   return apiDelete(`/users/${userId}/devices/${deviceId}`);
+// };
 
 /* ======================================================
    Feedback

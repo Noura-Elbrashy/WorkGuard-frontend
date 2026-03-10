@@ -1,0 +1,93 @@
+{
+
+    "overtimeEntry":{
+  "pageTitle": "الأوفر تايم والبونص الاستثنائي",
+  "pageSubtitle": "عرض وإدارة واعتماد جميع سجلات الأوفر تايم والبونصات الاستثنائية",
+
+  "addExceptional": "إضافة بونص استثنائي",
+  "approve": "اعتماد",
+  "reject": "رفض",
+  "delete": "حذف",
+  "cancel": "إلغاء",
+  "save": "حفظ",
+  "confirm": "تأكيد",
+
+  "approved": "تم اعتماد السجل بنجاح",
+  "rejected": "تم رفض السجل بنجاح",
+  "deleted": "تم حذف السجل بنجاح",
+  "added": "تم إضافة البونص الاستثنائي بنجاح",
+
+  "approveError": "فشل اعتماد السجل",
+  "rejectError": "فشل رفض السجل",
+  "deleteError": "فشل حذف السجل",
+  "addError": "فشل إضافة البونص الاستثنائي",
+  "loadError": "فشل تحميل السجلات",
+
+  "confirmApprove": "اعتماد سجل الأوفر تايم هذا؟",
+  "confirmReject": "رفض هذا السجل؟ يرجى إدخال سبب الرفض.",
+  "confirmDelete": "حذف هذا السجل نهائياً؟",
+
+  "rejectReason": "سبب الرفض",
+  "rejectReasonPlaceholder": "ما سبب رفض هذا السجل؟",
+
+  "totalEntries": "الإجمالي",
+  "pendingEntries": "في الانتظار",
+  "approvedEntries": "معتمد",
+  "rejectedEntries": "مرفوض",
+
+  "types": {
+    "BEFORE_SHIFT":      "قبل الشيفت",
+    "AFTER_SHIFT_DAY":   "بعد الشيفت (نهاري)",
+    "AFTER_SHIFT_NIGHT": "بعد الشيفت (ليلي)",
+    "WEEKLY_OFF":        "يوم الراحة الأسبوعي",
+    "HOLIDAY":           "عطلة رسمية",
+    "EXCEPTIONAL":       "بونص استثنائي"
+  },
+
+  "sources": {
+    "auto":   "تلقائي",
+    "manual": "يدوي"
+  },
+
+  "statuses": {
+    "pending":  "في الانتظار",
+    "approved": "معتمد",
+    "rejected": "مرفوض"
+  },
+
+  "table": {
+    "employee":   "الموظف",
+    "date":       "التاريخ",
+    "type":       "النوع",
+    "source":     "المصدر",
+    "minutes":    "الدقائق",
+    "multiplier": "المعدل",
+    "amount":     "المبلغ",
+    "status":     "الحالة",
+    "notes":      "ملاحظات",
+    "actions":    "الإجراءات"
+  },
+
+  "filters": {
+    "title":       "الفلاتر",
+    "employee":    "الموظف",
+    "type":        "النوع",
+    "status":      "الحالة",
+    "source":      "المصدر",
+    "dateFrom":    "من تاريخ",
+    "dateTo":      "إلى تاريخ",
+    "allTypes":    "كل الأنواع",
+    "allStatuses": "كل الحالات",
+    "allSources":  "كل المصادر",
+    "reset":       "إعادة تعيين"
+  },
+
+  "exceptional": {
+    "title":            "إضافة بونص استثنائي",
+    "employee":         "الموظف",
+    "date":             "التاريخ",
+    "amount":           "المبلغ",
+    "notes":            "السبب / الملاحظات",
+    "notesPlaceholder": "اذكر سبب هذا البونص الاستثنائي"
+  }
+}}
