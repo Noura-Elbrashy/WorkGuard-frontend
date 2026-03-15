@@ -49,7 +49,8 @@ import EmployeeDirectory from './pages/EmployeeDirectory';
 import OvertimePoliciesPage from "./pages/Overtimepoliciespage";
 import BonusPoliciesPage from "./pages/BonusPoliciesPage";
 import OvertimeEntriesPage from "./pages/OvertimeEntriesPage";
-
+import CompanyReportPage from "./pages/Companyreportpage";
+import ReportPage from "./pages/ReportsPage";
 // ProtectedRoute for admin-only pages
 function ProtectedRoute({ children }) {
   const [isAdmin, setIsAdmin] = useState(null);
@@ -301,6 +302,24 @@ element={ <ProtectedRoute>
     </ProtectedRoute>
   }
 />
+<Route
+path="/admin/compreports"
+element={
+ <ProtectedRoute>
+      <CompanyReportPage />
+    </ProtectedRoute>
+}
+/>
+<Route
+path="/admin/reports"
+element={
+ <ProtectedRoute>
+      <ReportPage/>
+    </ProtectedRoute>
+}
+/>
+
+
 
 {/* Holidays - Admin Only */}
 <Route

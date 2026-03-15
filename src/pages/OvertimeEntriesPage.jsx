@@ -325,12 +325,6 @@ useEffect(()=>{
      Stats — بالنوع مش الحالة
      (كل الـ entries approved تلقائياً)
   ========================= */
-//   const stats = [
-//     { label: t('overtimeEntry.totalEntries'),         value: pagination.total,                                          icon: 'fa-list',              color: 'primary',  typeKey: null              },
-//     { label: t('overtimeEntry.types.BEFORE_SHIFT'),   value: entries.filter(e => e.type === 'BEFORE_SHIFT').length,    icon: 'fa-sun',               color: 'warning',  typeKey: 'BEFORE_SHIFT'    },
-//     { label: t('overtimeEntry.types.AFTER_SHIFT_DAY'),value: entries.filter(e => e.type === 'AFTER_SHIFT_DAY').length, icon: 'fa-cloud-sun',         color: 'info',     typeKey: 'AFTER_SHIFT_DAY' },
-//     { label: t('overtimeEntry.types.EXCEPTIONAL'),    value: entries.filter(e => e.type === 'EXCEPTIONAL').length,     icon: 'fa-star',              color: 'success',  typeKey: 'EXCEPTIONAL'     }
-//   ];
 
 const stats = [
   {

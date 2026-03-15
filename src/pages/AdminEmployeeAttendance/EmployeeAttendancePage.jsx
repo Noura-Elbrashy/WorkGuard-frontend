@@ -706,7 +706,7 @@
 
 // export default EmployeeAttendancePage;
 
-// src/pages/admin/EmployeeAttendancePage.jsx
+// src/pages/admin/EmployeeAttendancePage.jsx// src/pages/admin/EmployeeAttendancePage.jsx
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -735,8 +735,6 @@ const PAGE_LIMIT = 10;
 
 const EmployeeAttendancePage = () => {
   const { t, i18n } = useTranslation('attendance');
-  // const { t } = useTranslation('attendance');
-
   const navigate     = useNavigate();
   const isRTL        = i18n.language === 'ar';
 
@@ -898,7 +896,26 @@ const EmployeeAttendancePage = () => {
           date={localDateStr(selectedDay.date)}
           isAdmin
           onClose={closeModal}
-          onSaved={() => { closeModal(); fetchSummary(); }}
+          onSaved={async () => {
+            // ✅ حدّث الجدول
+            fetchSummary();
+            // ✅ أعد جلب الـ dayDetails للصف ده بالذات (بدل ما نقفل ونخلي الكاش القديم)
+            if (selectedDay) {
+              setDetailsLoading(true);
+              try {
+                const res = await getAttendanceDayDetails(
+                  selectedDay.user._id,
+                  localDateStr(selectedDay.date),
+                  true  // ✅ bust cache — يتجاوز الـ Redis cache بعد التعديل
+                );
+                setDayDetails(res.data);
+              } catch (err) {
+                console.error('onSaved re-fetch:', err);
+              } finally {
+                setDetailsLoading(false);
+              }
+            }
+          }}
         />
       )}
     </div>
@@ -906,7 +923,6 @@ const EmployeeAttendancePage = () => {
 };
 
 export default EmployeeAttendancePage;
-
 //1
 // import { useEffect, useState, useCallback } from 'react';
 // import { useTranslation } from 'react-i18next';

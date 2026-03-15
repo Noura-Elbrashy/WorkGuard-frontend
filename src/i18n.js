@@ -37,6 +37,12 @@ import enovertimeEntry from "./locales/en/overtimeEntry.json";
 import enAttendance from './locales/en/enAttendance.json';
 import arAttendance from './locales/ar/arAttendance.json';
 
+import enCompanyReport from './locales/en/companyReport.json';
+
+
+import arCompanyReport from './locales/ar/companyReport.json';
+
+
 
 i18n
   .use(initReactI18next)
@@ -47,14 +53,16 @@ i18n
         overtimePolicy: arOvertimePolicy,
         bonusPolicy: arBonusPolicy,
         overtimeEntry: arovertimeEntry,
-        attendance: arAttendance
+        attendance: arAttendance,
+        companyReport: arCompanyReport
       },
       en: {
         translation: en,
         overtimePolicy: enOvertimePolicy,
         bonusPolicy: enBonusPolicy,
         overtimeEntry: enovertimeEntry,
-        attendance: enAttendance
+        attendance: enAttendance,
+        companyReport: enCompanyReport,
       }
     },
 

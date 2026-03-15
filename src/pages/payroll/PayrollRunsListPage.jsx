@@ -207,6 +207,7 @@ const PayrollRunsListPage = () => {
       setLoading(true);
       const res = await getPayrollRuns(filters);
       setRuns(res.data || []);
+      console.log(res.data); 
     } catch {
       setToast({ type: 'error', message: t('payroll.loadError') });
     } finally {

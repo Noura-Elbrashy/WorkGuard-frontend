@@ -1,4 +1,4 @@
-
+//src/helpers/api.js
 import axios from 'axios';
 
 const api = axios.create({
@@ -16,7 +16,7 @@ api.interceptors.request.use((config) => {
   return config;
 }, (error) => {
   return Promise.reject(error);
-});
+}); 
 
 api.interceptors.response.use(
   (response) => response,
@@ -43,6 +43,10 @@ export const apiDelete = (url) => api.delete(url);
 
 export const apiPatch = (url, data, config = {}) =>
   api.patch(url, data, config);
+
+export default api;
+
+
 
 
 // import axios from 'axios';

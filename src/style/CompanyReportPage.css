@@ -1,0 +1,300 @@
+/* ================================================
+   CompanyReportPage.css
+   نفس نمط OvertimeEntriesPage.css
+================================================ */
+
+/* ── Page layout ─────────────────────────────── */
+.company-report-page {
+  min-height: 100vh;
+  background: #f8f9fc;
+  padding: 1.5rem 0;
+}
+
+/* ── Page header ─────────────────────────────── */
+.company-report-page .page-header {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eef0f5;
+  margin-bottom: 1.5rem;
+}
+
+.company-report-page .page-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1d2e;
+}
+
+.company-report-page .page-subtitle {
+  color: #8a93a8;
+  font-size: 0.875rem;
+}
+
+/* ── Export buttons ──────────────────────────── */
+.btn-export {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.btn-export-excel {
+  border: 1.5px solid #1d7044;
+  color: #1d7044;
+  background: #f0faf4;
+}
+.btn-export-excel:hover:not(:disabled) {
+  background: #1d7044;
+  color: #fff;
+}
+
+.btn-export-pdf {
+  border: 1.5px solid #c0392b;
+  color: #c0392b;
+  background: #fff5f5;
+}
+.btn-export-pdf:hover:not(:disabled) {
+  background: #c0392b;
+  color: #fff;
+}
+
+.btn-export:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Stat cards (same as OvertimeEntriesPage) ── */
+.stat-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  border: 2px solid transparent;
+  user-select: none;
+}
+
+.stat-card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09);
+  transform: translateY(-2px);
+}
+
+.stat-card-active {
+  border-color: currentColor;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.stat-card-success .stat-icon { background: #e8f8ef; color: #1d7044; }
+.stat-card-danger  .stat-icon { background: #fef0ee; color: #c0392b; }
+.stat-card-info    .stat-icon { background: #e8f6fd; color: #117a8b; }
+.stat-card-primary .stat-icon { background: #eaf0ff; color: #3a5bd9; }
+.stat-card-warning .stat-icon { background: #fff8e6; color: #cc8800; }
+.stat-card-secondary .stat-icon { background: #f1f2f6; color: #5a6070; }
+
+.stat-card-success.stat-card-active  { border-color: #1d7044; }
+.stat-card-danger.stat-card-active   { border-color: #c0392b; }
+.stat-card-info.stat-card-active     { border-color: #117a8b; }
+.stat-card-primary.stat-card-active  { border-color: #3a5bd9; }
+.stat-card-warning.stat-card-active  { border-color: #cc8800; }
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1d2e;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: #8a93a8;
+  margin-top: 3px;
+}
+
+/* ── KPI cards ───────────────────────────────── */
+.kpi-card {
+  border-radius: 12px !important;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.kpi-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-2px);
+}
+
+.kpi-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.kpi-label {
+  font-size: 0.72rem;
+  color: #8a93a8;
+  font-weight: 500;
+}
+
+.kpi-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1d2e;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.kpi-sub {
+  font-size: 0.7rem;
+  color: #b0bac8;
+  margin-top: 2px;
+}
+
+/* ── Deduction breakdown ─────────────────────── */
+.deduction-item {
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: #fafbfc;
+  border: 1px solid #f0f0f5;
+}
+
+.progress {
+  border-radius: 999px;
+  background: #eef0f5;
+}
+.progress-bar {
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+/* ── Rankings ────────────────────────────────── */
+.ranking-row {
+  transition: background 0.15s;
+}
+.ranking-row:hover {
+  background: #f8f9ff !important;
+}
+
+.ranking-medal {
+  width: 26px;
+  text-align: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ── Report meta bar ─────────────────────────── */
+.report-meta-bar {
+  margin-bottom: 1rem;
+}
+
+.badge-period {
+  display: inline-flex;
+  align-items: center;
+  background: #eef2ff;
+  color: #3a5bd9;
+  border: 1.5px solid #c7d2f8;
+  border-radius: 8px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.badge-meta {
+  display: inline-flex;
+  align-items: center;
+  color: #8a93a8;
+  font-size: 0.82rem;
+}
+
+/* ── Employee table ──────────────────────────── */
+.report-emp-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  white-space: nowrap;
+  font-size: 0.78rem;
+  padding: 0.65rem 0.75rem;
+}
+
+.report-emp-table tbody td {
+  padding: 0.5rem 0.75rem;
+  vertical-align: middle;
+}
+
+.row-absent-bad {
+  background-color: #fff0ee !important;
+}
+
+.report-emp-table tfoot td {
+  padding: 0.6rem 0.75rem;
+  font-size: 0.82rem;
+}
+
+/* ── Empty state ─────────────────────────────── */
+.empty-state {
+  color: #8a93a8;
+}
+.empty-icon {
+  font-size: 4rem;
+  opacity: 0.2;
+}
+
+/* ── Card header consistent ──────────────────── */
+.card-header {
+  background: #fff !important;
+}
+
+/* ── RTL overrides ───────────────────────────── */
+.company-report-page.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.company-report-page.rtl .text-end {
+  text-align: left !important;
+}
+
+.company-report-page.rtl .ms-auto {
+  margin-left: unset !important;
+  margin-right: auto !important;
+}
+
+.company-report-page.rtl .me-1,
+.company-report-page.rtl .me-2 {
+  margin-right: unset !important;
+  margin-left: 0.25rem !important;
+}
+
+.company-report-page.rtl .me-2 {
+  margin-left: 0.5rem !important;
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 576px) {
+  .stat-value { font-size: 1.25rem; }
+  .kpi-value  { font-size: 1rem; }
+  .page-title { font-size: 1.15rem; }
+
+  .btn-export {
+    font-size: 0.78rem;
+    padding: 0.38rem 0.75rem;
+  }
+}

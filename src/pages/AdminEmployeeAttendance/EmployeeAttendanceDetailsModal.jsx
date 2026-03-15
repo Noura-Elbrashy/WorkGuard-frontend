@@ -1348,7 +1348,7 @@ const EmployeeAttendanceDetailsModal = ({
   onClose,
   onSaved,
 }) => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation("Attendance");
   const isRTL        = i18n.language === 'ar';
   const locale       = isRTL ? 'ar-EG' : 'en-GB';
 

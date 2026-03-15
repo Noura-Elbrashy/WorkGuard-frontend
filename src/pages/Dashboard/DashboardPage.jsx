@@ -301,7 +301,7 @@ const DashboardPage = () => {
       descriptionAr: 'إنشاء تقارير شاملة للموارد البشرية',
       icon: 'fa-chart-line',
       color: '#8b5cf6',
-      path: '/reports'
+      path: '/admin/reports'
     }
   ];
 
