@@ -1,0 +1,48 @@
+{
+  "title": "Email Settings",
+  "subtitle": "Configure your company email to send notifications and alerts",
+  "currentSettings": "Current Settings",
+  "noSettings": "No settings configured",
+  "noSettingsDesc": "Add your company email settings to send notifications from a custom address",
+  "form": {
+    "emailAddress": "Email Address",
+    "emailPlaceholder": "example@company.com",
+    "password": "App Password",
+    "passwordPlaceholder": "Enter your app password",
+    "smtpHost": "SMTP Host",
+    "smtpHostPlaceholder": "smtp.gmail.com",
+    "smtpPort": "SMTP Port",
+    "smtpPortPlaceholder": "587",
+    "fromName": "Sender Name",
+    "fromNamePlaceholder": "WorkGuard"
+  },
+  "status": {
+    "configured": "Configured",
+    "notConfigured": "Not Configured",
+    "lastVerified": "Last verified",
+    "never": "Never"
+  },
+  "actions": {
+    "save": "Save Settings",
+    "saving": "Saving...",
+    "delete": "Delete Settings",
+    "deleting": "Deleting...",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "testConnection": "Test Connection",
+    "testing": "Testing..."
+  },
+  "messages": {
+    "saveSuccess": "Email settings saved successfully",
+    "saveError": "Failed to save settings",
+    "deleteSuccess": "Email settings deleted",
+    "deleteError": "Failed to delete settings",
+    "deleteConfirm": "Are you sure you want to delete the email settings?",
+    "testSuccess": "Connection is working correctly ✓",
+    "testError": "Connection failed, please check your credentials"
+  },
+  "hints": {
+    "password": "Use an App Password, not your regular password",
+    "smtp": "For Gmail: smtp.gmail.com | Port: 587"
+  }
+}

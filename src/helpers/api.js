@@ -1,13 +1,18 @@
 //src/helpers/api.js
 import axios from 'axios';
 
+// const api = axios.create({
+//   baseURL: 'http://localhost:5000/api',
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+// });
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: `${window.location.origin.replace(':5173', ':5000')}/api`,
   headers: {
     'Content-Type': 'application/json',
   },
 });
-
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {

@@ -304,15 +304,15 @@ export default function LeavePolicyTable({
       );
     }
 
-    if (p.scope === "user") {
-      if (typeof p.scopeId === "object") {
-        return (
-          <div className="target-user">
-            <div className="user-name">{p.scopeId.name}</div>
-            <small className="user-email">{p.scopeId.email}</small>
-          </div>
-        );
-      }
+   if (p.scope === "user") {
+  if (p.scopeId && typeof p.scopeId === "object") {
+    return (
+      <div className="target-user">
+        <div className="user-name">{p.scopeId.name || '-'}</div>
+        <small className="user-email">{p.scopeId.email || '-'}</small>
+      </div>
+    );
+  }
       return (
         <span className="target-badge target-user">
           <i className="fas fa-user me-1"></i>

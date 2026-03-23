@@ -12,7 +12,8 @@
   --att-navy:       #0f1f3d;
   --att-navy-2:     #1a3260;
   --att-navy-3:     #162850;
-  --att-bg:         #f4f6fb;
+  /* --att-bg:         #f4f6fb; */
+  
   --att-white:      #ffffff;
   --att-border:     #e2e8f4;
   --att-amber:      #f59e0b;
@@ -20,7 +21,9 @@
   --att-danger:     #ef4444;
   --att-warning:    #f59e0b;
   --att-info:       #3b82f6;
-  --att-muted:      #64748b;
+  /* --att-muted:      #64748b; */
+    --att-muted:      #145bc0;
+
   --att-radius:     12px;
   --att-radius-sm:  8px;
   --att-shadow:     0 4px 24px rgba(15,31,61,.10);

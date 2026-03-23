@@ -108,6 +108,7 @@ import AttendancePolicyTable from '../../components/attendancePolicy/AttendanceP
 import AttendancePolicyFormModal from '../../components/attendancePolicy/AttendancePolicyFormModal';
 import Toast from '../../components/ui/Toast';
 import AttendancePolicyNotes from '../../components/attendancePolicy/AttendancePolicyNotes';
+import { isGlobalAdmin } from '../../helpers/auth';
 
 import '../../style/AttendancePoliciesPage.css';
 
@@ -212,6 +213,8 @@ const filteredPolicies = (() => {
                 {t('attendancePolicy.pageSubtitle')}
               </p>
             </div>
+
+
 
             <button
               className="btn btn-primary btn-create"

@@ -479,9 +479,9 @@ const renderDayStatus = (d) => {
    PayrollPreviewPage
 ============================================== */
 const PayrollPreviewPage = () => {
-  const { t }        = useTranslation();
-  const navigate     = useNavigate();
-  const { userId }   = useParams();
+  const { t }= useTranslation("Payroll");
+  const navigate = useNavigate();
+  const { userId } = useParams();
 
   const now = new Date();
   const [year,       setYear]       = useState(now.getFullYear());
@@ -787,12 +787,21 @@ const PayrollPreviewPage = () => {
                         <th>{t('payroll.policyScope')}</th>
                         <th>{t('payroll.from')}</th>
                         <th>{t('payroll.to')}</th>
-                        <th>Late Grace</th>
-                        <th>Early Grace</th>
+                        <th>
+
+                          {t('payroll.LateGrace')}
+                        </th>
+                        <th>
+                          {t('payroll.EarlyGrace')}
+                          
+                        </th>
                         <th>{t('payroll.lateRate')}</th>
                         <th>{t('payroll.earlyRate')}</th>
                         <th>{t('payroll.transitRate')}</th>
-                        <th>Absence</th>
+                        <th>
+
+                          {t('payroll.Absence')}
+                        </th>
                       </tr>
                     </thead>
                     <tbody>

@@ -109,7 +109,7 @@ body {
 /* Card Header */
 .card-header {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-  color: white;
+  color: rgb(9, 15, 105);
   border-bottom: none;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   padding: 1.5rem;
@@ -477,7 +477,7 @@ body {
 @media (max-width: 576px) {
   body {
     padding-top: 50px;
-    padding-bottom: 40px;
+    padding-bottom: 95px;
   }
 
   /* Container */

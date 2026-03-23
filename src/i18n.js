@@ -42,7 +42,13 @@ import enCompanyReport from './locales/en/companyReport.json';
 
 import arCompanyReport from './locales/ar/companyReport.json';
 
+import entenantEmail from './locales/en/tenantEmail.json'
 
+import artenantEmail from './locales/ar/tenantEmail.json'
+
+import enPayroll from './locales/en/Payroll.json';
+
+import arPayroll from './locales/ar/Payroll.json';
 
 i18n
   .use(initReactI18next)
@@ -54,7 +60,9 @@ i18n
         bonusPolicy: arBonusPolicy,
         overtimeEntry: arovertimeEntry,
         attendance: arAttendance,
-        companyReport: arCompanyReport
+        companyReport: arCompanyReport,
+         tenantEmail: artenantEmail,
+        Payroll: arPayroll,
       },
       en: {
         translation: en,
@@ -63,6 +71,8 @@ i18n
         overtimeEntry: enovertimeEntry,
         attendance: enAttendance,
         companyReport: enCompanyReport,
+        tenantEmail: entenantEmail,
+         Payroll: enPayroll,
       }
     },
 

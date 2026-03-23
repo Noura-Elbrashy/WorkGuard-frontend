@@ -1,0 +1,48 @@
+{
+  "title": "إعدادات البريد الإلكتروني",
+  "subtitle": "اضبط إيميل الشركة لإرسال الإشعارات والتنبيهات",
+  "currentSettings": "الإعدادات الحالية",
+  "noSettings": "لا توجد إعدادات محفوظة",
+  "noSettingsDesc": "قم بإضافة إعدادات البريد الإلكتروني لشركتك لإرسال الإشعارات من إيميل مخصص",
+  "form": {
+    "emailAddress": "عنوان البريد الإلكتروني",
+    "emailPlaceholder": "example@company.com",
+    "password": "كلمة مرور التطبيق",
+    "passwordPlaceholder": "أدخل كلمة مرور التطبيق",
+    "smtpHost": "SMTP Host",
+    "smtpHostPlaceholder": "smtp.gmail.com",
+    "smtpPort": "SMTP Port",
+    "smtpPortPlaceholder": "587",
+    "fromName": "اسم المرسل",
+    "fromNamePlaceholder": "WorkGuard"
+  },
+  "status": {
+    "configured": "مُهيأ",
+    "notConfigured": "غير مُهيأ",
+    "lastVerified": "آخر تحقق",
+    "never": "لم يتم بعد"
+  },
+  "actions": {
+    "save": "حفظ الإعدادات",
+    "saving": "جاري الحفظ...",
+    "delete": "حذف الإعدادات",
+    "deleting": "جاري الحذف...",
+    "edit": "تعديل",
+    "cancel": "إلغاء",
+    "testConnection": "اختبار الاتصال",
+    "testing": "جاري الاختبار..."
+  },
+  "messages": {
+    "saveSuccess": "تم حفظ إعدادات البريد بنجاح",
+    "saveError": "فشل الحفظ — تحقق من صحة البيانات والاتصال",
+    "deleteSuccess": "تم حذف إعدادات البريد",
+    "deleteError": "فشل في حذف الإعدادات",
+    "deleteConfirm": "هل أنت متأكد من حذف إعدادات البريد الإلكتروني؟",
+    "testSuccess": "الاتصال يعمل بشكل صحيح ✓",
+    "testError": "فشل الاتصال، تحقق من البيانات"
+  },
+  "hints": {
+    "password": "استخدم App Password وليس كلمة المرور الأصلية",
+    "smtp": "للـ Gmail: smtp.gmail.com | Port: 587"
+  }
+}

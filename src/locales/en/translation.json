@@ -387,6 +387,18 @@
   
 
   "payroll":{
+
+    "snapshotNote": "Employee data at time of generation",
+"loadingDaily": "Loading daily breakdown...",
+"dayTotal": "Day Total",
+"days": "days",
+"userSpecific": "User-Specific",
+"noDeduction": "No Deduction",
+"paidAbsence": "Paid Absence",
+"unpaid": "Unpaid",
+"system": "System",
+"regeneratedAt": "Regenerated At",
+"approvedBy": "Approved By",
       "policy": "Policy",
     "policyScope": "Scope",
   
@@ -1341,7 +1353,10 @@
   
   
 
-  
+ 
+
+"Logout":"Log Out",
+"emailSettings": "Email Settings",
   "profile": "Employee Profile",
   "name": "Name",
   "email": "Email",

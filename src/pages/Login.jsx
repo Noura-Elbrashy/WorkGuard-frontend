@@ -26,6 +26,7 @@ function Login() {
       });
     }
   }, [error, success]);
+console.log(window.location.origin);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -164,7 +165,7 @@ useEffect(() => {
                 <h5 className="modal-title">{t('resetPassword')}</h5>
                 <button
                   type="button"
-                  className="btn-close btn-close-white"
+                  className="btn-close btn"
                   onClick={() => setShowModal(false)}
                 ></button>
               </div>

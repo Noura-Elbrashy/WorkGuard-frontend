@@ -283,6 +283,7 @@
 
 //============================================1
 import React, { useState } from 'react';
+import { isGlobalAdmin } from '../../helpers/auth';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useTranslation } from 'react-i18next';
 import L from 'leaflet';
@@ -409,6 +410,9 @@ const BranchTable = ({ branches, attendanceData, onEdit, onDelete, onToggleEmerg
                       </td>
                       <td>
                         <div className="d-flex gap-1">
+
+                          {isGlobalAdmin() && (
+  <>
                           <button
                             className="btn-info-modern btn-modern btn-sm-modern"
                             onClick={() => onEdit(branch)}
@@ -423,6 +427,9 @@ const BranchTable = ({ branches, attendanceData, onEdit, onDelete, onToggleEmerg
                           >
                             <i className="fas fa-trash-alt"></i>
                           </button>
+                          </>)}
+
+                          
                           <button
                             className={`btn-modern btn-sm-modern ${
                               branch.allowRemoteCheckin ? 'btn-warning-modern' : 'btn-success-modern'

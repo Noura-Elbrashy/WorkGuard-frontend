@@ -19,12 +19,12 @@ export const registerUser = (data) => {
   return apiPost('/auth/register', data);
 };
 
-/**
- * 👤 Get current user profile
- */
-export const getProfile = () => {
-  return apiGet('/auth/profile');
-};
+// /**
+//  * 👤 Get current user profile
+//  */
+// export const getProfile = () => {
+//   return apiGet('/auth/profile');
+// };
 
 /* ======================================================
    Account Activation

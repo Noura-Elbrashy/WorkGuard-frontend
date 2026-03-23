@@ -51,6 +51,9 @@ import BonusPoliciesPage from "./pages/BonusPoliciesPage";
 import OvertimeEntriesPage from "./pages/OvertimeEntriesPage";
 import CompanyReportPage from "./pages/Companyreportpage";
 import ReportPage from "./pages/ReportsPage";
+import TenantEmailSettingsPage from './pages/TenantEmailSettingsPage';
+
+
 // ProtectedRoute for admin-only pages
 function ProtectedRoute({ children }) {
   const [isAdmin, setIsAdmin] = useState(null);
@@ -59,7 +62,7 @@ function ProtectedRoute({ children }) {
   useEffect(() => {
     const checkAdmin = async () => {
       try {
-        const res = await apiGet('/auth/profile');
+        const res = await apiGet('/users/profile');
         setIsAdmin(res.data.role === 'admin');
       } catch (err) {
         console.error('Auth check error:', err);
@@ -185,7 +188,7 @@ function App() {
   }
 />
 <Route path="/admin/employees" element={<ProtectedRoute>
-  <EmployeeDirectory />
+  <EmployeeDirectory/>
   </ProtectedRoute>} />
 
 
@@ -302,6 +305,14 @@ element={ <ProtectedRoute>
     </ProtectedRoute>
   }
 />
+
+<Route path="/settings/email" element={
+  <ProtectedRoute>
+    <TenantEmailSettingsPage />
+</ProtectedRoute>
+} />
+
+
 <Route
 path="/admin/compreports"
 element={

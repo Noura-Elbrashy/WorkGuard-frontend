@@ -1,0 +1,266 @@
+/* src/style/TenantEmailSettings.css */
+
+/* ── Page ──────────────────────────────────────────────────── */
+.te-page {
+  min-height: 100vh;
+  /* background: #fdfcfffc; */
+  padding: 2.5rem 1rem;
+}
+
+.te-inner {
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+.te-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.te-header-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+.te-header-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 2px;
+}
+
+.te-header-subtitle {
+  font-size: 0.84rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* ── Card ──────────────────────────────────────────────────── */
+.te-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+/* ── Loading ───────────────────────────────────────────────── */
+.te-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3.5rem 0;
+}
+
+/* ── Empty state ───────────────────────────────────────────── */
+.te-empty {
+  text-align: center;
+  padding: 3.5rem 2rem;
+}
+
+.te-empty-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: #3b82f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+
+.te-empty-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.4rem;
+}
+
+.te-empty-desc {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  max-width: 340px;
+  margin: 0 auto 1.75rem;
+  line-height: 1.6;
+}
+
+/* ── View mode ─────────────────────────────────────────────── */
+.te-view-body {
+  padding: 1.75rem;
+}
+
+.te-view-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.te-view-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* ── Data box ──────────────────────────────────────────────── */
+.te-data-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.te-data-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid #e2e8f0;
+  transition: background 0.15s;
+}
+
+.te-data-row:hover {
+  background: #f1f5f9;
+}
+
+.te-data-row-last {
+  border-bottom: none;
+}
+
+.te-data-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.83rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.te-data-icon {
+  color: #94a3b8;
+  width: 14px;
+}
+
+.te-data-value {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1e293b;
+  max-width: 60%;
+  text-align: end;
+  word-break: break-all;
+}
+
+.te-last-verified {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-bottom: 1.25rem;
+}
+
+.te-action-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* ── Badge ─────────────────────────────────────────────────── */
+.te-badge-success {
+  background: #dcfce7 !important;
+  color: #15803d !important;
+  font-size: 0.75rem !important;
+  padding: 5px 12px !important;
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+}
+
+.te-badge-danger {
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+  font-size: 0.75rem !important;
+  padding: 5px 12px !important;
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+}
+
+/* ── Form ──────────────────────────────────────────────────── */
+.te-form {
+  padding: 1.75rem;
+}
+
+.te-form-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.te-input {
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  font-size: 0.88rem !important;
+  background: #fff !important;
+  color: #0f172a !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+.te-input:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12) !important;
+}
+
+.te-eye-btn {
+  border-color: #cbd5e1 !important;
+  color: #64748b !important;
+  background: #f8fafc !important;
+}
+
+.te-eye-btn:hover {
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+}
+
+.te-hint {
+  display: block;
+  font-size: 0.76rem;
+  color: #94a3b8;
+  margin-top: 5px;
+  line-height: 1.5;
+}
+
+/* ── Form Actions ──────────────────────────────────────────── */
+.te-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #f1f5f9;
+  flex-wrap: wrap;
+}
+
+/* ── RTL ───────────────────────────────────────────────────── */
+/* [dir='rtl'] .te-header,
+[dir='rtl'] .te-view-header,
+[dir='rtl'] .te-data-row,
+[dir='rtl'] .te-data-label,
+[dir='rtl'] .te-action-row,
+[dir='rtl'] .te-form-actions {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .te-data-value {
+  text-align: start;
+} */

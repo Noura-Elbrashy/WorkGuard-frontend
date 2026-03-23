@@ -229,7 +229,7 @@ import LeaveCard from '../../components/leave/components/LeaveCard';
 import LeavePagination from '../../components/leave/components/LeavePagination';
 import LeavePoliciesPage from '../LeavePoliciesPage';
 import Toast from '../../components/ui/Toast';
-
+import { isGlobalAdmin } from '../../helpers/auth';
 /**
  * ================================
  * LeavesAdminPage
@@ -386,19 +386,22 @@ function LeavesAdminPage() {
       <i className="fa-solid fa-user-shield me-2 text-primary" />
       {t('leave.admin.title')}
     </h4>
-    <div className="text-muted small">
+    <div className="text-light small">
       {t('leave.admin.subtitle')}
     </div>
   </div>
 
   {/* 🔗 زر سياسات الإجازات */}
+
+{isGlobalAdmin() && (
   <button
-    className="btn btn-outline-primary"
+    className="btn btn-primary"
     onClick={() => navigate('/admin/leave-policies')}
   >
     <i className="fa-solid fa-gear me-2" />
     {t('leave.policies.manage')}
   </button>
+)}
 </div>
 
       {/* Filters */}

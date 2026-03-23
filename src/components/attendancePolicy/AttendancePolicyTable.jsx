@@ -482,6 +482,8 @@ import {
 } from '../../services/attendancePolicy.api';
 import Toast from '../ui/Toast';
 import ActivationHistoryModal from './ActivationHistoryModal';
+import { isGlobalAdmin } from '../../helpers/auth';
+
 import '../../style/AttendancePoliciesPage.css';
 
 const AttendancePolicyTable = ({
@@ -619,10 +621,211 @@ setResultToast({
   /* =========================
      Cards UI
   ========================= */
-  return (
-    <>
-      <div className="policies-grid">
-        {policies.map((p) => (
+//   return (
+//     <>
+//       <div className="policies-grid">
+//         {policies.map((p) => (
+//           <div key={p._id} className="policy-col">
+//             <div className="policy-card h-100">
+
+//               {/* ================= Header ================= */}
+//               <div className="policy-header d-flex justify-content-between align-items-center">
+//                 <div className="d-flex align-items-center gap-2">
+//                   <div className="policy-icon">
+//                     <i
+//                       className={`fas ${
+//                         p.scope === 'global'
+//                           ? 'fa-globe'
+//                           : p.scope === 'branch'
+//                           ? 'fa-building'
+//                           : 'fa-user-shield'
+//                       }`}
+//                     />
+//                   </div>
+
+//                   <div>
+//                     <div className="policy-scope">
+//                       {t(`attendancePolicy.scope_${p.scope}`)}
+//                     </div>
+//                     <small className="policy-target">
+//                       {renderTarget(p)}
+//                     </small>
+//                   </div>
+//                 </div>
+
+//                 {/* ⛔️ الألوان زي ما هي */}
+//                 <span
+//                   className={`badge ${
+//                     p.active ? 'bg-success' : 'bg-secondary'
+//                   }`}
+//                 >
+//                   {p.active
+//                     ? t('common.active')
+//                     : t('common.inactive')}
+//                 </span>
+//               </div>
+
+//               {/* ================= Body ================= */}
+//               <div className="policy-body small">
+
+//                 {/* Grace */}
+//                 <div className="policy-section">
+//                   <div className="section-title">
+//                     <i className="fas fa-clock me-2"></i>
+//                     {t('attendancePolicy.grace')}
+//                   </div>
+
+//                   <div className="info-item">
+//                     {t('attendancePolicy.lateGrace')}:
+//                     <strong> {p.grace?.lateMinutes || 0}</strong>{' '}
+//                     {t('common.minutes')}
+//                   </div>
+
+//                   <div className="info-item">
+//                     {t('attendancePolicy.earlyGrace')}:
+//                     <strong> {p.grace?.earlyLeaveMinutes || 0}</strong>{' '}
+//                     {t('common.minutes')}
+//                   </div>
+//                 </div>
+
+//                 {/* Rates */}
+//                 <div className="policy-section">
+//                   <div className="section-title">
+//                     <i className="fas fa-percentage me-2"></i>
+//                     {t('attendancePolicy.rates')}
+//                   </div>
+
+//                   <div className="rate-item rate-late">
+//                     {t('attendancePolicy.lateRate')}
+//                     <strong>{p.rates?.latePerMinute || 0}</strong>
+//                   </div>
+
+//                   <div className="rate-item rate-early">
+//                     {t('attendancePolicy.earlyRate')}
+//                     <strong>{p.rates?.earlyLeavePerMinute || 0}</strong>
+//                   </div>
+
+//                   <div className="rate-item rate-transit">
+//                     {t('attendancePolicy.transitRate')}
+//                     <strong>{p.rates?.transitPerMinute || 0}</strong>
+//                   </div>
+//                 </div>
+
+//                 {/* Absence */}
+//                 {/* <div className="policy-section">
+//                   <div className="section-title">
+//                     <i className="fas fa-user-times me-2"></i>
+//                     {t('attendancePolicy.absence')}
+//                   </div>
+
+//                   <div className="absence-info">
+//                     {!p.absence?.markDayAbsent && (
+//                       <span>
+//                         <i className="fas fa-check-circle me-1"></i>
+//                         {t('attendancePolicy.noDeduction')}
+//                       </span>
+//                     )}
+
+//                     {p.absence?.markDayAbsent && p.absence?.paid && (
+//                       <span>
+//                         <i className="fas fa-dollar-sign me-1"></i>
+//                         {t('attendancePolicy.absencePaid')}
+//                       </span>
+//                     )}
+
+//                     {p.absence?.markDayAbsent && !p.absence?.paid && (
+//                       <span>
+//                         <i className="fas fa-exclamation-triangle me-1"></i>
+//                         {t('attendancePolicy.absenceDeduction')}:
+//                         <strong> {p.absence.dayRate * 100}%</strong>
+//                       </span>
+//                     )}
+//                   </div>
+//                 </div> */}
+
+// <div className="policy-section">
+//   <div className="section-title">
+//     <i className="fas fa-user-times me-2"></i>
+//     {t('attendancePolicy.absence')}
+//   </div>
+
+//   <div className="absence-info">
+//     {/* حالة 1: مفيش خصم خالص */}
+//     {!p.absence?.deductSalary && (
+//       <span className="text-success">
+//         <i className="fas fa-check-circle me-1"></i>
+//         {t('attendancePolicy.noDeduction') || 'No Deduction'}
+//       </span>
+//     )}
+
+//     {/* حالة 2: فيه خصم بس مدفوع */}
+//     {p.absence?.deductSalary && p.absence?.paid && (
+//       <span className="text-info">
+//         <i className="fas fa-dollar-sign me-1"></i>
+//         {t('attendancePolicy.absencePaid') || 'Paid Absence'}
+//       </span>
+//     )}
+
+//     {/* حالة 3: فيه خصم وغير مدفوع (هنا بيظهر النسبة) */}
+//     {p.absence?.deductSalary && !p.absence?.paid && (
+//       <span className="text-danger">
+//         <i className="fas fa-exclamation-triangle me-1"></i>
+//         {t('attendancePolicy.absenceDeduction') || 'Deduction'}:
+//         <strong className="ms-1">
+//           {((p.absence.dayRate || 1) * 100).toFixed(0)}%
+//         </strong>
+//         {' ' + (t('attendancePolicy.ofDailySalary') || 'of daily salary')}
+//       </span>
+//     )}
+//   </div>
+// </div>
+//               </div>
+
+//               {/* ================= Footer ================= */}
+//               <div className="policy-footer d-flex justify-content-end gap-2">
+
+//                   <button
+//     className="btn btn-sm btn-outline-secondary"
+//     onClick={() => setShowHistory(p)}
+//     title={t('attendancePolicy.history')}
+//   >
+//     <i className="fas fa-history" />
+//   </button>
+//                 <button
+//                   className="btn btn-sm btn-outline-primary"
+//                   onClick={() => onEdit(p)}
+//                 >
+//                   <i className="fas fa-edit" />
+//                 </button>
+
+//                 <button
+//                   className="btn btn-sm btn-outline-warning"
+//                   disabled={processingId === p._id}
+//                   onClick={() => requestToggle(p)}
+//                 >
+//                   <i className="fas fa-power-off" />
+//                 </button>
+
+//                 <button
+//                   className="btn btn-sm btn-outline-danger"
+//                   disabled={processingId === p._id}
+//                   onClick={() => requestDelete(p)}
+//                 >
+//                   <i className="fas fa-trash" />
+//                 </button>
+
+        
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+return (
+  <>
+    <div className="policies-grid">
+      {policies.map((p) => {
+        const canManage = isGlobalAdmin() || p.scope === 'branch';
+        return (
           <div key={p._id} className="policy-col">
             <div className="policy-card h-100">
 
@@ -630,17 +833,12 @@ setResultToast({
               <div className="policy-header d-flex justify-content-between align-items-center">
                 <div className="d-flex align-items-center gap-2">
                   <div className="policy-icon">
-                    <i
-                      className={`fas ${
-                        p.scope === 'global'
-                          ? 'fa-globe'
-                          : p.scope === 'branch'
-                          ? 'fa-building'
-                          : 'fa-user-shield'
-                      }`}
-                    />
+                    <i className={`fas ${
+                      p.scope === 'global' ? 'fa-globe'
+                      : p.scope === 'branch' ? 'fa-building'
+                      : 'fa-user-shield'
+                    }`} />
                   </div>
-
                   <div>
                     <div className="policy-scope">
                       {t(`attendancePolicy.scope_${p.scope}`)}
@@ -650,16 +848,8 @@ setResultToast({
                     </small>
                   </div>
                 </div>
-
-                {/* ⛔️ الألوان زي ما هي */}
-                <span
-                  className={`badge ${
-                    p.active ? 'bg-success' : 'bg-secondary'
-                  }`}
-                >
-                  {p.active
-                    ? t('common.active')
-                    : t('common.inactive')}
+                <span className={`badge ${p.active ? 'bg-success' : 'bg-secondary'}`}>
+                  {p.active ? t('common.active') : t('common.inactive')}
                 </span>
               </div>
 
@@ -669,40 +859,33 @@ setResultToast({
                 {/* Grace */}
                 <div className="policy-section">
                   <div className="section-title">
-                    <i className="fas fa-clock me-2"></i>
+                    <i className="fas fa-clock me-2" />
                     {t('attendancePolicy.grace')}
                   </div>
-
                   <div className="info-item">
                     {t('attendancePolicy.lateGrace')}:
-                    <strong> {p.grace?.lateMinutes || 0}</strong>{' '}
-                    {t('common.minutes')}
+                    <strong> {p.grace?.lateMinutes || 0}</strong> {t('common.minutes')}
                   </div>
-
                   <div className="info-item">
                     {t('attendancePolicy.earlyGrace')}:
-                    <strong> {p.grace?.earlyLeaveMinutes || 0}</strong>{' '}
-                    {t('common.minutes')}
+                    <strong> {p.grace?.earlyLeaveMinutes || 0}</strong> {t('common.minutes')}
                   </div>
                 </div>
 
                 {/* Rates */}
                 <div className="policy-section">
                   <div className="section-title">
-                    <i className="fas fa-percentage me-2"></i>
+                    <i className="fas fa-percentage me-2" />
                     {t('attendancePolicy.rates')}
                   </div>
-
                   <div className="rate-item rate-late">
                     {t('attendancePolicy.lateRate')}
                     <strong>{p.rates?.latePerMinute || 0}</strong>
                   </div>
-
                   <div className="rate-item rate-early">
                     {t('attendancePolicy.earlyRate')}
                     <strong>{p.rates?.earlyLeavePerMinute || 0}</strong>
                   </div>
-
                   <div className="rate-item rate-transit">
                     {t('attendancePolicy.transitRate')}
                     <strong>{p.rates?.transitPerMinute || 0}</strong>
@@ -710,115 +893,79 @@ setResultToast({
                 </div>
 
                 {/* Absence */}
-                {/* <div className="policy-section">
+                <div className="policy-section">
                   <div className="section-title">
-                    <i className="fas fa-user-times me-2"></i>
+                    <i className="fas fa-user-times me-2" />
                     {t('attendancePolicy.absence')}
                   </div>
-
                   <div className="absence-info">
-                    {!p.absence?.markDayAbsent && (
-                      <span>
-                        <i className="fas fa-check-circle me-1"></i>
-                        {t('attendancePolicy.noDeduction')}
+                    {!p.absence?.deductSalary && (
+                      <span className="text-success">
+                        <i className="fas fa-check-circle me-1" />
+                        {t('attendancePolicy.noDeduction') || 'No Deduction'}
                       </span>
                     )}
-
-                    {p.absence?.markDayAbsent && p.absence?.paid && (
-                      <span>
-                        <i className="fas fa-dollar-sign me-1"></i>
-                        {t('attendancePolicy.absencePaid')}
+                    {p.absence?.deductSalary && p.absence?.paid && (
+                      <span className="text-info">
+                        <i className="fas fa-dollar-sign me-1" />
+                        {t('attendancePolicy.absencePaid') || 'Paid Absence'}
                       </span>
                     )}
-
-                    {p.absence?.markDayAbsent && !p.absence?.paid && (
-                      <span>
-                        <i className="fas fa-exclamation-triangle me-1"></i>
-                        {t('attendancePolicy.absenceDeduction')}:
-                        <strong> {p.absence.dayRate * 100}%</strong>
+                    {p.absence?.deductSalary && !p.absence?.paid && (
+                      <span className="text-danger">
+                        <i className="fas fa-exclamation-triangle me-1" />
+                        {t('attendancePolicy.absenceDeduction') || 'Deduction'}:
+                        <strong className="ms-1">
+                          {((p.absence.dayRate || 1) * 100).toFixed(0)}%
+                        </strong>
+                        {' ' + (t('attendancePolicy.ofDailySalary') || 'of daily salary')}
                       </span>
                     )}
                   </div>
-                </div> */}
-
-<div className="policy-section">
-  <div className="section-title">
-    <i className="fas fa-user-times me-2"></i>
-    {t('attendancePolicy.absence')}
-  </div>
-
-  <div className="absence-info">
-    {/* حالة 1: مفيش خصم خالص */}
-    {!p.absence?.deductSalary && (
-      <span className="text-success">
-        <i className="fas fa-check-circle me-1"></i>
-        {t('attendancePolicy.noDeduction') || 'No Deduction'}
-      </span>
-    )}
-
-    {/* حالة 2: فيه خصم بس مدفوع */}
-    {p.absence?.deductSalary && p.absence?.paid && (
-      <span className="text-info">
-        <i className="fas fa-dollar-sign me-1"></i>
-        {t('attendancePolicy.absencePaid') || 'Paid Absence'}
-      </span>
-    )}
-
-    {/* حالة 3: فيه خصم وغير مدفوع (هنا بيظهر النسبة) */}
-    {p.absence?.deductSalary && !p.absence?.paid && (
-      <span className="text-danger">
-        <i className="fas fa-exclamation-triangle me-1"></i>
-        {t('attendancePolicy.absenceDeduction') || 'Deduction'}:
-        <strong className="ms-1">
-          {((p.absence.dayRate || 1) * 100).toFixed(0)}%
-        </strong>
-        {' ' + (t('attendancePolicy.ofDailySalary') || 'of daily salary')}
-      </span>
-    )}
-  </div>
-</div>
+                </div>
               </div>
 
               {/* ================= Footer ================= */}
               <div className="policy-footer d-flex justify-content-end gap-2">
-
-                  <button
-    className="btn btn-sm btn-outline-secondary"
-    onClick={() => setShowHistory(p)}
-    title={t('attendancePolicy.history')}
-  >
-    <i className="fas fa-history" />
-  </button>
                 <button
-                  className="btn btn-sm btn-outline-primary"
-                  onClick={() => onEdit(p)}
+                  className="btn btn-sm btn-outline-secondary"
+                  onClick={() => setShowHistory(p)}
+                  title={t('attendancePolicy.history')}
                 >
-                  <i className="fas fa-edit" />
+                  <i className="fas fa-history" />
                 </button>
 
-                <button
-                  className="btn btn-sm btn-outline-warning"
-                  disabled={processingId === p._id}
-                  onClick={() => requestToggle(p)}
-                >
-                  <i className="fas fa-power-off" />
-                </button>
-
-                <button
-                  className="btn btn-sm btn-outline-danger"
-                  disabled={processingId === p._id}
-                  onClick={() => requestDelete(p)}
-                >
-                  <i className="fas fa-trash" />
-                </button>
-
-        
+                {canManage && (
+                  <>
+                    <button
+                      className="btn btn-sm btn-outline-primary"
+                      onClick={() => onEdit(p)}
+                    >
+                      <i className="fas fa-edit" />
+                    </button>
+                    <button
+                      className="btn btn-sm btn-outline-warning"
+                      disabled={processingId === p._id}
+                      onClick={() => requestToggle(p)}
+                    >
+                      <i className="fas fa-power-off" />
+                    </button>
+                    <button
+                      className="btn btn-sm btn-outline-danger"
+                      disabled={processingId === p._id}
+                      onClick={() => requestDelete(p)}
+                    >
+                      <i className="fas fa-trash" />
+                    </button>
+                  </>
+                )}
               </div>
+
             </div>
           </div>
-        ))}
-      </div>
-
+        );
+      })}
+    </div>
 
       {/* ================= Confirmation Toast ================= */}
       {/* {confirmToast && (

@@ -1226,12 +1226,13 @@
   "passwordTooShort": "كلمة المرور قصيرة جداً (يجب أن تكون 6 أحرف على الأقل)"
 ,"secureMultiLayerVerification": "محمي بنظام التحقق المتعدد الطبقات",
   "userNotFound": "المستخدم غير موجود",
-  "errorLoadingMyBranches": "خطأ في تحميل الفروع المخصصة"
+  "errorLoadingMyBranches": "خطأ في تحميل الفروع المخصصة",
 
 
 
-
-  ,
+ 
+"emailSettings": "إعدادات البريد",
+  
   "profile": "الملف الشخصي للموظف",
   "name": "الاسم",
   "email": "البريد الإلكتروني",

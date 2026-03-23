@@ -138,6 +138,8 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { apiGet } from "../helpers/api";
+import { isGlobalAdmin } from '../helpers/auth';
+
 import logo from "../assets/logo.png";
 import "../style/navbar-modern.css";
 
@@ -182,7 +184,7 @@ const [showLangMenu, setShowLangMenu] = useState(false);
   useEffect(() => {
     const checkRole = async () => {
       try {
-        const res = await apiGet("/auth/profile");
+        const res = await apiGet("/users/profile");
         setIsAdmin(res.data.role === "admin");
       } catch (err) {
         setError(t("error") || "Error");
@@ -211,6 +213,7 @@ const [showLangMenu, setShowLangMenu] = useState(false);
     return location.pathname === path;
   };
 
+  
   return (
     <nav className={`navbar navbar-expand-lg fixed-top modern-navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container-fluid navbar-container">
@@ -400,6 +403,16 @@ const [showLangMenu, setShowLangMenu] = useState(false);
   )}
 </div>
 
+{/* Settings — Global Admin Only */}
+{isGlobalAdmin() && (
+  <Link
+    to="/settings/email"
+    className={`nav-link-icon-btn ${isActiveLink('/settings/email') ? 'active' : ''}`}
+    title={t('emailSettings')}
+  >
+    <i className="fas fa-gear" />
+  </Link>
+)}
             {/* Logout Button */}
             {/* <button className="btn logout-btn" onClick={handleLogout}>
               <i className="fas fa-sign-out-alt"></i>
@@ -408,7 +421,9 @@ const [showLangMenu, setShowLangMenu] = useState(false);
 
             <button className="btn logout-btn " onClick={handleLogout} >
   <i className="fas fa-sign-out-alt"></i>
-  <span className="logout-text">{t("logout")}</span>
+  <span className="logout-text">
+    {t("logout")}
+    </span>
 </button>
 
           </div>

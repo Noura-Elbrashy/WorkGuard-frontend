@@ -252,3 +252,11 @@ export const getMonthlyReport = (userId, params = {}) => {
   const queryParams = new URLSearchParams(params);
   return apiGet(`/users/${userId}/reports/monthly?${queryParams.toString()}`);
 };
+
+
+/**
+ * 👤 Get current user profile
+ */
+export const getProfile = () => {
+  return apiGet('/users/profile');
+};

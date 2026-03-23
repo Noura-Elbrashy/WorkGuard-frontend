@@ -1103,6 +1103,8 @@ import BranchFormModal from '../components/branches/BranchFormModal';
 import BranchTable from '../components/branches/BranchTable';
 import CurrentAttendanceModal from '../components/attendance/CurrentAttendanceModal';
 import { Toast, ConfirmModal, Loading } from '../components/branches/UIComponents';
+import { isGlobalAdmin } from '../helpers/auth';
+
 
 // Styles
 import '../style/Adminbranches-modern.css';
@@ -1357,13 +1359,16 @@ function AdminBranches() {
           {t('adminBranches.manageBranches')}
         </h2>
         {/* ✅ Add Branch Button */}
+
+{isGlobalAdmin() && (
+
         <button 
           className="btn-primary-modern btn-modern"
           onClick={handleAddBranch}
         >
           <i className="fas fa-plus-circle"></i>
           {t('adminBranches.addBranch')}
-        </button>
+        </button>)}
       </div>
 
       {/* Toast Notifications */}
