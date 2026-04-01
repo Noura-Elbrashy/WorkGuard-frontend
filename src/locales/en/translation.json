@@ -1,4 +1,5 @@
-{ 
+{
+
 
   "EmployeeDirectory": {
     "title": "Employee Directory",
@@ -847,7 +848,12 @@
 
   
   "leave": {
-    
+    "MyLeaves":"My Leaves",
+    "tabs": {
+  "summary": "Summary",
+  "requests": "Requests",
+  "absence": "Absence"
+},
       "policies": {
       "manage": "Leave Policies"
     },
@@ -912,9 +918,10 @@
       "sick": "Sick Leave",
       "emergency": "Emergency Leave",
       "unpaid": "Unpaid Leave"
-    }
-  
-  ,"from": "From",
+    },
+    "before":"Before",
+  "after": "After",
+  "from": "From",
   "to": "To",
   "submitted": "Submitted",
   "totalDays": "Total days",
@@ -1259,7 +1266,7 @@
     "resendActivation": "Resend Activation",
     "resendSuccess": "Activation email resent",
     "confirmDelete": "Are you sure you want to delete this user?",
-    "attendance": "Attendance and departure registration.",
+   
     "attendanceFilters": "Attendance Filters",
       
     "manageBranches": "Manage Branches",
@@ -1357,7 +1364,7 @@
 
 "Logout":"Log Out",
 "emailSettings": "Email Settings",
-  "profile": "Employee Profile",
+  "profile": "My Profile",
   "name": "Name",
   "email": "Email",
   "phone": "Phone",
@@ -1430,5 +1437,50 @@
     "addFeedbackPlaceholder": "Enter your feedback here...",
     "timeDetails": "Time Details",
     "minutes": "minutes",
-    "currency": "EGP"
+    "currency": "$",
+    "reason":"Reason",
+"admin":"Admin",
+
+
+  "all": "All",
+  "loading": "Loading",
+  "saving": "Saving",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "yes": "Yes",
+  "no": "No",
+  "from": "From",
+  "to": "To",
+  "details": "Details",
+  "actions": "Actions",
+  "prev": "Previous",
+  "next": "Next",
+  "date": "Date",
+  "reason": "Reason",
+  "admin": "Admin",
+  "back": "Back",
+  "departments": "Departments",
+  "action": "Action",
+  "add": "Add",
+  "deduct": "Deduct",
+  "months": {
+    "1": "January", "2": "February", "3": "March",
+    "4": "April", "5": "May", "6": "June",
+    "7": "July", "8": "August", "9": "September",
+    "10": "October", "11": "November", "12": "December"
+  },
+
+    "attendance": {
+    "absenceDetails": "Absence Details",
+    "noAbsence": "No absence records found",
+    "status": "Status",
+    "decision": "Decision",
+    "salaryImpact": "Salary Impact",
+    "absent": "Absent",
+    "absentWithoutPermission": "Absent Without Permission",
+    "unpaidLeave": "Unpaid Leave",
+    "salaryDeducted": "Salary Deducted"
+  ,
+ "attendance": "Attendance and departure registration."
+} 
 }

@@ -1,0 +1,188 @@
+{
+  "leave": {
+    "Paid": "مدفوع",
+    "Unpaid": "غير مدفوع",
+    "deduct": "خصم أجر",
+    
+    "overview": "ملخص الإجازات",
+    "annual": "الإجازة السنوية",
+    "sick": "الإجازة المرضية",
+    "unpaid": "إجازة بدون راتب",
+    "total": "الإجمالي",
+    "used": "المستخدم",
+    "remaining": "المتبقي",
+    "days": "أيام",
+    "from": "من",
+    "to": "إلى",
+    "year": "السنة",
+    "period": "الفترة",
+    "type": "نوع الإجازة",
+    "reason": "السبب",
+    "employee": "الموظف",
+    "branch": "الفرع",
+    "decision": "القرار",
+    "breakdown": "تفصيل الأيام",
+    "weekday": "اليوم",
+    "dayStatus": "الحالة",
+    "attendance": "الحضور",
+    "holiday": "العطلة الرسمية",
+    "paidDays": "الأيام المدفوعة",
+    "unpaidDays": "الأيام غير المدفوعة",
+    "decidedBy": "تم القرار من قِبَل",
+    "rejectionReason": "سبب الرفض",
+    "totalDays": "إجمالي الأيام",
+    "submitted": "تاريخ التقديم",
+    "statusLabel": "الحالة",
+    "noRequests": "لا توجد طلبات إجازة",
+    "empty": "لا توجد سجلات إجازات",
+    "loadError": "فشل في تحميل بيانات الإجازات",
+    "noLeaveYear": "لا يوجد سجل إجازات لهذه السنة",
+    "adjustBalance": "تعديل الرصيد",
+    "balanceUpdated": "تم تحديث الرصيد بنجاح",
+    "updateFailed": "فشل في تحديث الرصيد",
+    "adjustReason": "سبب التعديل",
+    "adjustReasonHint": "الحد الأدنى 3 أحرف",
+    "adjustDeductWarning": "سيؤدي هذا إلى تقليل رصيد إجازات الموظف",
+    "enterDays": "أدخل عدد الأيام",
+    "confirmCancel": "هل أنت متأكد أنك تريد إلغاء هذه الإجازة؟",
+    "absentDays": "أيام الغياب",
+    "unpaidLeaveDays": "أيام الإجازة غير المدفوعة",
+    "totalPaidUsed": "إجمالي الأيام المدفوعة المستخدمة",
+    "before": "قبل",
+    "after": "بعد",
+    "adjustmentHistory": "سجل التعديلات",
+    "approve": "موافقة",
+    "reject": "رفض",
+    "cancel": "إلغاء الإجازة",
+    "cancelApproved": "إلغاء الإجازة الموافق عليها",
+    "rejectReason": "أدخل سبب الرفض",
+    "toastApproved": "تمت الموافقة على الإجازة بنجاح",
+    "toastRejected": "تم رفض الإجازة بنجاح",
+    "toastCancelled": "تم إلغاء الإجازة بنجاح",
+    "toastSubmitted": "تم تقديم طلب الإجازة بنجاح",
+    "toastError": "حدث خطأ ما",
+    "estimatedDays": "الأيام العمل المتوقعة",
+    "selectLeaveBranch": "اختر الفرع للإجازة",
+    "selectLeaveType": "اختر نوع الإجازة",
+    "details": {
+      "title": "تفاصيل الإجازة",
+      "subtitle": "التفاصيل الكاملة لطلب الإجازة"
+    },
+    "types": {
+      "annual": "إجازة سنوية",
+      "sick": "إجازة مرضية",
+      "unpaid": "إجازة بدون راتب",
+      "emergency": "إجازة طارئة"
+    },
+    "status": {
+      "pending": "قيد الانتظار",
+      "approved": "موافق عليها",
+      "rejected": "مرفوضة",
+      "cancelled": "ملغاة",
+      "cancelledBy": "ألغاها",
+      "cancelledByAdmin": "ألغاها المشرف",
+      "unknown": "غير معروف"
+    },
+    "statuses": {
+      "pending": "قيد الانتظار",
+      "approved": "موافق عليها",
+      "rejected": "مرفوضة",
+      "cancelled": "ملغاة"
+    },
+   
+    "balance": {
+      "title": "رصيد الإجازات {{year}}",
+      "total": "الإجمالي",
+      "usedPaid": "المستخدم (مدفوع)",
+      "usedUnpaid": "المستخدم (غير مدفوع)",
+      "used": "المستخدم",
+      "remaining": "المتبقي",
+      "absentDays": "أيام الغياب",
+      "unpaidDays": "أيام الإجازة غير مدفوعة"
+    },
+    "filter": {
+      "status": "تصفية حسب الحالة"
+    },
+    "form": {
+      "branchLoadFailed": "فشل في تحميل الفروع",
+      "required": "يرجى ملء جميع الحقول المطلوبة",
+      "invalidDates": "التاريخ غير صحيح"
+    },
+    "submit": {
+      "title": "تقديم طلب إجازة",
+      "subtitle": "أدخل التفاصيل أدناه لتقديم طلب الإجازة",
+      "action": "تقديم الإجازة",
+      "nav": "طلب إجازة"
+    },
+    "my": {
+      "title": "إجازاتي",
+      "subtitle": "تتبع وإدارة طلبات الإجازة الخاصة بك"
+    },
+    "admin": {
+      "title": "إدارة الإجازات",
+      "subtitle": "مراجعة وإدارة جميع طلبات إجازات الموظفين"
+    },
+    "policies": {
+      "manage": "إدارة سياسات الإجازات"
+    },
+    "errors": {
+      "loadFailed": "فشل في تحميل بيانات الإجازات"
+    }
+  },
+  "employee": {
+    "leaveProfile": "ملف إجازات الموظف",
+    "leaveProfileDesc": "عرض وإدارة رصيد الإجازات والسجل"
+  },
+  "departments": "الأقسام",
+  "action": "الإجراء",
+  "add": "إضافة",
+  "deduct": "خصم",
+  "reason": "السبب",
+  "date": "التاريخ",
+  "admin": "المشرف",
+  "back": "رجوع",
+  "loading": "جاري التحميل",
+  "saving": "جاري الحفظ",
+  "confirm": "تأكيد",
+  "cancel": "إلغاء",
+  "all": "الكل",
+  "yes": "نعم",
+  "no": "لا",
+  "from": "من",
+  "to": "إلى",
+  "details": "التفاصيل",
+  "actions": "الإجراءات",
+  "prev": "السابق",
+  "next": "التالي",
+  "months": {
+    "1": "يناير",
+    "2": "فبراير",
+    "3": "مارس",
+    "4": "أبريل",
+    "5": "مايو",
+    "6": "يونيو",
+    "7": "يوليو",
+    "8": "أغسطس",
+    "9": "سبتمبر",
+    "10": "أكتوبر",
+    "11": "نوفمبر",
+    "12": "ديسمبر"
+  },
+  "attendance": {
+    "absenceDetails": "تفاصيل الغياب",
+    "noAbsence": "لا توجد سجلات غياب",
+    "status": "الحالة",
+    "decision": "القرار",
+    "salaryImpact": "أثر على الراتب",
+    "absent": "غائب",
+    "absentWithoutPermission": "غياب بدون إذن",
+    "unpaidLeave": "إجازة غير مدفوعة",
+    "salaryDeducted": "يُخصم من الراتب",
+    "leave_unpaid": "إجازة غير مدفوعة"
+  },
+   "tabs": {
+      "summary": "الملخص",
+      "requests": "الطلبات",
+      "absence": "الغياب"
+    }
+}

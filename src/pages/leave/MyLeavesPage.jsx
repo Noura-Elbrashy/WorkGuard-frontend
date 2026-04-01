@@ -217,7 +217,8 @@ import Toast from '../../components/ui/Toast';
  * - Cancel pending / approved leaves (rules enforced by backend)
  */
 function MyLeavesPage() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('leave');
+const { t: tCommon } = useTranslation('translation');
   const navigate = useNavigate();
 
   /* ======================
@@ -329,7 +330,7 @@ function MyLeavesPage() {
           <i className="fa-solid fa-umbrella-beach me-2 text-primary" />
           {t('leave.my.title')}
         </h4>
-        <div className="text-muted small">
+        <div className="text-white small">
           {t('leave.my.subtitle')}
         </div>
       </div>

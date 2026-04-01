@@ -1,0 +1,68 @@
+{
+  "sections": {
+    "quickActions": "Quick Actions",
+    "modules":      "Management Modules"
+  },
+
+  "quickActions": {
+    "addEmployee": {
+      "title":       "Add New Employee",
+      "description": "Register a new employee in the system"
+    },
+    "viewEmployees": {
+      "title":       "Employee Directory",
+      "description": "View and manage employee profiles"
+    },
+    "reports": {
+      "title":       "Reports & Analytics",
+      "description": "Generate comprehensive HR reports"
+    }
+  },
+
+  "modules": {
+    "payroll": {
+      "title":       "Payroll Management",
+      "description": "Process and manage employee payrolls"
+    },
+    "overtimePolicies": {
+      "title":       "Overtime Policies",
+      "description": "Manage and configure overtime policies"
+    },
+    "bonusPolicies": {
+      "title":       "Bonus Policies",
+      "description": "Manage and configure bonus policies"
+    },
+    "overtimeEntries": {
+      "title":       "Overtime Entries",
+      "description": "Manage and review overtime entries"
+    },
+    "holidays": {
+      "title":       "Holidays & Events Management",
+      "description": "Manage company-wide and employee-specific holidays"
+    },
+    "attendance": {
+      "title":       "Attendance Policies",
+      "description": "Configure attendance and deduction policies"
+    },
+    "leaves": {
+      "title":       "Leave Management",
+      "description": "Manage leave requests and policies"
+    },
+    "devices": {
+      "title":       "Device Control",
+      "description": "Manage and monitor all registered devices"
+    },
+    "branches": {
+      "title":       "Branch Management",
+      "description": "Manage company branches and locations"
+    },
+    "departments": {
+      "title":       "Departments Management",
+      "description": "Manage company departments and employee assignments"
+    },
+    "remotePermission": {
+      "title":       "Remote Permission Management",
+      "description": "Grant employees permission to check in/out from outside branch location"
+    }
+  }
+}

@@ -49,7 +49,9 @@
 import { useTranslation } from 'react-i18next';
 
 function LeaveStatusBadge({ leave, isAdmin }) {
-  const { t } = useTranslation();
+const { t } = useTranslation('leave');
+const { t: tCommon } = useTranslation('translation');
+
 
   if (!leave) return null;
 

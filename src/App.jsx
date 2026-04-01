@@ -49,9 +49,23 @@ import EmployeeDirectory from './pages/EmployeeDirectory';
 import OvertimePoliciesPage from "./pages/Overtimepoliciespage";
 import BonusPoliciesPage from "./pages/BonusPoliciesPage";
 import OvertimeEntriesPage from "./pages/OvertimeEntriesPage";
-import CompanyReportPage from "./pages/Companyreportpage";
 import ReportPage from "./pages/ReportsPage";
 import TenantEmailSettingsPage from './pages/TenantEmailSettingsPage';
+
+
+
+import SystemAdminDashboard from "./pages/systemAdmin/SystemAdminDashboard"
+
+import PlatformLogin from "./pages/platform/PlatformLogin"
+// import PlatformProtectedRoute from './components/platform/PlatformProtectedRoute';
+// import PlatformPublicRoute    from './components/platform/PlatformPublicRoute';
+import PlatformDashboard from './pages/platform/PlatformDashboard';
+import PlatformTenants   from './pages/platform/PlatformTenants';
+import PlatformPlans     from './pages/platform/PlatformPlans';
+import { PlatformProtectedRoute, PlatformPublicRoute } from './components/platform/PlatformRoutes';
+
+import ActivateCompanyAccount from './pages/platform/ActivateCompanyAccount'
+
 
 
 // ProtectedRoute for admin-only pages
@@ -134,21 +148,33 @@ function App() {
       '/not-found', 
       '/forgot-password', 
       '/reset-password',
+      '/platform/login',      // ✅
+ 
+
+'/platform/dashboard', 
+  '/platform/tenants', 
+  '/platform/plans'
+ 
       
     ];
     const noFooterRoutes = [
     '/',
     '/forgot-password',
     '/not-found',
+    
   ];
     const isNoNavbarRoute = noNavbarRoutes.includes(location.pathname) || 
                            location.pathname.startsWith('/activate/') ||
-                           location.pathname.startsWith('/reset-password/');
+                           location.pathname.startsWith('/reset-password/')||
+                                                  location.pathname.startsWith('/platform/activate/'); 
+;
 
                              const isNoFooterRoute =
     noFooterRoutes.includes(location.pathname) ||
     location.pathname.startsWith('/activate/') ||
-    location.pathname.startsWith('/reset-password/');
+    location.pathname.startsWith('/reset-password/')||
+ location.pathname.startsWith('/platform/activate/');
+
 
     return (
       <>
@@ -229,7 +255,7 @@ element={ <ProtectedRoute>
 
 
             <Route
-              path="/admin/dashboard"
+              path="/admin/dashboardx"
               element={
                 <ProtectedRoute>
                   <ErrorBoundary>
@@ -262,21 +288,45 @@ element={ <ProtectedRoute>
             />
         
       {/* ================= Employee ================= */}
-      <Route path="/leaves" element={<MyLeavesPage />} />
-      <Route path="/leaves/:id" element={<DetailsLeavePage />} />
+      <Route path="/my-leaves" element={
+  <AuthenticatedRoute>
+    <MyLeavesPage />
+  </AuthenticatedRoute>
+} />
+
+
+
+      <Route path="/leaves/:id" element={
+  <AuthenticatedRoute>
+    <DetailsLeavePage />
+  </AuthenticatedRoute>
+} />
+
+
+
+{/* // ✅ أي يوزر logged in يقدر يدخل */}
 <Route
+  path="/admin/employees/:userId/leave-profile"
+  element={
+    <AuthenticatedRoute>
+      <EmployeeLeaveProfile />
+    </AuthenticatedRoute>
+  }
+/>
+
+{/* <Route
   path="/admin/employees/:userId/leave-profile"
   element={
     <ProtectedRoute>
       <EmployeeLeaveProfile />
     </ProtectedRoute>
   }
-/>
+/> */}
 
       {/* ================= Admin ================= */}
       
 <Route
-  path="/admin/dashboardx"
+  path="/admin/dashboard"
   element={
     <ProtectedRoute>
       <DashboardPage />
@@ -313,14 +363,7 @@ element={ <ProtectedRoute>
 } />
 
 
-<Route
-path="/admin/compreports"
-element={
- <ProtectedRoute>
-      <CompanyReportPage />
-    </ProtectedRoute>
-}
-/>
+
 <Route
 path="/admin/reports"
 element={
@@ -386,6 +429,51 @@ element={
     </AuthenticatedRoute>
   }
 />
+
+
+
+    <Route
+  path="/admin/system"
+  element={
+    <ProtectedRoute>
+      <SystemAdminDashboard/>
+    </ProtectedRoute>
+  }
+/>
+
+
+
+
+<Route path="/platform/login"
+  element={<PlatformPublicRoute>
+    <PlatformLogin /></PlatformPublicRoute>}
+/>
+
+
+<Route
+  path="/platform/activate/:token"
+  element={
+    <ResetPasswordRoute>
+      <ActivateCompanyAccount />
+    </ResetPasswordRoute>
+  }
+/>
+
+
+<Route path="/platform/dashboard"
+  element={<PlatformProtectedRoute>
+    <PlatformDashboard />
+    </PlatformProtectedRoute>}
+/>
+<Route path="/platform/tenants"
+  element={<PlatformProtectedRoute>
+    <PlatformTenants /></PlatformProtectedRoute>}
+/>
+<Route path="/platform/plans"
+  element={<PlatformProtectedRoute>
+    <PlatformPlans /></PlatformProtectedRoute>}
+/>
+
 
             {/* صفحات الخطأ */}
             <Route path="/not-found" element={<NotFound />} />

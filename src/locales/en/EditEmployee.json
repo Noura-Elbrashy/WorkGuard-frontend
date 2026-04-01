@@ -1,0 +1,107 @@
+{
+  "title": "Edit Employee",
+
+  "sections": {
+    "basicInfo":     "Basic Information",
+    "adminScope":    "Admin Permissions",
+    "branches":      "Assigned Branches",
+    "departments":   "Departments",
+    "workSchedule":  "Work Schedule",
+    "salarySummary": "Salary Summary & Applied Policy"
+  },
+
+  "fields": {
+    "name":            "Full Name",
+    "email":           "Email Address",
+    "role":            "Role",
+    "phone":           "Phone Number",
+    "address":         "Address",
+    "salary":          "Monthly Salary",
+    "workingDays":     "Working Days",
+    "workStartTime":   "Work Start Time",
+    "workEndTime":     "Work End Time",
+    "workingHoursNote":"Daily Working Hours (auto-calculated)",
+    "monthlyDaysNote": "Estimated monthly working days",
+    "transitMinutes":  "Allowed Transit Time Between Branches (minutes)",
+    "transitNote":     "Extra minutes will be deducted from salary",
+    "isNightShift":    "Night Shift (extends to next day)"
+  },
+
+  "roles": {
+    "staff": "Staff",
+    "admin": "Admin"
+  },
+
+  "days": {
+    "sunday":    "Sunday",
+    "monday":    "Monday",
+    "tuesday":   "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday":  "Thursday",
+    "friday":    "Friday",
+    "saturday":  "Saturday"
+  },
+
+  "adminScope": {
+    "label":          "Permission Type",
+    "globalLabel":    "🌍 Super Admin — access to all branches",
+    "branchLabel":    "🏢 Branch Admin — selected branches only",
+    "selectBranches": "Select Allowed Branches *"
+  },
+
+  "policy": {
+    "loading":          "Loading attendance policy...",
+    "applied":          "Effective applied policy",
+    "noPolicy":         "No attendance policy configured — defaults will apply",
+    "graceLate":        "Late Grace",
+    "graceEarly":       "Early Leave Grace",
+    "latePerHour":      "Late Deduction / hr",
+    "earlyLeavePerHour":"Early Leave Deduction / hr",
+    "absenceDayRate":   "Absence Deduction",
+    "fullDay":          "Full day",
+    "examplesTitle":    "Estimated Deduction Examples",
+    "lateExample":      "1 hour late → deduct",
+    "earlyExample":     "1 hour early leave → deduct",
+    "absenceExample":   "1 absent day → deduct"
+  },
+
+  "salary": {
+    "monthly":    "Monthly Salary",
+    "daily":      "Daily Salary",
+    "hourly":     "Hourly Salary",
+    "days":       "days",
+    "hours":      "hrs",
+    "fillPrompt": "Enter salary and work schedule to see the breakdown"
+  },
+
+  "validation": {
+    "nameRequired":                "Full name is required",
+    "emailRequired":               "Email address is required",
+    "branchesRequired":            "Please select at least one branch",
+    "salaryRequired":              "Salary must be greater than zero",
+    "workingDaysRequired":         "Please select at least one working day",
+    "endTimeAfterStart":           "End time must be after start time",
+    "adminScopeBranchesRequired":  "Please select at least one branch for this admin"
+  },
+
+  "forbidden": {
+    "title":   "Access Denied",
+    "message": "You cannot edit another admin's data."
+  },
+
+  "actions": {
+    "submit":     "Save Changes",
+    "submitting": "Saving...",
+    "cancel":     "Cancel",
+    "back":       "Back"
+  },
+
+  "toast": {
+    "success":   "Employee data updated successfully ✅",
+    "error":     "An error occurred. Please try again.",
+    "loadError": "Failed to load employee data"
+  },
+
+  "minutes": "min",
+  "currency": "EGP"
+}

@@ -1,0 +1,119 @@
+{
+  "addEmployee": {
+    "title": "Add New Employee",
+
+    "sections": {
+      "basicInfo":     "Basic Information",
+      "adminScope":    "Admin Permissions",
+      "branches":      "Assigned Branches",
+      "departments":   "Departments",
+      "workSchedule":  "Work Schedule",
+      "salarySummary": "Salary Summary & Applied Policy"
+    },
+
+    "adminScope": {
+      "label":          "Permission Type",
+      "globalLabel":    "🌍 Super Admin — access to all branches",
+      "branchLabel":    "🏢 Branch Admin — selected branches only",
+      "selectBranches": "Select Allowed Branches *",
+      "errorRequired":  "Please select at least one branch"
+    },
+
+    "policy": {
+      "loading":          "Loading attendance policy...",
+      "applied":          "Effective applied policy",
+      "noPolicy":         "No attendance policy configured for this branch — defaults will apply",
+      "selectBranchFirst":"Select a branch to view the applied attendance policy",
+      "graceLate":        "Late Grace",
+      "graceEarly":       "Early Leave Grace",
+      "latePerHour":      "Late Deduction / hr",
+      "earlyLeavePerHour":"Early Leave Deduction / hr",
+      "absenceDayRate":   "Absence Deduction",
+      "fullDay":          "Full day",
+      "examplesTitle":    "Estimated Deduction Examples",
+      "lateExample":      "1 hour late → deduct",
+      "earlyExample":     "1 hour early leave → deduct",
+      "absenceExample":   "1 absent day → deduct"
+    },
+
+    "salary": {
+      "monthly":    "Monthly Salary",
+      "daily":      "Daily Salary",
+      "hourly":     "Hourly Salary",
+      "fillPrompt": "Enter salary and work schedule to see the breakdown",
+      "currency":   "EGP"
+    },
+
+    "validation": {
+      "nameRequired":                "Full name is required",
+      "emailRequired":               "Email address is required",
+      "branchesRequired":            "Please select at least one branch",
+      "salaryRequired":              "Salary must be greater than zero",
+      "workingDaysRequired":         "Please select at least one working day",
+      "endTimeAfterStart":           "End time must be after start time",
+      "branchAdminCannotCreateAdmin":"Branch admin cannot create another admin",
+      "adminScopeBranchesRequired":  "Please select at least one branch for this admin"
+    },
+     "roles": {
+    "staff": "Staff",
+    "admin": "Admin"
+  },
+"fields": {
+    "name":            "Full Name",
+    "email":           "Email Address",
+    "role":            "Role",
+    "phone":           "Phone Number",
+    "address":         "Address",
+    "salary":          "Monthly Salary",
+    "workingDays":     "Working Days",
+    "workStartTime":   "Work Start Time",
+    "workEndTime":     "Work End Time",
+    "workingHoursNote":"Daily Working Hours (auto-calculated)",
+    "monthlyDaysNote": "Estimated monthly working days",
+    "transitMinutes":  "Allowed Transit Time Between Branches (minutes)",
+    "transitNote":     "Extra minutes will be deducted from salary",
+    "isNightShift":    "Night Shift (extends to next day)"
+  },
+  
+    "toast": {
+      "success": "Employee created successfully. Activation email has been sent.",
+      "error":   "An error occurred. Please try again."
+    }
+  },
+
+
+
+
+
+  "name":               "Full Name",
+  "email":              "Email",
+  "role":               "Role",
+  "phone":              "Phone",
+  "address":            "Address",
+  "salary":             "Salary",
+  "branches":           "Branches",
+  "workingDaysNames":   "Working Days",
+  "workStartTime":      "Work Start Time",
+  "workEndTime":        "Work End Time",
+  "isNightShift":       "Night Shift (extends to next day)",
+  "allowRemoteAbsence": "Allow Remote Absence",
+  "submit":             "Add Employee",
+  "cancel":             "Cancel",
+  "success":            "Employee created successfully. Activation email sent.",
+  "error":              "An error occurred. Please try again.",
+
+  "sunday":    "Sunday",
+  "monday":    "Monday",
+  "tuesday":   "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday":  "Thursday",
+  "friday":    "Friday",
+  "saturday":  "Saturday",
+
+  "monthlyDaysNote":  "Estimated monthly working days",
+  "workingHoursNote": "Calculated automatically",
+  "transitNote":      "Extra minutes will be deducted from salary",
+  "divDays":          "÷ {{days}} days",
+  "divHours":         "÷ {{hours}} hrs",
+  "fillPrompt":       "Enter salary and work schedule to see the breakdown"
+}

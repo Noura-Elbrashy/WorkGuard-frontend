@@ -1634,7 +1634,7 @@ function Attendance() {
             <div className="attendance-logo">
               <img src={logo} alt="WorkGuard" />
             </div>
-            <h2 className="attendance-card-title ">{t('attendance')}</h2>
+            <h2 className="attendance-card-title ">{t('attendance.attendance')}</h2>
           </div>
           
           {/* Body */}

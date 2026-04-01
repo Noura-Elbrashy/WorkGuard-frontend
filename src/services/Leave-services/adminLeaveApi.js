@@ -53,6 +53,7 @@ export const previewLeaveAdjustment = ({
    Run Manual Adjustment
 ========================= */
 
+
 export const adjustLeaveBalance = ({
   userId,
   year,
@@ -62,7 +63,7 @@ export const adjustLeaveBalance = ({
   reason
 }) => {
   return apiPost(
-    `/admin/leave-adjustments/${userId}`,
+    `/admin/leave-policies/leave-adjustments/${userId}`,
     {
       year,
       type,
@@ -72,3 +73,25 @@ export const adjustLeaveBalance = ({
     }
   );
 };
+// export const adjustLeaveBalance = ({
+
+
+
+//   userId,
+//   year,
+//   type,
+//   operation,
+//   amount,
+//   reason
+// }) => {
+//   return apiPost(
+//     `/admin/leave-policies/leave-adjustments/${userId}`,
+//     {
+//       year,
+//       type,
+//       operation,
+//       amount,
+//       reason
+//     }
+//   );
+// };

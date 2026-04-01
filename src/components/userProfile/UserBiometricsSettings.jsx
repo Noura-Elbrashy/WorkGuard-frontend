@@ -1,7 +1,8 @@
 //UserBiometricsSettings.jsx
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { apiPut } from '../../helpers/api';
+import { toggleBiometricsRequirement } from '../../services/user.api';
+
 import Toast from '../ui/Toast';
 
 const UserBiometricsSettings = ({ user, isAdmin, onUpdated }) => {
@@ -21,7 +22,10 @@ const UserBiometricsSettings = ({ user, isAdmin, onUpdated }) => {
     setEnabled(next);
     setLoading(true);
     try {
-      await apiPut(`/users/${user._id}/biometrics/require`, { requireBiometrics: next });
+     await toggleBiometricsRequirement(user._id, {
+  requireBiometrics: next
+});
+
       setToast({ show: true, type: 'success', message: next ? t('biometrics.toastEnabled') : t('biometrics.toastDisabled') });
       onUpdated?.();
     } catch {

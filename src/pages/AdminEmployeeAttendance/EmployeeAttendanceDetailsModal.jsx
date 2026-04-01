@@ -1279,7 +1279,12 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Toast from '../../components/ui/Toast';
-import { adminUpdateAttendance, createManualAttendance } from '../../services/admin.api';
+import {
+  //  adminUpdateAttendance,
+    createManualAttendance } from '../../services/admin.api';
+
+import {adminUpdateAttendance} from '../../services/attendance.api';
+
 import { apiGet } from '../../helpers/api';
 
 // ── helpers ───────────────────────────────────────────────────────
@@ -1742,6 +1747,7 @@ const EmployeeAttendanceDetailsModal = ({
                               ) : (
                                 <span style={{ fontSize:'.78rem', color: rec.notes ? 'var(--att-navy)' : 'var(--att-muted)' }}>
                                   {rec.notes || t('noNotes')}
+                                  
                                 </span>
                               )}
                             </td>

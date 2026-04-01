@@ -70,12 +70,13 @@ export const getEffectiveLeavePolicyForUser = ({ userId, date }) => {
   );
 };
 
-export const getUserLeaveYear = ({ userId, year }) => {
+export const getUserLeaveYear = ({ userId, year, historyPage = 1, historyLimit = 5 }) => {
   if (!userId) throw new Error('userId is required');
 
   const params = new URLSearchParams();
   if (year) params.append('year', year);
-
+  if (historyPage)  params.append('historyPage', historyPage);
+  if (historyLimit) params.append('historyLimit', historyLimit);
   return apiGet(
     `/leaves/users/${userId}/leave-year?${params.toString()}`
   );

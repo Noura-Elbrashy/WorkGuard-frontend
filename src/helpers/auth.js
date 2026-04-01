@@ -49,6 +49,13 @@ export const getTokenPayload = () => {
   } catch { return null; }
 };
 
+
+// في auth.js أضف
+export const isAdmin = () => {
+  const p = getTokenPayload();
+  return p?.role === 'admin';
+};
+
 export const isGlobalAdmin = () => {
   const p = getTokenPayload();
   if (!p || p.role !== 'admin') return false;

@@ -59,7 +59,9 @@ export const toggleEmergency = (data) => {
 
 /**
  * ✏️ Admin update attendance record
- */
+ *   تعديل سجل حضور خام 
+ * */
+  
 export const adminUpdateAttendance = (attendanceId, data) => {
   return apiPatch(`/attendance/attendance/${attendanceId}`, data);
 };

@@ -209,37 +209,37 @@ export const resetUserBiometrics = (userId) =>
 //   return apiDelete(`/users/${userId}/devices/${deviceId}`);
 // };
 
-/* ======================================================
-   Feedback
-====================================================== */
+// /* ======================================================
+//    Feedback
+// ====================================================== */
 
-/**
- * ➕ Add feedback
- */
-export const addFeedback = (userId, data) => {
-  return apiPost(`/users/${userId}/feedback`, data);
-};
+// /**
+//  * ➕ Add feedback
+//  */
+// export const addFeedback = (userId, data) => {
+//   return apiPost(`/feedback/${userId}/feedback`, data);
+// };
 
-/**
- * 📋 Get user feedbacks
- */
-export const getUserFeedbacks = (userId) => {
-  return apiGet(`/users/${userId}/feedback`);
-};
+// /**
+//  * 📋 Get user feedbacks
+//  */
+// export const getUserFeedbacks = (userId) => {
+//   return apiGet(`/feedback/${userId}/feedback`);
+// };
 
-/**
- * ✏️ Update feedback
- */
-export const updateFeedback = (userId, feedbackId, data) => {
-  return apiPut(`/users/${userId}/feedback/${feedbackId}`, data);
-};
+// /**
+//  * ✏️ Update feedback
+//  */
+// export const updateFeedback = (userId, feedbackId, data) => {
+//   return apiPut(`/feedback/${userId}/feedback/${feedbackId}`, data);
+// };
 
-/**
- * ❌ Delete feedback
- */
-export const deleteFeedback = (userId, feedbackId) => {
-  return apiDelete(`/users/${userId}/feedback/${feedbackId}`);
-};
+// /**
+//  * ❌ Delete feedback
+//  */
+// export const deleteFeedback = (userId, feedbackId) => {
+//   return apiDelete(`/feedback/${userId}/feedback/${feedbackId}`);
+// };
 
 /* ======================================================
    Reports

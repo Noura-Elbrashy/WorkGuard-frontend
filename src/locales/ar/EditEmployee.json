@@ -1,0 +1,107 @@
+{
+  "title": "تعديل بيانات",
+
+  "sections": {
+    "basicInfo":     "البيانات الأساسية",
+    "adminScope":    "صلاحيات الأدمن",
+    "branches":      "الفروع المخصصة",
+    "departments":   "الأقسام",
+    "workSchedule":  "جدول العمل",
+    "salarySummary": "ملخص الراتب والسياسة المطبّقة"
+  },
+
+  "fields": {
+    "name":            "الاسم الكامل",
+    "email":           "البريد الإلكتروني",
+    "role":            "الدور الوظيفي",
+    "phone":           "رقم الهاتف",
+    "address":         "العنوان",
+    "salary":          "الراتب الشهري",
+    "workingDays":     "أيام العمل",
+    "workStartTime":   "وقت بدء العمل",
+    "workEndTime":     "وقت انتهاء العمل",
+    "workingHoursNote":"ساعات العمل اليومية (محسوبة تلقائياً)",
+    "monthlyDaysNote": "متوسط أيام العمل شهرياً",
+    "transitMinutes":  "وقت التنقل المسموح بين الفروع (بالدقائق)",
+    "transitNote":     "الدقائق الزائدة تُخصم من الراتب",
+    "isNightShift":    "دوام ليلي (يمتد إلى اليوم التالي)"
+  },
+
+  "roles": {
+    "staff": "موظف",
+    "admin": "مدير"
+  },
+
+  "days": {
+    "sunday":    "الأحد",
+    "monday":    "الاثنين",
+    "tuesday":   "الثلاثاء",
+    "wednesday": "الأربعاء",
+    "thursday":  "الخميس",
+    "friday":    "الجمعة",
+    "saturday":  "السبت"
+  },
+
+  "adminScope": {
+    "label":          "نوع الصلاحية",
+    "globalLabel":    "🌍 Super Admin — صلاحية على جميع الفروع",
+    "branchLabel":    "🏢 Branch Admin — فروع محددة فقط",
+    "selectBranches": "الفروع المسموح بها *"
+  },
+
+  "policy": {
+    "loading":          "جاري جلب سياسة الحضور...",
+    "applied":          "السياسة الفعّالة المطبّقة",
+    "noPolicy":         "لا توجد سياسة حضور — ستُطبّق القيم الافتراضية",
+    "graceLate":        "سماح التأخير",
+    "graceEarly":       "سماح الانصراف المبكر",
+    "latePerHour":      "خصم التأخير / ساعة",
+    "earlyLeavePerHour":"خصم الانصراف المبكر / ساعة",
+    "absenceDayRate":   "خصم الغياب",
+    "fullDay":          "يوم كامل",
+    "examplesTitle":    "أمثلة تقديرية للخصومات",
+    "lateExample":      "تأخير ساعة ← خصم",
+    "earlyExample":     "انصراف مبكر ساعة ← خصم",
+    "absenceExample":   "يوم غياب ← خصم"
+  },
+
+  "salary": {
+    "monthly":    "الراتب الشهري",
+    "daily":      "الراتب اليومي",
+    "hourly":     "الراتب الساعي",
+    "days":       "يوم",
+    "hours":      "ساعة",
+    "fillPrompt": "أدخل الراتب وجدول العمل لعرض التفصيل"
+  },
+
+  "validation": {
+    "nameRequired":                "الاسم الكامل مطلوب",
+    "emailRequired":               "البريد الإلكتروني مطلوب",
+    "branchesRequired":            "يجب اختيار فرع واحد على الأقل",
+    "salaryRequired":              "يجب أن يكون الراتب أكبر من صفر",
+    "workingDaysRequired":         "يجب اختيار يوم عمل واحد على الأقل",
+    "endTimeAfterStart":           "يجب أن يكون وقت الانتهاء بعد وقت البدء",
+    "adminScopeBranchesRequired":  "يجب تحديد فرع واحد على الأقل لهذا الأدمن"
+  },
+
+  "forbidden": {
+    "title":   "غير مسموح",
+    "message": "لا يمكنك تعديل بيانات مسؤول آخر."
+  },
+
+  "actions": {
+    "submit":     "حفظ التعديلات",
+    "submitting": "جاري الحفظ...",
+    "cancel":     "إلغاء",
+    "back":       "رجوع"
+  },
+
+  "toast": {
+    "success":   "تم تحديث بيانات الموظف بنجاح ✅",
+    "error":     "حدث خطأ، يرجى المحاولة مرة أخرى.",
+    "loadError": "فشل تحميل بيانات الموظف"
+  },
+
+  "minutes": "د",
+  "currency": "جنيه"
+}

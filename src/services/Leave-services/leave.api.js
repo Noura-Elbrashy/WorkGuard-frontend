@@ -114,10 +114,12 @@ export const submitLeave = (payload) => {
 export const getMyLeaves = ({
   page = 1,
   limit = 10,
-  status
+  status,
+   year 
 }) => {
   const params = new URLSearchParams({ page, limit });
   if (status) params.append('status', status);
+  if (year)   params.append('year', year);
 
   return apiGet(`/leaves/my?${params.toString()}`);
 };
@@ -139,10 +141,15 @@ export const getLeaveBreakdown = (leaveId) => {
 /**
  * Cancel leave (Pending: Owner/Admin – Approved: Admin only)
  */
-export const cancelLeave = (leaveId) => {
-  return apiPut(`/leaves/${leaveId}/cancel`);
-};
+// export const cancelLeave = (leaveId) => {
+//   return apiPut(`/leaves/${leaveId}/cancel`);
+// };
 
+
+// ✅ أضف payload
+export const cancelLeave = (leaveId, payload = {}) => {
+  return apiPut(`/leaves/${leaveId}/cancel`, payload);
+};
 /* ======================================================
    Admin – Leaves
 ====================================================== */
@@ -193,8 +200,14 @@ export const getAllLeaves = ({
 /**
  * Approve leave
  */
-export const approveLeave = (leaveId) => {
-  return apiPut(`/leaves/${leaveId}/approve`);
+// export const approveLeave = (leaveId) => {
+//   return apiPut(`/leaves/${leaveId}/approve`);
+// };
+
+
+// ✅ أضف forceApprove option
+export const approveLeave = (leaveId, payload = {}) => {
+  return apiPut(`/leaves/${leaveId}/approve`, payload);
 };
 
 /**
@@ -274,7 +287,13 @@ export const runYearlyLeaveResetUnified = ({
 };
 
 
-export const adjustLeaveBalance = (userId, payload) => {
-  if (!userId) throw new Error('userId is required');
-  return apiPost(`/admin/leaves/adjust-balance/${userId}`, payload);
+
+export const adjustLeaveBalance = ({ userId, ...payload }) => {
+  return apiPost(`/admin/leave-policies/leave-adjustments/${userId}`, payload);
 };
+
+
+// export const adjustLeaveBalance = (userId, payload) => {
+//   if (!userId) throw new Error('userId is required');
+//   return apiPost(`/admin/leaves/adjust-balance/${userId}`, payload);
+// };

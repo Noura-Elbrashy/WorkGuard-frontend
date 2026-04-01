@@ -62,27 +62,158 @@
 //   );
 // }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //for a profile page 
+// // export default LeaveBalanceSummary;
+// // src/components/leave/components/LeaveBalanceSummary.jsx
+// import { useTranslation } from 'react-i18next';
+
+// function LeaveBalanceSummary({ summary }) {
+//   const { t } = useTranslation();
+
+//   if (!summary) return null;
+
+//   const { year, annual, sick } = summary;
+
+//   return (
+//     <div className="card shadow-sm mb-4">
+//       <div className="card-header fw-semibold">
+//         {t('leave.balance.title', { year })}
+//       </div>
+
+//       <div className="card-body row g-4">
+
+//         {/* Annual Leave */}
+//         <div className="col-md-6">
+//           <div className="border rounded p-3 h-100">
+//             <h6 className="fw-semibold mb-3">
+//               {t('leave.types.annual')}
+//             </h6>
+
+//             <div className="d-flex justify-content-between">
+//               <span>{t('leave.balance.total')}:</span>
+//               <strong>{annual.total}</strong>
+//             </div>
+
+//             <div className="d-flex justify-content-between text-success">
+//               <span>{t('leave.balance.usedPaid')}:</span>
+//               <strong>{annual.usedPaid}</strong>
+//             </div>
+
+//             <div className="d-flex justify-content-between text-muted">
+//               <span>{t('leave.balance.usedUnpaid')}:</span>
+//               <strong>{annual.usedUnpaid}</strong>
+//             </div>
+
+//             <hr />
+
+//             <div className="d-flex justify-content-between fw-semibold">
+//               <span>{t('leave.balance.remaining')}:</span>
+//               <strong>{annual.remaining}</strong>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Sick Leave */}
+//         <div className="col-md-6">
+//           <div className="border rounded p-3 h-100">
+//             <h6 className="fw-semibold mb-3">
+//               {t('leave.types.sick')}
+//             </h6>
+
+//             <div className="d-flex justify-content-between">
+//               <span>{t('leave.balance.total')}:</span>
+//               <strong>{sick.total}</strong>
+//             </div>
+
+//             <div className="d-flex justify-content-between text-success">
+//               <span>{t('leave.balance.used')}:</span>
+//               <strong>{sick.used}</strong>
+//             </div>
+
+//             <hr />
+
+//             <div className="d-flex justify-content-between fw-semibold">
+//               <span>{t('leave.balance.remaining')}:</span>
+//               <strong>{sick.remaining}</strong>
+//             </div>
+//           </div>
+//         </div>
+
+//       </div>
+//     </div>
+//   );
+// }
+
 // export default LeaveBalanceSummary;
+
+
+
+
+
+//profile /leave details
 // src/components/leave/components/LeaveBalanceSummary.jsx
 import { useTranslation } from 'react-i18next';
 
 function LeaveBalanceSummary({ summary }) {
-  const { t } = useTranslation();
+const { t } = useTranslation('leave');
+const { t: tCommon } = useTranslation('translation');
+
 
   if (!summary) return null;
 
-  const { year, annual, sick } = summary;
+  const { year, annual, sick, unpaid } = summary;
+
+  // Guard
+  if (!annual || !sick) return null;
 
   return (
     <div className="card shadow-sm mb-4">
       <div className="card-header fw-semibold">
-        {t('leave.balance.title', { year })}
+        📊 {t('leave.balance.title', { year })}
       </div>
 
       <div className="card-body row g-4">
 
         {/* Annual Leave */}
-        <div className="col-md-6">
+        <div className="col-md-4">
           <div className="border rounded p-3 h-100">
             <h6 className="fw-semibold mb-3">
               {t('leave.types.annual')}
@@ -97,11 +228,11 @@ function LeaveBalanceSummary({ summary }) {
               <span>{t('leave.balance.usedPaid')}:</span>
               <strong>{annual.usedPaid}</strong>
             </div>
-
+{/* 
             <div className="d-flex justify-content-between text-muted">
               <span>{t('leave.balance.usedUnpaid')}:</span>
               <strong>{annual.usedUnpaid}</strong>
-            </div>
+            </div> */}
 
             <hr />
 
@@ -113,7 +244,7 @@ function LeaveBalanceSummary({ summary }) {
         </div>
 
         {/* Sick Leave */}
-        <div className="col-md-6">
+        <div className="col-md-4">
           <div className="border rounded p-3 h-100">
             <h6 className="fw-semibold mb-3">
               {t('leave.types.sick')}
@@ -126,7 +257,10 @@ function LeaveBalanceSummary({ summary }) {
 
             <div className="d-flex justify-content-between text-success">
               <span>{t('leave.balance.used')}:</span>
-              <strong>{sick.used}</strong>
+              {/* <strong>{sick.used} */}
+<strong>{sick.usedPaid}
+
+              </strong>
             </div>
 
             <hr />
@@ -138,12 +272,72 @@ function LeaveBalanceSummary({ summary }) {
           </div>
         </div>
 
+        {/* Unpaid (Independent) */}
+        {unpaid && (
+          <div className="col-md-4">
+            <div className="border rounded p-3 h-100">
+              <h6 className="fw-semibold mb-3">
+                {t('leave.types.unpaid')}
+              </h6>
+
+              <div className="d-flex justify-content-between">
+                <span>{t('leave.balance.absentDays')}:</span>
+                <strong>{unpaid.absentDays}</strong>
+              </div>
+
+              <div className="d-flex justify-content-between text-danger">
+                <span>{t('leave.balance.unpaidDays')}:</span>
+                <strong>{unpaid.unpaidLeaveDays}</strong>
+              </div>
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
   );
 }
 
 export default LeaveBalanceSummary;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function LeaveBalanceSummary({ summary }) {
 //   if (!summary) return null;

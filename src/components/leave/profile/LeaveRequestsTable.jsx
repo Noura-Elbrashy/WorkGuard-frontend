@@ -7,9 +7,12 @@ function LeaveRequestsTable({
   page = 1,
   pages = 1,
   onPageChange,
-  onViewDetails
+  onViewDetails,
+  isAdmin = false 
 }) {
-  const { t } = useTranslation();
+const { t } = useTranslation('leave');
+const { t: tCommon } = useTranslation('translation');
+
 
   if (loading) {
     return (
@@ -26,7 +29,7 @@ function LeaveRequestsTable({
       </div>
     );
   }
-
+console.log('LEAVES DATA:', leaves);
   return (
     <>
       <div className="table-responsive">
@@ -36,7 +39,8 @@ function LeaveRequestsTable({
               <th>{t('leave.type')}</th>
               <th>{t('leave.period')}</th>
               <th className="text-center">{t('leave.days')}</th>
-              <th className="text-center">{t('leave.status')}</th>
+              <th className="text-center">{t('leave.statusLabel')}</th>
+
               <th className="text-center">{t('actions')}</th>
             </tr>
           </thead>
@@ -64,7 +68,8 @@ function LeaveRequestsTable({
                 </td>
 
                 <td className="text-center">
-                  <LeaveStatusBadge status={leave.status} />
+                 <LeaveStatusBadge leave={leave} isAdmin={isAdmin} />
+
                 </td>
 
                 <td className="text-center">

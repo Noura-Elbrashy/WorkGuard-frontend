@@ -257,7 +257,7 @@ const [showLangMenu, setShowLangMenu] = useState(false);
                 to="/attendance"
               >
                 <i className="fas fa-clock"></i>
-                {t("attendance")}
+                {t("attendance.attendance")}
               </Link>
             </li>
 
@@ -267,8 +267,8 @@ const [showLangMenu, setShowLangMenu] = useState(false);
                 {/* Dashboard X */}
                 <li className="nav-item nav-item-modern">
                   <Link 
-                    className={`nav-link nav-link-modern ${isActiveLink('/admin/dashboardx') ? 'active' : ''}`} 
-                    to="/admin/dashboardx"
+                    className={`nav-link nav-link-modern ${isActiveLink('/admin/dashboard') ? 'active' : ''}`} 
+                    to="/admin/dashboard"
                   >
                     <i className="fas fa-chart-line"></i>
                     {t("Dashboard")}
@@ -278,8 +278,8 @@ const [showLangMenu, setShowLangMenu] = useState(false);
                 {/* Dashboard */}
                 {/* <li className="nav-item nav-item-modern">
                   <Link 
-                    className={`nav-link nav-link-modern ${isActiveLink('/admin/dashboard') ? 'active' : ''}`} 
-                    to="/admin/dashboard"
+                    className={`nav-link nav-link-modern ${isActiveLink('/admin/dashboardx') ? 'active' : ''}`} 
+                    to="/admin/dashboardx"
                   >
                     <i className="fas fa-tachometer-alt"></i>
                     {t("adminDashboard")}
@@ -344,15 +344,15 @@ const [showLangMenu, setShowLangMenu] = useState(false);
             </li>
 
             {/* Leaves */}
-            {/* <li className="nav-item nav-item-modern">
+            <li className="nav-item nav-item-modern">
               <Link 
-                className={`nav-link nav-link-modern ${isActiveLink('/leaves') ? 'active' : ''}`} 
-                to="/leaves"
+                className={`nav-link nav-link-modern ${isActiveLink('/my-leaves') ? 'active' : ''}`} 
+                to="/my-leaves"
               >
                 <i className="fas fa-calendar-plus"></i>
-                {t('leave.Leaves')}
+                {t('leave.MyLeaves')}
               </Link>
-            </li> */}
+            </li>
           </ul>
 
           {/* Right Section - Language & Logout */}

@@ -240,7 +240,9 @@ import { isGlobalAdmin } from '../../helpers/auth';
  * - Actions: approve / reject / cancel
  */
 function LeavesAdminPage() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('leave');
+const { t: tCommon } = useTranslation('translation');
+
   const navigate = useNavigate();
 
   const [leaves, setLeaves] = useState([]);
@@ -304,23 +306,107 @@ function LeavesAdminPage() {
   /* ======================
      Admin Actions
   ====================== */
-  const handleApprove = async (id) => {
-    if (actionLoading) return;
+  // const handleApprove = async (id) => {
+  //   if (actionLoading) return;
 
-    try {
-      setActionLoading(true);
-      await approveLeave(id);
-      showToast(t('leave.toastApproved'));
-      loadLeaves();
-    } catch (err) {
-      showToast(
-        err?.response?.data?.message || t('leave.toastError'),
-        'error'
-      );
-    } finally {
-      setActionLoading(false);
+  //   try {
+  //     setActionLoading(true);
+  //     await approveLeave(id);
+  //     showToast(t('leave.toastApproved'));
+  //     loadLeaves();
+  //   } catch (err) {
+  //     showToast(
+  //       err?.response?.data?.message || t('leave.toastError'),
+  //       'error'
+  //     );
+  //   } finally {
+  //     setActionLoading(false);
+  //   }
+  // };
+
+const handleApprove = async (id) => {
+  if (actionLoading) return;
+
+  try {
+    setActionLoading(true);
+    const res = await approveLeave(id);
+
+    // ✅ لو محتاج confirmation
+    if (res.data?.requiresConfirmation) {
+      const { lockedDays, message } = res.data;
+      setToast({
+        show: true,
+        type: 'warning',
+        message: `⚠️ ${message}\n\nLocked days: ${lockedDays.join(', ')}\n\nThese days will NOT be recalculated.`,
+        onConfirm: async () => {
+          try {
+            setActionLoading(true);
+            await approveLeave(id, { forceApprove: true });
+            showToast(t('leave.toastApproved'));
+            loadLeaves();
+          } catch (err) {
+            showToast(err?.response?.data?.message || t('leave.toastError'), 'error');
+          } finally {
+            setActionLoading(false);
+          }
+        }
+      });
+      return;
     }
-  };
+
+    showToast(t('leave.toastApproved'));
+    loadLeaves();
+  } catch (err) {
+    showToast(err?.response?.data?.message || t('leave.toastError'), 'error');
+  } finally {
+    setActionLoading(false);
+  }
+};
+
+const handleCancel = (id) => {
+  setToast({
+    show: true,
+    type: 'warning',
+    message: t('leave.confirmCancel'),
+    onConfirm: async () => {
+      try {
+        setActionLoading(true);
+        const res = await cancelLeave(id);
+
+        // ✅ لو محتاج confirmation
+        if (res.data?.requiresConfirmation) {
+          const { lockedDays, message } = res.data;
+          setToast({
+            show: true,
+            type: 'warning',
+            message: `⚠️ ${message}\n\nLocked days: ${lockedDays.join(', ')}\n\nThese days will NOT be recalculated.`,
+            onConfirm: async () => {
+              try {
+                setActionLoading(true);
+                await cancelLeave(id, { forceCancel: true });
+                showToast(t('leave.toastCancelled'));
+                loadLeaves();
+              } catch (err) {
+                showToast(err?.response?.data?.message || t('leave.toastError'), 'error');
+              } finally {
+                setActionLoading(false);
+              }
+            }
+          });
+          return;
+        }
+
+        showToast(t('leave.toastCancelled'));
+        loadLeaves();
+      } catch (err) {
+        showToast(err?.response?.data?.message || t('leave.toastError'), 'error');
+      } finally {
+        setActionLoading(false);
+      }
+    }
+  });
+};
+
 
   const handleReject = async (id) => {
     const reason = prompt(t('leave.rejectReason'));
@@ -341,28 +427,28 @@ function LeavesAdminPage() {
     }
   };
 
-  const handleCancel = (id) => {
-    setToast({
-      show: true,
-      type: 'warning',
-      message: t('leave.confirmCancel'),
-      onConfirm: async () => {
-        try {
-          setActionLoading(true);
-          await cancelLeave(id);
-          showToast(t('leave.toastCancelled'));
-          loadLeaves();
-        } catch (err) {
-          showToast(
-            err?.response?.data?.message || t('leave.toastError'),
-            'error'
-          );
-        } finally {
-          setActionLoading(false);
-        }
-      }
-    });
-  };
+  // const handleCancel = (id) => {
+  //   setToast({
+  //     show: true,
+  //     type: 'warning',
+  //     message: t('leave.confirmCancel'),
+  //     onConfirm: async () => {
+  //       try {
+  //         setActionLoading(true);
+  //         await cancelLeave(id);
+  //         showToast(t('leave.toastCancelled'));
+  //         loadLeaves();
+  //       } catch (err) {
+  //         showToast(
+  //           err?.response?.data?.message || t('leave.toastError'),
+  //           'error'
+  //         );
+  //       } finally {
+  //         setActionLoading(false);
+  //       }
+  //     }
+  //   });
+  // };
 
   /* ======================
      UI
@@ -402,8 +488,15 @@ function LeavesAdminPage() {
     {t('leave.policies.manage')}
   </button>
 )}
-</div>
 
+</div>
+<button
+  className="btn btn-outline-primary"
+  onClick={() => navigate('/my-leaves')}
+>
+  <i className="fa-solid fa-umbrella-beach me-1" />
+  {t('leave.my.title')}
+</button>
       {/* Filters */}
       <div className="card mb-4 shadow-sm">
         <div className="card-body row g-3 align-items-end">
@@ -416,7 +509,7 @@ function LeavesAdminPage() {
               value={status}
               onChange={e => setStatus(e.target.value)}
             >
-              <option value="">{t('all')}</option>
+              <option value="">{tCommon('all')}</option>
               <option value="pending">{t('leave.statuses.pending')}</option>
               <option value="approved">{t('leave.statuses.approved')}</option>
               <option value="rejected">{t('leave.statuses.rejected')}</option>
@@ -428,7 +521,7 @@ function LeavesAdminPage() {
 
       {/* List */}
       {loading ? (
-        <div className="text-center py-5">{t('loading')}...</div>
+        <div className="text-center py-5">{tCommon('loading')}...</div>
       ) : leaves.length === 0 ? (
         <div className="alert alert-light text-center">
           {t('leave.empty')}

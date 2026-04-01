@@ -245,9 +245,9 @@ export const getAttendanceByUser = (userId, params = {}) => {
 };
 
 /** ✏️ تعديل سجل حضور خام */
-export const adminUpdateAttendance = (attendanceId, data) => {
-  return apiPut(`/admin/attendance/${attendanceId}`, data);
-};
+// export const adminUpdateAttendance = (attendanceId, data) => {
+//   return apiPut(`/admin/attendance/${attendanceId}`, data);
+// };
 
 /** 📊 الجدول الرئيسي للأدمن — DailyAttendanceSummary مع pagination */
 export const getAttendanceSummary = (params = {}) => {

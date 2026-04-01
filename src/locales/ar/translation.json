@@ -685,6 +685,8 @@
     }
   },
   "leave": {
+    "MyLeaves":"أجازاتي",
+    "adjustmentHistory":"سجل التعديلات",
      "policies": {
       "manage": "إدارة سياسات الإجازات"
     },
@@ -728,6 +730,8 @@
       "cancelledBy": "أُلغي بواسطة",
       "unknown": "غير معروف"
     },
+    "before":"قبل",
+    "after":"بعد",
     "type": "نوع الإجازة",
     "from": "من",
     "to": "إلى",
@@ -964,7 +968,7 @@
   "startDate": "تاريخ بدء العمل",
   "workingDays": "أيام العمل",
   "workingHours": "ساعات العمل",
-  "currency": "جنيه",
+  "currency": "$",
   "view": "عرض",
   "year": "السنة",
   "month": "الشهر",
@@ -1049,7 +1053,7 @@
  
   "noCheckoutNeedsReview" : "لا يوجد تسجيل انصراف - سيتم اعتباره غير مدفوع حتى يتم تصحيحه",
   "needsReview": "غير مدفوع / يحتاج لمراجعة الإدارة",
- "attendance": "تسجيل الحضور و الانصراف",
+
 "checkIn": "تسجيل الحضور",
 "checkOut": "تسجيل الانصراف",
 "checkInSuccess": "تم تسجيل الحضور بنجاح",
@@ -1233,7 +1237,7 @@
  
 "emailSettings": "إعدادات البريد",
   
-  "profile": "الملف الشخصي للموظف",
+  "profile": "ملفي الشخصي",
   "name": "الاسم",
   "email": "البريد الإلكتروني",
   "phone": "الهاتف",
@@ -1304,7 +1308,7 @@
     "addFeedbackPlaceholder": "اكتب تعليقك هنا...",
     "timeDetails": "تفاصيل الوقت",
     "minutes": "دقيقة",
-    "currency": "ج.م",
+    "currency": "$",
   "timeRequired": "وقت بداية ونهاية العمل مطلوب",
   "endTimeAfterStart": "يجب أن يكون وقت الانتهاء بعد وقت البداية",
   "isNightShift": "دوام ليلي (يمتد إلى اليوم التالي)"
@@ -1329,6 +1333,11 @@
   "annual": "سنوية",
   "sick": "مرضية",
   "emergency": "طارئة",
-  "unpaid": "غير مدفوعة"
+  "unpaid": "غير مدفوعة",
+"reason":"السبب",
+"admin":"مدير",
 
+"attendance":{
+ "attendance": "تسجيل الحضور و الانصراف"}
 }
+

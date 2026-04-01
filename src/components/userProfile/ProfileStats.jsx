@@ -350,28 +350,194 @@
 
 
 
+// import { useTranslation } from 'react-i18next';
+
+
+// /* ===============================
+//    Simple Professional Stat Card
+// ================================ */
+// function StatCard({ icon, label, value, color, suffix }) {
+//   return (
+//     <div className="col-xl-3 col-md-4 col-sm-6 mb-3">
+//       <div className="card h-100 border-0 shadow-sm stat-card-clean">
+//         <div className="card-body d-flex align-items-center">
+//           <div className={`stat-icon text-${color} me-3`}>
+//             <i className={`fas ${icon}`} />
+//           </div>
+
+//           <div>
+//             <div className={`stat-value text-${color}`}>
+//               {value ?? 0}
+//               {suffix && <small className="ms-1">{suffix}</small>}
+//             </div>
+//             <div className="stat-label">{label}</div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// /* ===============================
+//    UserStats
+// ================================ */
+// function UserStats({ monthlyReport, showPayroll = false }) {
+//   const { t } = useTranslation();
+
+//   if (!monthlyReport || !monthlyReport.totals) {
+//     return (
+//       <div className="alert alert-info mt-3">
+//         <i className="fas fa-calendar-alt me-2" />
+//         {t('selectMonthToViewStats')}
+//       </div>
+//     );
+//   }
+
+//   const { totals, month, year, salary } = monthlyReport;
+
+//   return (
+//     <div className="mb-4">
+
+//       {/* Header */}
+//       <div className="d-flex justify-content-between align-items-center mb-3">
+//         <h5 className="mb-0 fw-semibold">
+//           {t('monthlyOverview')}
+//         </h5>
+//         <span className="text-warning small">
+//           {t('month')} {month} / {year}
+//         </span>
+//       </div>
+
+//       {/* Main stats */}
+//       <div className="row">
+//         <StatCard
+//           icon="fa-briefcase"
+//           label={t('workingDays')}
+//           value={totals.workingDays}
+//           color="primary"
+//         />
+
+//         <StatCard
+//           icon="fa-calendar-times"
+//           label={t('absentDays')}
+//           value={totals.absentDays}
+//           color="danger"
+//         />
+
+//         <StatCard
+//           icon="fa-plane-departure"
+//           label={t('paidLeaveDays')}
+//           value={totals.paidLeaveDays}
+//           color="success"
+//         />
+
+//         <StatCard
+//           icon="fa-user-slash"
+//           label={t('unpaidLeaveDays')}
+//           value={totals.unpaidLeaveDays}
+//           color="warning"
+//         />
+
+//         <StatCard
+//           icon="fa-clock"
+//           label={t('totalLateMinutes')}
+//           value={totals.totalLateMinutes}
+//           color="warning"
+//           suffix={t('minutes')}
+//         />
+
+//         <StatCard
+//           icon="fa-door-open"
+//           label={t('totalEarlyLeaveMinutes')}
+//           value={totals.totalEarlyLeaveMinutes}
+//           color="info"
+//           suffix={t('minutes')}
+//         />
+
+//         <StatCard
+//           icon="fa-route"
+//           label={t('transitDeduction')}
+//           value={totals.totalTransitDeductionMinutes}
+//           color="secondary"
+//           suffix={t('minutes')}
+//         />
+
+//         <StatCard
+//           icon="fa-ban"
+//           label={t('invalidDays')}
+//           value={totals.invalidDays}
+//           color="dark"
+//         />
+//       </div>
+
+//       {/* Payroll (Admin only) */}
+//       {showPayroll && salary && (
+//         <div className="card border-0 shadow-sm mt-4">
+//           <div className="card-body">
+//             <h6 className="fw-semibold mb-3">
+//               {t('salaryDetails')}
+//             </h6>
+
+//             <div className="d-flex justify-content-between mb-2">
+//               <span className="text-muted">{t('baseSalary')}</span>
+//               <strong>{salary.base}</strong>
+//             </div>
+
+//             <div className="small text-muted mb-2">
+//               <div>- {t('absence')} : {salary.absence}</div>
+//               <div>- {t('late')} : {salary.late}</div>
+//               <div>- {t('early')} : {salary.early}</div>
+//               <div>- {t('transit')} : {salary.transit}</div>
+//             </div>
+
+//             <hr />
+
+//             <div className="d-flex justify-content-between fw-bold">
+//               <span>{t('netSalary')}</span>
+//               <span className="text-success">{salary.net}</span>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+
+//       {/* Info note */}
+//       <div className="alert alert-light mt-3 small">
+//         <i className="fas fa-info-circle me-2" />
+//         {t('monthlyStatsPreviewNote')}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default UserStats;
+
+
+
+
+
+
+//--------------------------------------------------------ui1
+
+
 import { useTranslation } from 'react-i18next';
+import "/src/style/attendanceProfile.css";
 
 /* ===============================
-   Simple Professional Stat Card
+   StatCard
 ================================ */
-function StatCard({ icon, label, value, color, suffix }) {
+function StatCard({ icon, label, value, colorKey = 'blue', suffix }) {
   return (
-    <div className="col-xl-3 col-md-4 col-sm-6 mb-3">
-      <div className="card h-100 border-0 shadow-sm stat-card-clean">
-        <div className="card-body d-flex align-items-center">
-          <div className={`stat-icon text-${color} me-3`}>
-            <i className={`fas ${icon}`} />
-          </div>
+    <div className="att-stat-card">
+      <div className={`att-stat-icon att-stat-icon--${colorKey}`}>
+        <i className={`fas ${icon}`} />
+      </div>
 
-          <div>
-            <div className={`stat-value text-${color}`}>
-              {value ?? 0}
-              {suffix && <small className="ms-1">{suffix}</small>}
-            </div>
-            <div className="stat-label">{label}</div>
-          </div>
+      <div>
+        <div className="att-stat-value">
+          {value ?? 0}
+          {suffix && <small>{suffix}</small>}
         </div>
+        <div className="att-stat-label">{label}</div>
       </div>
     </div>
   );
@@ -383,10 +549,10 @@ function StatCard({ icon, label, value, color, suffix }) {
 function UserStats({ monthlyReport, showPayroll = false }) {
   const { t } = useTranslation();
 
-  if (!monthlyReport || !monthlyReport.totals) {
+  if (!monthlyReport?.totals) {
     return (
-      <div className="alert alert-info mt-3">
-        <i className="fas fa-calendar-alt me-2" />
+      <div className="att-stats-empty">
+        <i className="fas fa-calendar-alt" />
         {t('selectMonthToViewStats')}
       </div>
     );
@@ -395,113 +561,72 @@ function UserStats({ monthlyReport, showPayroll = false }) {
   const { totals, month, year, salary } = monthlyReport;
 
   return (
-    <div className="mb-4">
+    <div className="att-stats-section">
 
       {/* Header */}
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h5 className="mb-0 fw-semibold">
-          {t('monthlyOverview')}
-        </h5>
-        <span className="text-warning small">
+      <div className="att-stats-header">
+        <h5>{t('monthlyOverview')}</h5>
+        <span className="att-period-badge">
           {t('month')} {month} / {year}
         </span>
       </div>
 
-      {/* Main stats */}
-      <div className="row">
-        <StatCard
-          icon="fa-briefcase"
-          label={t('workingDays')}
-          value={totals.workingDays}
-          color="primary"
-        />
-
-        <StatCard
-          icon="fa-calendar-times"
-          label={t('absentDays')}
-          value={totals.absentDays}
-          color="danger"
-        />
-
-        <StatCard
-          icon="fa-plane-departure"
-          label={t('paidLeaveDays')}
-          value={totals.paidLeaveDays}
-          color="success"
-        />
-
-        <StatCard
-          icon="fa-user-slash"
-          label={t('unpaidLeaveDays')}
-          value={totals.unpaidLeaveDays}
-          color="warning"
-        />
-
-        <StatCard
-          icon="fa-clock"
-          label={t('totalLateMinutes')}
-          value={totals.totalLateMinutes}
-          color="warning"
-          suffix={t('minutes')}
-        />
-
-        <StatCard
-          icon="fa-door-open"
-          label={t('totalEarlyLeaveMinutes')}
-          value={totals.totalEarlyLeaveMinutes}
-          color="info"
-          suffix={t('minutes')}
-        />
-
-        <StatCard
-          icon="fa-route"
-          label={t('transitDeduction')}
-          value={totals.totalTransitDeductionMinutes}
-          color="secondary"
-          suffix={t('minutes')}
-        />
-
-        <StatCard
-          icon="fa-ban"
-          label={t('invalidDays')}
-          value={totals.invalidDays}
-          color="dark"
-        />
+      {/* Stats */}
+      <div className="att-stats-grid">
+        <StatCard icon="fa-briefcase"       colorKey="blue"   label={t('workingDays')}            value={totals.workingDays} />
+        <StatCard icon="fa-calendar-times"  colorKey="red"    label={t('absentDays')}             value={totals.absentDays} />
+        <StatCard icon="fa-plane-departure" colorKey="green"  label={t('paidLeaveDays')}          value={totals.paidLeaveDays} />
+        <StatCard icon="fa-user-slash"      colorKey="amber"  label={t('unpaidLeaveDays')}        value={totals.unpaidLeaveDays} />
+        <StatCard icon="fa-clock"           colorKey="amber"  label={t('totalLateMinutes')}       value={totals.totalLateMinutes}             suffix={t('min')} />
+        <StatCard icon="fa-door-open"       colorKey="sky"    label={t('totalEarlyLeaveMinutes')} value={totals.totalEarlyLeaveMinutes}       suffix={t('min')} />
+        <StatCard icon="fa-route"           colorKey="violet" label={t('transitDeduction')}       value={totals.totalTransitDeductionMinutes} suffix={t('min')} />
+        <StatCard icon="fa-ban"             colorKey="ink"    label={t('invalidDays')}            value={totals.invalidDays} />
       </div>
 
-      {/* Payroll (Admin only) */}
+      {/* Payroll */}
       {showPayroll && salary && (
-        <div className="card border-0 shadow-sm mt-4">
-          <div className="card-body">
-            <h6 className="fw-semibold mb-3">
-              {t('salaryDetails')}
-            </h6>
+        <div className="att-payroll-card">
+          <div className="att-payroll-card__header">
+            <i className="fas fa-wallet" />
+            <h6>{t('salaryDetails')}</h6>
+          </div>
 
-            <div className="d-flex justify-content-between mb-2">
-              <span className="text-muted">{t('baseSalary')}</span>
-              <strong>{salary.base}</strong>
+          <div className="att-payroll-card__body">
+
+            <div className="att-payroll-row">
+              <span className="att-payroll-row__label">{t('baseSalary')}</span>
+              <span className="att-payroll-row__value">{salary.base}</span>
             </div>
 
-            <div className="small text-muted mb-2">
-              <div>- {t('absence')} : {salary.absence}</div>
-              <div>- {t('late')} : {salary.late}</div>
-              <div>- {t('early')} : {salary.early}</div>
-              <div>- {t('transit')} : {salary.transit}</div>
+            <div className="att-deductions-wrap">
+              {[
+                { key: 'absence', label: t('absence') },
+                { key: 'late',    label: t('late') },
+                { key: 'early',   label: t('earlyLeave') },
+                { key: 'transit', label: t('transit') },
+              ].map(({ key, label }) => (
+                <div key={key} className="att-deduction-item">
+                  <span>
+                    <span className="att-deduction-item__dot" />
+                    {label}
+                  </span>
+                  <span>− {salary[key]}</span>
+                </div>
+              ))}
             </div>
 
-            <hr />
-
-            <div className="d-flex justify-content-between fw-bold">
-              <span>{t('netSalary')}</span>
-              <span className="text-success">{salary.net}</span>
+            <div className="att-payroll-net">
+              <span className="att-payroll-net__label">{t('netSalary')}</span>
+              <span className="att-payroll-net__value">{salary.net}</span>
             </div>
+
           </div>
         </div>
       )}
 
-      {/* Info note */}
-      <div className="alert alert-light mt-3 small">
-        <i className="fas fa-info-circle me-2" />
+      {/* Note */}
+      <div className="att-note">
+        <i className="fas fa-info-circle" />
         {t('monthlyStatsPreviewNote')}
       </div>
     </div>

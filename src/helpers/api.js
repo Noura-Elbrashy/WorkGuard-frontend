@@ -39,7 +39,7 @@ export const apiGet = (url, config = {}) => api.get(url, config);
 
 // In api.js
 export const apiPost = (url, data) => {
-  console.log('Sending to:', url, 'Data:', data);
+  
   return api.post(url, data); // use api, not axios
 
 };

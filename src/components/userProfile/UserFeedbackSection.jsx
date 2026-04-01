@@ -263,7 +263,13 @@
 
 import { useEffect,useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { apiGet, apiPost, apiPut, apiDelete } from '../../helpers/api';
+import {
+  addFeedback,
+  getUserFeedbacks,
+  updateFeedback,
+  deleteFeedback
+} from '../../services/feedback.api';
+
 import Toast from '../ui/Toast';
 
 function UserFeedbackSection({ userId, isAdmin }) {
@@ -310,9 +316,11 @@ const formRef = useRef(null);
     try {
       setLoading(true);
 
-      const res = await apiGet(
-        `/users/${userId}/feedback?page=${page}&limit=5&onlyWarnings=${onlyWarnings}`
-      );
+   const res = await getUserFeedbacks(userId, {
+  page,
+  limit: 5,
+  onlyWarnings
+});
 
       setFeedbacks(res.data.data || []);
       setPages(res.data.pagination?.pages || 1);
@@ -340,10 +348,12 @@ const formRef = useRef(null);
 
     try {
       if (editingId) {
-        await apiPut(`/users/${userId}/feedback/${editingId}`, form);
+          await updateFeedback(userId, editingId, form);
+
         showToast(t('feedback.toastUpdated'));
       } else {
-        await apiPost(`/users/${userId}/feedback`, form);
+          await addFeedback(userId, form);
+
         showToast(t('feedback.toastAdded'));
       }
 
@@ -369,7 +379,7 @@ const formRef = useRef(null);
       message: t('feedback.confirmDelete'),
       onConfirm: async () => {
         try {
-          await apiDelete(`/users/${userId}/feedback/${feedbackId}`);
+          await deleteFeedback(userId, feedbackId);
           showToast(t('feedback.toastDeleted'));
           loadFeedback();
         } catch {

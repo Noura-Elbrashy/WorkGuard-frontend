@@ -1,19 +1,25 @@
+import { useTranslation } from 'react-i18next';
+
 function LeaveTabs({ active, onChange }) {
+const { t } = useTranslation('leave');
+const { t: tCommon } = useTranslation('translation');
+
+
   const tabs = [
-    { key: 'summary', label: 'Summary' },
-    { key: 'requests', label: 'Requests' },
-    { key: 'absence', label: 'Absence' }
+    { key: 'summary', label: t('tabs.summary') },
+    { key: 'requests', label: t('tabs.requests') },
+    { key: 'absence', label: t('tabs.absence') }
   ];
 
   return (
     <ul className="nav nav-tabs mb-3">
-      {tabs.map(t => (
-        <li className="nav-item" key={t.key}>
+      {tabs.map(tab => (
+        <li className="nav-item" key={tab.key}>
           <button
-            className={`nav-link ${active === t.key ? 'active' : ''}`}
-            onClick={() => onChange(t.key)}
+            className={`nav-link ${active === tab.key ? 'active' : ''}`}
+            onClick={() => onChange(tab.key)}
           >
-            {t.label}
+            {tab.label}
           </button>
         </li>
       ))}

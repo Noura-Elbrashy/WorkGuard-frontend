@@ -50,6 +50,21 @@ import enPayroll from './locales/en/Payroll.json';
 
 import arPayroll from './locales/ar/Payroll.json';
 
+import leaveEn from './locales/en/leave.json';
+
+import leaveAr from './locales/ar/leave.json';
+
+import AddemployeeEn from './locales/en/Addemployee.json';
+
+import AddemployeeAr from './locales/ar/Addemployee.json';
+
+import EditEmployeeEn from './locales/en/EditEmployee.json';
+
+import EditEmployeeAr from './locales/ar/EditEmployee.json';
+
+import enDashboard from './locales/en/Dashboard.json';
+
+import arDashboard from './locales/ar/Dashboard.json';
 i18n
   .use(initReactI18next)
   .init({
@@ -63,6 +78,10 @@ i18n
         companyReport: arCompanyReport,
          tenantEmail: artenantEmail,
         Payroll: arPayroll,
+        leave : leaveAr,
+        Addemployee : AddemployeeAr,
+        EditEmployee :EditEmployeeAr,
+        Dashboard : arDashboard,
       },
       en: {
         translation: en,
@@ -73,13 +92,17 @@ i18n
         companyReport: enCompanyReport,
         tenantEmail: entenantEmail,
          Payroll: enPayroll,
+         leave : leaveEn,
+         Addemployee :AddemployeeEn,
+         EditEmployee :EditEmployeeEn,
+         Dashboard : enDashboard,
       }
     },
 
     lng: "en",
     fallbackLng: "en",
 
-    ns: ["translation", "overtimePolicy", "bonusPolicy"],   // مهم
+    ns: ["translation", "overtimePolicy", "bonusPolicy","leave" ,"Addemployee","EditEmployee","Dashboard"],   
     defaultNS: "translation",
 
     interpolation: {

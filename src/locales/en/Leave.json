@@ -1,0 +1,189 @@
+{
+  "leave": {
+    "Paid": "Paid",
+    "Unpaid": "Unpaid",
+    "deduct": "Deduct Salary",
+    "overview": "Leave Overview",
+    "annual": "Annual Leave",
+    "sick": "Sick Leave",
+    "unpaid": "Unpaid Leave",
+    "total": "Total",
+    "used": "Used",
+    "remaining": "Remaining",
+    "days": "Days",
+    "from": "From",
+    "to": "To",
+    "year": "Year",
+    "period": "Period",
+    "type": "Leave Type",
+    "reason": "Reason",
+    "employee": "Employee",
+    "branch": "Branch",
+    "decision": "Decision",
+    "breakdown": "Day Breakdown",
+    "weekday": "Weekday",
+    "dayStatus": "Status",
+    "attendance": "Attendance",
+    "holiday": "Holiday",
+    "paidDays": "Paid Days",
+    "unpaidDays": "Unpaid Days",
+    "decidedBy": "Decided By",
+    "rejectionReason": "Rejection Reason",
+    "totalDays": "Total Days",
+    "submitted": "Submitted",
+    "statusLabel": "Status",
+    "noRequests": "No leave requests found",
+    "empty": "No leave records found",
+    "loadError": "Failed to load leave data",
+    "noLeaveYear": "No leave record found for this year",
+    "adjustBalance": "Adjust Balance",
+    "balanceUpdated": "Balance updated successfully",
+    "updateFailed": "Failed to update balance",
+    "adjustReason": "Reason for adjustment",
+    "adjustReasonHint": "Minimum 3 characters required",
+    "adjustDeductWarning": "This will reduce the employee leave balance",
+    "enterDays": "Enter number of days",
+    "confirmCancel": "Are you sure you want to cancel this leave?",
+    "absentDays": "Absent Days",
+    "unpaidLeaveDays": "Unpaid Leave Days",
+    "totalPaidUsed": "Total Paid Days Used",
+    "before": "Before",
+    "after": "After",
+    "adjustmentHistory": "Adjustment History",
+    "approve": "Approve",
+    "reject": "Reject",
+    "cancel": "Cancel Leave",
+    "cancelApproved": "Cancel Approved Leave",
+    "rejectReason": "Enter rejection reason",
+    "toastApproved": "Leave approved successfully",
+    "toastRejected": "Leave rejected successfully",
+    "toastCancelled": "Leave cancelled successfully",
+    "toastSubmitted": "Leave submitted successfully",
+    "toastError": "An error occurred",
+    "estimatedDays": "Estimated Working Days",
+    "selectLeaveBranch": "Select Branch for Leave",
+    "selectLeaveType": "Select Leave Type",
+    "details": {
+      "title": "Leave Details",
+      "subtitle": "Full breakdown of the leave request"
+    },
+    "types": {
+      "annual": "Annual Leave",
+      "sick": "Sick Leave",
+      "unpaid": "Unpaid Leave",
+      "emergency": "Emergency Leave"
+    },
+    "status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "cancelled": "Cancelled",
+      "cancelledBy": "Cancelled by",
+      "cancelledByAdmin": "Cancelled by Admin",
+      "unknown": "Unknown"
+    },
+    "statuses": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "cancelled": "Cancelled"
+    },
+  
+ 
+    "balance": {
+      "title": "Leave Balance {{year}}",
+      "total": "Total",
+      "usedPaid": "Used (Paid)",
+      "usedUnpaid": "Used (Unpaid)",
+      "used": "Used",
+      "remaining": "Remaining",
+      "absentDays": "Absent Days",
+      "unpaidDays": "Unpaid Leave Days"
+    },
+    "filter": {
+      "status": "Filter by Status"
+    },
+    "form": {
+      "branchLoadFailed": "Failed to load branches",
+      "required": "Please fill all required fields",
+      "invalidDates": "Invalid date"
+    },
+    "submit": {
+      "title": "Submit Leave Request",
+      "subtitle": "Fill in the details below to submit your leave request",
+      "action": "Submit Leave",
+      "nav": "Request Leave"
+    },
+    "my": {
+      "title": "My Leaves",
+      "subtitle": "Track and manage your leave requests"
+    },
+    "admin": {
+      "title": "Leave Management",
+      "subtitle": "Review and manage all employee leave requests"
+    },
+    "policies": {
+      "manage": "Manage Leave Policies"
+    },
+    "errors": {
+      "loadFailed": "Failed to load leave data"
+    }
+  },
+  
+  "employee": {
+    "leaveProfile": "Employee Leave Profile",
+    "leaveProfileDesc": "View and manage leave balance and history"
+  },
+  
+  "departments": "Departments",
+  "action": "Action",
+  "add": "Add",
+  "deduct": "Deduct",
+  "reason": "Reason",
+  "date": "Date",
+  "admin": "Admin",
+  "back": "Back",
+  "loading": "Loading",
+  "saving": "Saving",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "all": "All",
+  "yes": "Yes",
+  "no": "No",
+  "from": "From",
+  "to": "To",
+  "details": "Details",
+  "actions": "Actions",
+  "prev": "Previous",
+  "next": "Next",
+  "months": {
+    "1": "January",
+    "2": "February",
+    "3": "March",
+    "4": "April",
+    "5": "May",
+    "6": "June",
+    "7": "July",
+    "8": "August",
+    "9": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December"
+  },
+  "attendance": {
+    "absenceDetails": "Absence Details",
+    "noAbsence": "No absence records found",
+    "status": "Status",
+    "decision": "Decision",
+    "salaryImpact": "Salary Impact",
+    "absent": "Absent",
+    "absentWithoutPermission": "Absent Without Permission",
+    "unpaidLeave": "Unpaid Leave",
+    "salaryDeducted": "Salary Deducted"
+  },
+    "tabs": {
+      "summary": "Summary",
+      "requests": "Requests",
+      "absence": "Absence"
+    }
+}

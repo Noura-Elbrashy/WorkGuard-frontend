@@ -22,8 +22,15 @@ export const getPendingDevices = (params = {}) => {
 /**
  * 📱 Get user devices
  */
-export const getUserDevices = (userId) => {
-  return apiGet(`/devices/${userId}/devices`);
+// export const getUserDevices = (userId) => {
+//   return apiGet(`/devices/${userId}/devices`);
+// };
+
+// في device.api.js — عدلي الفانكشن دي بس
+
+export const getUserDevices = (userId, params = {}) => {
+  const query = new URLSearchParams(params).toString();
+  return apiGet(`/devices/${userId}/devices${query ? `?${query}` : ''}`);
 };
 
 /**

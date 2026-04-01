@@ -11,7 +11,9 @@ function LeaveCard({
   onCancel,
   onOpenDetails
 }) {
-  const { t } = useTranslation();
+const { t } = useTranslation('leave');
+const { t: tCommon } = useTranslation('translation');
+
 const navigate = useNavigate();
   if (!leave) return null;
 
@@ -103,12 +105,14 @@ const canCancelApproved =
 {leave.metadata?.paidDays !== undefined && (
   <div className="small text-muted mt-1">
     <i className="fa-solid fa-coins me-1" />
-    {leave.metadata.paidDays} مدفوع /
-    {leave.metadata.unpaidDays || 0} غير مدفوع
+    {leave.metadata.paidDays} {t('leave.Paid')} /
+    {leave.metadata.unpaidDays || 0} {t('leave.Unpaid')} 
   </div>
 )}
 {leave.metadata?.unpaidDays > 0 && (
-  <span className="text-danger ms-1">(خصم أجر)</span>
+  <span className="text-danger ms-1">
+    
+    {t('leave.deduct')}</span>
 )}
 
         {/* ================= Reason ================= */}
@@ -128,7 +132,7 @@ const canCancelApproved =
             onClick={() => onOpenDetails?.(_id)}
           >
             <i className="fa-solid fa-eye me-1" />
-            {t('leave.details')}
+            {t('leave.details.title')}
           </button>
 
           {/* ===== Admin Actions ===== */}

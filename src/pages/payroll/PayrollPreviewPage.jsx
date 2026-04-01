@@ -852,11 +852,14 @@ const PayrollPreviewPage = () => {
                       <th className="text-danger">Early</th>
                       <th className="text-danger">Transit</th>
                       <th className="text-danger">Absence</th>
+                      <th className="text-success">OT</th>
+<th className="text-info">Bonus</th>
+
                       <th>Total</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {payroll.audit.daily.map((d, idx) => (
+                    {payroll?.audit?.daily?.map((d, idx) => (
                       <tr key={idx}
                         className={
                           d.decisionType === 'NON_WORKING_DAY' ? 'table-light text-muted' :
@@ -870,6 +873,14 @@ const PayrollPreviewPage = () => {
                         <td className="text-danger">{d.deductions.earlyLeave || '—'}</td>
                         <td className="text-danger">{d.deductions.transit || '—'}</td>
                         <td className="text-danger">{d.deductions.absence || '—'}</td>
+                        <td className="text-success">
+  {d.overtime?.total > 0 ? `+${d.overtime.total}` : '—'}
+</td>
+
+<td className="text-info">
+  {d.bonus?.total > 0 ? `+${d.bonus.total}` : '—'}
+</td>
+
                         <td className="fw-bold">{d.total || '—'}</td>
                       </tr>
                     ))}

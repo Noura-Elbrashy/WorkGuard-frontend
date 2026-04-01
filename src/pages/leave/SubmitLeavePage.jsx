@@ -293,7 +293,8 @@ import Toast from '../../components/ui/Toast';
  * - Holidays & balance validated by backend
  */
 function SubmitLeavePage() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('leave');
+const { t: tCommon } = useTranslation('translation');
   const navigate = useNavigate();
 
   /* ======================
@@ -405,7 +406,7 @@ function SubmitLeavePage() {
       showToast(t('leave.toastSubmitted'), 'success');
 
       setTimeout(() => {
-        navigate('/leaves');
+        navigate('/my-leaves');
       }, 1200);
 
     } catch (err) {
@@ -456,7 +457,7 @@ function SubmitLeavePage() {
               }
             >
               <option value="">
-                {t('select')}
+                {t('leave.selectLeaveType')}
               </option>
               <option value="annual">
                 {t('leave.types.annual')}
@@ -474,7 +475,8 @@ function SubmitLeavePage() {
           {branches.length === 1 && (
             <div className="col-md-6">
               <label className="form-label">
-                {t('branch')}
+               
+                {tCommon('branch')}
               </label>
               <input
                 type="text"
@@ -489,7 +491,7 @@ function SubmitLeavePage() {
           {branches.length > 1 && (
             <div className="col-md-6">
               <label className="form-label">
-                {t('branch')}
+                {tCommon('branch')}
               </label>
               <select
                 className="form-select"
@@ -500,7 +502,7 @@ function SubmitLeavePage() {
                 required
               >
                 <option value="">
-                  {t('select')}
+                  {t('leave.selectLeaveBranch')}
                 </option>
                 {branches.map(b => (
                   <option key={b._id} value={b._id}>
